@@ -56,3 +56,11 @@ Route::get('/about', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::group(['prefix'=>'admin/office'],function(){
+    Route::get('/', [App\Http\Controllers\Admin\OfficeController::class, 'index'])->name('admin.office.index');
+    Route::get('/create', [App\Http\Controllers\Admin\OfficeController::class, 'create'])->name('admin.office.create');
+    Route::post('/store', [App\Http\Controllers\Admin\OfficeController::class, 'store'])->name('admin.office.store');
+    Route::get('/edit/{office}', [App\Http\Controllers\Admin\OfficeController::class, 'edit'])->name('admin.office.edit');
+    Route::post('/update/{office}', [App\Http\Controllers\Admin\OfficeController::class, 'update'])->name('admin.office.update');
+    Route::get('/delete/{office}', [App\Http\Controllers\Admin\OfficeController::class, 'delete'])->name('admin.office.delete');
+});

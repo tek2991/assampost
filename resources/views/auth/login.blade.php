@@ -58,7 +58,7 @@
                 @csrf
                   <div class="input-group input-group-outline my-3">
                     <label class="form-label">Username</label>
-                    <input type="text" name="username" id="username" class="form-control @error('username') is-invalid @enderror">
+                    <input type="text" name="username" required id="username" class="form-control @error('username') is-invalid @enderror">
                     @error('username')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -67,7 +67,7 @@
                   </div>
                   <div class="input-group input-group-outline mb-3">
                     <label class="form-label">Password</label>
-                    <input type="password" name="password" class="form-control @error('password') is-invalid @enderror" id="password" autocomplete="current-password">
+                    <input type="password" required name="password" class="form-control @error('password') is-invalid @enderror" id="password" autocomplete="current-password">
                     @error('password')
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $message }}</strong>
@@ -76,20 +76,17 @@
                   </div>
 
                   <div class="input-group input-group-outline mb-3">
-                  
                     <p><img src="{!!captcha_src()!!}" alt="catcha" style="border:1px solid black;"></p>
-                   
                   </div>
 
                   <div class="input-group input-group-outline mb-3">
                     <label class="form-label">Captcha</label>
-                    <input id="captcha" required type="number" class="form-control" name="captcha"  autocomplete="off">
+                    <input id="captcha"  type="number" class="form-control" name="captcha"  autocomplete="off">
                     @if($errors->has('captcha'))
-                        <span class="help-block">
+                        <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('captcha') }}</strong>
                         </span>
                     @endif
-                  
                   </div>
                   <div class="form-check form-switch d-flex align-items-center mb-3">
                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>

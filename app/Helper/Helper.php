@@ -1,6 +1,7 @@
 <?php
 namespace App\Helper;
-
+use Request;
+use App\Models\LogActivity as LogActivityModel;
 class Helper
 {
 public static function  cryptoJsAesDecrypt($passphrase, $jsonString)
@@ -48,4 +49,17 @@ public  static function cryptoJsAesEncrypt($passphrase, $value)
     $data = array("ct" => base64_encode($encrypted_data), "iv" => bin2hex($iv), "s" => bin2hex($salt));
     return json_encode($data);
 }
+
+public static function addToLog($subject)
+{
+    $log = [];
+    $log['subject'] = $subject;
+    $log['url'] = Request::fullUrl();
+    $log['method'] = Request::method();
+    $log['ip'] = Request::ip();
+    $log['agent'] = Request::header('user-agent');
+    $log['user_id'] = auth()->check() ? auth()->user()->id : 1;
+    LogActivityModel::create($log);
+}
+
 }
