@@ -3,11 +3,11 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 use App\Models\Office;
-use Illuminate\Support\Facades\Log;
-class OfficeController extends Controller
+use Validator,Log;
+use Illuminate\Http\Request;
+use App\Models\OtherOffice;
+class OtherOfficeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,9 +17,8 @@ class OfficeController extends Controller
     public function index()
     {
         //
-        $offices = Office::paginate(10);
-        return view('admin.office.index', compact('offices'));
-
+        $otherOffices = OtherOffice::paginate(10);
+        return view('admin.other_office.index', compact('otherOffices'));
     }
 
     /**
@@ -30,7 +29,9 @@ class OfficeController extends Controller
     public function create()
     {
         //
-        return view('admin.office.create');
+        $offices = Office::get();
+        return view('admin.other_office.create', compact('offices'));
+        
     }
 
     /**
@@ -43,14 +44,16 @@ class OfficeController extends Controller
     {
         //
         $validator = Validator::make($request->all(),[
-            'title'=>'required | max:250'
+            'title'=>'required | max:250',
+            'office_id'=>'required | numeric',
         ]);
         if($validator->fails()){
             return redirect()->back()->withErrors($validator)->withInput();
         }
         try{
             
-            $office = new Office();
+            $office = new OtherOffice();
+            $office->office_id = $request->office_id;
             $office->title = $request->title;
             $office->address_line1 = $request->address_line1;
             $office->address_line2 = $request->address_line2;
@@ -58,16 +61,15 @@ class OfficeController extends Controller
             $office->email = $request->email;
             $office->website = $request->website;
             $office->other_description = $request->other_description;
+            $office->is_active = $request->is_active;
             $office->save();
-            'App\Helper\Helper'::addToLog("Created Office: {$office->title}");
-            return redirect()->route('admin.office.index')->with('success','Office created successfully');
+            'App\Helper\Helper'::addToLog("Created Other Office: {$office->title}");
+            return redirect()->route('admin.other-office.index')->with('success', 'Office added successfully');
         }
         catch(\Exception $e){
-            Log::error('OfficeController@store: '.$e->getMessage());
-            return redirect()->back()->with('error','Something went wrong');
+            Log::error($e->getMessage());
+            return redirect()->back()->with('error', 'Something went wrong');
         }
-        
-
     }
 
     /**
@@ -90,8 +92,9 @@ class OfficeController extends Controller
     public function edit($id)
     {
         //
-        $office = Office::find($id);
-        return view('admin.office.edit', compact('office'));
+        $office = OtherOffice::find($id);
+        $offices = Office::get();
+        return view('admin.other_office.edit', compact('office','offices'));
     }
 
     /**
@@ -104,14 +107,16 @@ class OfficeController extends Controller
     public function update(Request $request, $id)
     {
         //
-        $office = Office::find($id);
+        $office = OtherOffice::find($id);
         $validator = Validator::make($request->all(),[
-            'title'=>'required | max:250'
+            'title'=>'required | max:250',
+            'office_id'=>'required | numeric',
         ]);
         if($validator->fails()){
             return redirect()->back()->withErrors($validator)->withInput();
         }
         try{
+            $office->office_id = $request->office_id;
             $office->title = $request->title;
             $office->address_line1 = $request->address_line1;
             $office->address_line2 = $request->address_line2;
@@ -120,12 +125,12 @@ class OfficeController extends Controller
             $office->website = $request->website;
             $office->other_description = $request->other_description;
             $office->save();
-            'App\Helper\Helper'::addToLog("Updated Office: {$office->title}");
-            return redirect()->route('admin.office.index')->with('success','Office updated successfully');
+            'App\Helper\Helper'::addToLog("Updated Other Office: {$office->title}");
+            return redirect()->route('admin.other-office.index')->with('success', 'Office updated successfully');
         }
         catch(\Exception $e){
-            Log::error('OfficeController@update: '.$e->getMessage());
-            return redirect()->back()->with('error','Something went wrong');
+            Log::error($e->getMessage());
+            return redirect()->back()->with('error', 'Something went wrong');
         }
     }
 
@@ -138,15 +143,15 @@ class OfficeController extends Controller
     public function destroy($id)
     {
         //
-        $office = Office::find($id);
+        $otherOffice = OtherOffice::find($id);
         try{
-            $office->delete();
-            'App\Helper\Helper'::addToLog("Deleted Office: {$office->title}");
-            return redirect()->route('admin.office.index')->with('success','Office deleted successfully');
+            $otherOffice->delete();
+            'App\Helper\Helper'::addToLog("Deleted Other Office: {$otherOffice->title}");
+            return redirect()->route('admin.other-office.index')->with('success', 'Office deleted successfully');
         }
         catch(\Exception $e){
-            Log::error('OfficeController@destroy: '.$e->getMessage());
-            return redirect()->back()->with('error','Something went wrong');
+            Log::error($e->getMessage());
+            return redirect()->back()->with('error', 'Something went wrong');
         }
     }
 }

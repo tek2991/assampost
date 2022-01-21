@@ -12,7 +12,7 @@
     <div class="col-md-8">
         <div class="card position-relative  py-3  border-left-danger">
             <div class="card-header">
-                <h6 class="m-0 font-weight-bold text-primary">Create</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Update</h6>
             </div>
             <div class="card-body">
             @if(Session::has('error'))
@@ -33,7 +33,7 @@
                     <div class="alert alert-danger">{{$error}}</div>
                 @endforeach
             @endif
-                <form action="{{route('admin.office.store')}}" method="POST">
+                <form action="{{route('admin.office.update',$office->id)}}" method="POST">
                     @csrf
                     <div class="form-group">
                         <div class="row">
@@ -41,7 +41,7 @@
                                 <label for="">Title <span class="mendatory">*</span></label>
                             </div>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" name="title" id="title" placeholder="Title">
+                                <input type="text" class="form-control" name="title" id="title" placeholder="Title" value="{{$office->title}}">
                             </div>
                         </div>
                     </div>
@@ -51,7 +51,7 @@
                                 <label for="">Address Line 1</label>
                             </div>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" name="address_line1" id="address_line1" placeholder="Address Line 1">
+                                <input type="text" class="form-control" name="address_line1" id="address_line1" placeholder="Address Line 1" value="{{$office->address_line1}}">
                             </div>
                         </div>
                     </div>
@@ -62,7 +62,7 @@
                                 <label for="">Address Line 2</label>
                             </div>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" name="address_line2" id="address_line2" placeholder="Address Line 2">
+                                <input type="text" class="form-control" name="address_line2" id="address_line2" placeholder="Address Line 2" value="{{$office->address_line2}}">
                             </div>
                         </div>
                     </div>
@@ -73,7 +73,7 @@
                                 <label for="">Phone no</label>
                             </div>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" name="phone_no" id="phone_no" placeholder="Phone No">
+                                <input type="text" class="form-control" name="phone_no" id="phone_no" placeholder="Phone No" value="{{$office->phone_no}}">
                             </div>
                         </div>
                     </div>
@@ -84,7 +84,7 @@
                                 <label for="">Email</label>
                             </div>
                             <div class="col-md-9">
-                                <input type="email" class="form-control" name="email" id="email" placeholder="Email">
+                                <input type="email" class="form-control" name="email" id="email" placeholder="Email"  value="{{$office->email}}">
                             </div>
                         </div>
                     </div>
@@ -95,7 +95,7 @@
                                 <label for="">Website / Url</label>
                             </div>
                             <div class="col-md-9">
-                                <input type="url" class="form-control" name="website" id="website" placeholder="Url">
+                                <input type="url" class="form-control" name="website" id="website" placeholder="Website" value="{{$office->website}}">
                             </div>
                         </div>
                     </div>
@@ -107,7 +107,7 @@
                                 <label for="">Other Details</label>
                             </div>
                             <div class="col-md-9">
-                                <textarea name="other_description" id="other_description"  rows="5" class="form-control"></textarea>
+                                <textarea name="other_description" id="other_description"  rows="5" class="form-control">{{$office->other_description}}</textarea>
                             </div>
                         </div>
                     </div>
@@ -119,7 +119,7 @@
                                 <span class="icon text-white-50">
                                             <i class="fas fa-check"></i>
                                 </span>
-                                <span class="text">Submit</span>
+                                <span class="text">Update</span>
                                 </button>
                             </div>
                         </div>

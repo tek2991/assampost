@@ -1,10 +1,10 @@
 @extends('admin.layouts.app')
 @section('title')
-    {{ __('Create Administrative Office') }}
+    {{ __('Create Other Office') }}
 @endsection
 @section('breadcrumb')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-<h1 class="h3 mb-0 text-gray-800">Administrative Office</h1>
+<h1 class="h3 mb-0 text-gray-800">Other Office</h1>
 </div>
 @endsection
 @section('content')
@@ -33,8 +33,23 @@
                     <div class="alert alert-danger">{{$error}}</div>
                 @endforeach
             @endif
-                <form action="{{route('admin.office.store')}}" method="POST">
+                <form action="{{route('admin.other-office.store')}}" method="POST">
                     @csrf
+                     <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <label for="">Administrative Office <span class="mendatory">*</span></label>
+                            </div>
+                            <div class="col-md-9">
+                                <select name="office_id" class="form-control">
+                                    <option value="">Select Office</option>
+                                    @foreach($offices as $office)
+                                    <option value="{{$office->id}}">{{$office->title}}</option>
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-3">

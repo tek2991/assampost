@@ -1,10 +1,10 @@
 @extends('admin.layouts.app')
 @section('title')
-    {{ __('Create Administrative Office') }}
+    {{ __('Create Other Office') }}
 @endsection
 @section('breadcrumb')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-<h1 class="h3 mb-0 text-gray-800">Administrative Office</h1>
+<h1 class="h3 mb-0 text-gray-800">Other Office</h1>
 </div>
 @endsection
 @section('content')
@@ -27,7 +27,7 @@
         <div class="alert alert-danger">{{$error}}</div>
     @endforeach
  @endif
- @foreach ($offices as $k=>$office)
+ @foreach ($otherOffices as $k=>$office)
     <div class="col-md-3">
         <div class="card position-relative  py-3  border-left-danger">
             <div class="card-body">
@@ -36,6 +36,7 @@
                         <h5 class="card-title text-center">{{$office->title}}</h5>
                     </div>
                 </div>
+                <h6>{{$office->office->title}}</h6>
                 <p>{{$office->address_line1}}</p>
                 <p>{{$office->address_line2}}</p>
                 <p>{{$office->phone_no}}</p>
@@ -59,7 +60,7 @@
 @endforeach
 
  </div> 
- {{$offices->links()}}          
+ {{$otherOffices->links()}}          
 @endsection
             
      
