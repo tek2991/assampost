@@ -42,8 +42,7 @@
 								<li><a href="{{ url('/exhibition/jorhat-exhibition') }}">Jorhat Exhibition</a></li>
 							</ul>
 						</li>
-
-						<li><a class="nav-link scrollto large-yellow" href="{{ url('/exhibitions')}}">Virtual Exhibitions</a></li>
+	
 
 						<li class="dropdown">
 							<a href="#"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
