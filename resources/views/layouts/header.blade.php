@@ -39,7 +39,7 @@
 							<a href="#"><span>Virtual Exhibitions</span> <i class="bi bi-chevron-down"></i></a>
 							<ul>
 								<li><a href="{{ url('/exhibition/guwahati-exhibition') }}">Guwahati Exhibition</a></li>
-								<li><a href="{{ url('/exhibition/guwahati-exhibition') }}">Jorhat Exhibition</a></li>
+								<li><a href="{{ url('/exhibition/jorhat-exhibition') }}">Jorhat Exhibition</a></li>
 							</ul>
 						</li>
 
