@@ -41,10 +41,10 @@
                 <p>{{$office->phone_no}}</p>
                 <div class="row">
                     <div class="col-md-6">
-                        <a href="{{route('admin.other-office.edit',$office->id)}}" class="btn btn-primary btn-block btn-sm"><i class="fa fa-edit"></i></a>
+                        <a href="{{route('admin.office.edit',$office->id)}}" class="btn btn-primary btn-block btn-sm"><i class="fa fa-edit"></i></a>
                     </div>
                     <div class="col-md-6">
-                        <form action="{{route('admin.other-office.destroy',$office->id)}}" method="Post">
+                        <form action="{{route('admin.office.destroy',$office->id)}}" method="Post">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="btn btn-danger btn-block  btn-sm" onclick="return confirm('Are you sure to delete?')"><i class="fa fa-trash"></i></button>
