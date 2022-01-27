@@ -2,10 +2,10 @@
 	<div class="container">
 			<div class="row">
 				<div class="col-lg-4 col-md-12">
-					<h3>Issue with our delivery ? </h3>
+					<h3>Need assistance with your article?</h3>
 				</div>
 				<div class="col-lg-2 col-md-12">
-					<a href="#" class="call-to-action-btn">Contact us</a>
+					<a href="tel:1800 266 6868" class="call-to-action-btn">1800 266 6868</a>
 				</div>
 				
 			</div>

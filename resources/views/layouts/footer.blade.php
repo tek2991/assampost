@@ -48,7 +48,7 @@
 				</div>
 
 
-				<div class="col-lg-3 col-md-3 footer-newsletter">
+				{{-- <div class="col-lg-3 col-md-3 footer-newsletter">
 
 					<div class="social-links text-center text-lg-right pt-3 pt-lg-0">
 						<a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
@@ -56,7 +56,7 @@
 						<a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
 					</div>
 
-				</div>
+				</div> --}}
 
 			</div>
 		</div>
