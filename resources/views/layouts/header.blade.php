@@ -20,8 +20,8 @@
 					</div>
 					<div class="col-lg-5">
 						<div class="d-flex justify-content-between action-btn-wrap">
-							<a class="secondary-btn" href="#"> Locate Post Office </a>
-							<a class="primary-btn" href="#"> Track Consignment </a>
+							<a class="secondary-btn" href="https://www.indiapost.gov.in/vas/pages/LocatePostOffices.aspx" target="_blank"> Locate Post Office </a>
+							<a class="primary-btn" href="https://www.indiapost.gov.in/_layouts/15/DOP.Portal.Tracking/TrackConsignment.aspx" target="_blank"> Track Consignment </a>
 						</div>	
 					</div>
 				</div>	
