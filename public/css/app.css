@@ -11286,3 +11286,7 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+.primary-btn:hover {
+  color: #b02925;
+  background: #fee801;
+}

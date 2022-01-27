@@ -63,7 +63,5 @@
         </section>
         <!-- End About Section -->
    @endsection
-</main>
-    <!-- End #main -->
 
     
