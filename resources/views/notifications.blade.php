@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+{{-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -380,4 +380,152 @@
 
 </body>
 
-</html>
+</html> --}}
+
+@extends('layouts.app')
+@section('content')
+    <section class="notice-section">
+        <div class="container">
+
+            <div class="notification-wrapper">
+
+                <div class="notification-header">
+                    <div class="container">
+                        <div class="row">
+
+                            <div class="col-md-3">
+                                <span>Sort by </span>
+                                <select>
+                                    <option>All</option>
+                                </select>
+                            </div>
+
+                            <div class="col-md-6 justify-content-center">
+                                <nav aria-label="Page navigation">
+                                    <ul class="pagination notice-pager">
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+
+                                            </a>
+                                        </li>
+                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+
+                            <div class="col-md-3 d-flex justify-content-end">
+                                Showing 1-15 of 70
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <div class="notice-block d-flex justify-content-between">
+
+                    <div class="info">
+                        <h5>Description: Tender for renovation of mail office under Assam Circle</h5>
+                        <h6>Cateogory: Tender Notice</h6>
+                        <h6>Uploaded at: 01-01-2021</h6>
+                    </div>
+
+                    <div class="action">
+                        <a class="black-btn" href="#"> View </a>
+                    </div>
+
+                </div>
+
+                <div class="notice-block d-flex justify-content-between">
+
+                    <div class="info">
+                        <h5>Description: Tender for renovation of mail office under Assam Circle</h5>
+                        <h6>Cateogory: Tender Notice</h6>
+                        <h6>Uploaded at: 01-01-2021</h6>
+                    </div>
+
+                    <div class="action">
+                        <a class="black-btn" href="#"> View </a>
+                    </div>
+
+                </div>
+
+                <div class="notice-block d-flex justify-content-between">
+
+                    <div class="info">
+                        <h5>Description: Tender for renovation of mail office under Assam Circle</h5>
+                        <h6>Cateogory: Tender Notice</h6>
+                        <h6>Uploaded at: 01-01-2021</h6>
+                    </div>
+
+                    <div class="action">
+                        <a class="black-btn" href="#"> View </a>
+                    </div>
+
+                </div>
+
+                <div class="notice-block d-flex justify-content-between">
+
+                    <div class="info">
+                        <h5>Description: Tender for renovation of mail office under Assam Circle</h5>
+                        <h6>Cateogory: Tender Notice</h6>
+                        <h6>Uploaded at: 01-01-2021</h6>
+                    </div>
+
+                    <div class="action">
+                        <a class="black-btn" href="#"> View </a>
+                    </div>
+
+                </div>
+
+
+                <div class="notification-header">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-3">
+                                <span>Sort by </span>
+                                <select>
+                                    <option>All</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 justify-content-center">
+                                <nav aria-label="Page navigation">
+                                    <ul class="pagination notice-pager">
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" aria-label="Previous">
+                                                <span aria-hidden="true">&laquo;</span>
+                                            </a>
+                                        </li>
+                                        <li class="page-item"><a class="page-link" href="#">1</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                        <li class="page-item">
+                                            <a class="page-link" href="#" aria-label="Next">
+                                                <span aria-hidden="true">&raquo;</span>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="col-md-3 d-flex justify-content-end">
+                                Showing 1-15 of 70
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+@endsection
