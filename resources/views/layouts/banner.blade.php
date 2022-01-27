@@ -1,8 +1,20 @@
 <section class="banner">
     <div data-aos="fade-in">
-        <div class="banner bg-custom">
-            {{-- <img src="{{ asset('assets/img/postal-banner.JPG') }}" alt="" class="img-fluid"> --}}
-        </div>
+        <div id="image-slider" class="splide">
+            <div class="splide__track">
+                    <ul class="splide__list">
+                        <li class="splide__slide">
+                            <img src="{{asset('assets/img/postal-banner.JPG')}}">
+                        </li>
+                        <li class="splide__slide">
+                           <img src="{{asset('assets/img/postal-banner.JPG')}}">
+                        </li>
+                        <li class="splide__slide">
+                           <img src="{{asset('assets/img/postal-banner.JPG')}}">
+                        </li>
+                    </ul>
+            </div>
+            </div>
 
     </div>
     <div class="notification">
@@ -12,17 +24,5 @@
             </ul>
         </marquee>
     </div>
-    <style>
-        .bg-custom {
-            background-image: url({{ asset('assets/img/postal-banner.JPG') }});
-            background-size: cover;
-			background-position: center;
-            background-repeat: no-repeat;
-            width: 100%;
-            height: 0;
-            padding-top: 25%
-
-        }
-
-    </style>
+    
 </section>
