@@ -20,7 +20,7 @@
     <div class="notification">
         <marquee direction="left">
             <ul>
-                <li><a href="#">Virtual Philately Exhibition by Guwahati Division from ___________ Click Here to visit***</a></li>
+                <li><a href="{{ url('/exhibition/guwahati-exhibition') }}">Virtual Philately Exhibition by Guwahati Division from ___________ Click Here to visit***</a></li>
             </ul>
         </marquee>
     </div>
