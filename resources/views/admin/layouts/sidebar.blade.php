@@ -56,6 +56,89 @@
                     </div>
                 </div>
             </li>
+
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#event"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-calendar"></i>
+                    <span>Events</span>
+                </a>
+                <div id="event" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                       <a class="collapse-item" href="{{route('admin.event.create')}}">Add New</a>
+                        <a class="collapse-item" href="{{route('admin.event.index')}}">Manage / Edit</a>
+                    </div>
+                </div>
+            </li>
+
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#notice"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-bell"></i>
+                    <span>Notice</span>
+                </a>
+                <div id="notice" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                       <a class="collapse-item" href="{{route('admin.notice.create')}}">Add New</a>
+                        <a class="collapse-item" href="{{route('admin.notice.index')}}">Manage / Edit</a>
+                    </div>
+                </div>
+            </li>
           
+           <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#download"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-download"></i>
+                    <span>Download</span>
+                </a>
+                <div id="download" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                       <a class="collapse-item" href="{{route('admin.download.create')}}">Add New</a>
+                        <a class="collapse-item" href="{{route('admin.download.index')}}">Manage / Edit</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#link"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-download"></i>
+                    <span>Link</span>
+                </a>
+                <div id="link" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                       <a class="collapse-item" href="{{route('admin.link.create')}}">Add New</a>
+                        <a class="collapse-item" href="{{route('admin.link.index')}}">Manage / Edit</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseBanner"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <i class="fas fa-fw fa-home"></i>
+                    <span>Banner</span>
+                </a>
+                <div id="collapseBanner" class="collapse" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                       <a class="collapse-item" href="{{route('admin.banner.create')}}">Add New Banner</a>
+                        <a class="collapse-item" href="{{route('admin.banner.index')}}">Manage / Edit</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item active">
+                <a class="nav-link" href="{{route('admin.my-activity')}}">
+                    <i class="fas fa-fw fa-tasks"></i>
+                    <span>My activity</span></a>
+            </li>
+
 
         </ul>

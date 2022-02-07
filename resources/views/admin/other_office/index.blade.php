@@ -36,7 +36,7 @@
                         <h5 class="card-title text-center">{{$office->title}}</h5>
                     </div>
                 </div>
-                <h6>{{$office->office->title}}</h6>
+                <h6>{{$office->office ? $office->office->title : 'Not Available'}}</h6>
                 <p>{{$office->address_line1}}</p>
                 <p>{{$office->address_line2}}</p>
                 <p>{{$office->phone_no}}</p>
