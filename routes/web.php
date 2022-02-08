@@ -1,7 +1,12 @@
 <?php
 
+use App\Models\Download;
+use App\Models\Event;
+use App\Models\Link;
+use App\Models\Notice;
 use Illuminate\Support\Facades\Route;
-
+use App\Models\Office;
+use App\Models\OtherOffice;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,40 +22,53 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/mail-services', function () {
+Route::get('/administrative-office',function(){
+    $offices = Office::paginate(10);
+    return view('administrative-office',compact('offices'));
+    
+});
+
+Route::get('/other-office',function(){
+    $offices = OtherOffice::paginate(10);
+    return view('other-office',compact('offices'));
+});
+
+Route::get('/event',function(){
+    $events = Event::where('is_active',1)->paginate(1);
+    return view('events',compact('events'));
+});
+
+Route::get('/event/{slug}',function(){
+    $event = Event::where('slug',request()->slug)->orderBy('id','desc')->first();
+    return view('event-detail',compact('event'));
+})->name('event.detail');
+
+Route::get('/notice',function(){
+    $notices = Notice::where('is_active',1)->orderBy('id','desc')->paginate(10);
+    return view('notice',compact('notices'));
+});
+
+Route::get('/downloads',function(){
+    $downloads = Download::where('is_active',1)->orderBy('id','desc')->paginate(10);
+    return view('downloads',compact('downloads'));
+});
+
+Route::get('/links',function(){
+    $links = Link::where('is_active',1)->orderBy('id','desc')->paginate(10);
+    return view('links',compact('links'));
+});
+
+Route::get('/about',function(){
+    return view('about');
+});
+
+
+Route::get('/mail-services',function(){
     return view('mail-services');
 });
 
-Route::get('/banking-services', function () {
+Route::get('/banking-services',function(){
     return view('banking-services');
-});
-
-Route::get('/contact-admin', function () {
-    return view('contact-admin');
-});
-
-Route::get('/contact-office', function () {
-    return view('contact-office');
-});
-
-Route::get('/exhibitions', function () {
-    return view('exhibitions');
-});
-
-Route::get('/events', function () {
-    return view('events');
-});
-
-Route::get('notifications', function () {
-    return view('notifications');
-});
-
-Route::get('/resources', function () {
-    return view('resources');
-});
-
-Route::get('/about', function () {
-    return view('about');
 });
 
 Auth::routes(['register' => false]);

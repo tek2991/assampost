@@ -55,13 +55,19 @@
 						<li class="dropdown">
 							<a href="#"><span>Offices</span> <i class="bi bi-chevron-down"></i></a>
 							<ul>
-								<li><a href="{{ url('/contact-admin') }}">Administrative</a></li>
-								<li><a href="{{ url('/contact-office') }}">All Offices</a></li>
+								<li><a href="{{ url('/administrative-office') }}">Administrative</a></li>
+								<li><a href="{{ url('/other-office') }}">All Offices</a></li>
 							</ul>
 						</li>
-						<li><a class="nav-link scrollto" href="{{ url('/events') }}">Events</a></li>
-						<li><a class="nav-link scrollto " href="{{ url('/notifications') }}">Notices</a></li>
-						<li><a class="nav-link scrollto" href="{{ url('/resources') }}">Resources</a></li>
+						<li><a class="nav-link scrollto" href="{{ url('/event') }}">Events</a></li>
+						<li><a class="nav-link scrollto " href="{{ url('/notice') }}">Notices</a></li>
+						<li class="dropdown">
+							<a href="#"><span>Resources</span> <i class="bi bi-chevron-down"></i></a>
+							<ul>
+								<li><a href="{{ url('/downloads') }}">Download</a></li>
+								<li><a href="{{ url('/links') }}">Links</a></li>
+							</ul>
+						</li>
 						<li><a class="nav-link scrollto" href="{{ url('/about')}}">About</a></li>
 					</ul>
 					<i class="bi bi-list mobile-nav-toggle"></i>
