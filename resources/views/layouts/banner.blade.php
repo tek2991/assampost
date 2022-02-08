@@ -31,6 +31,7 @@
                   @foreach($notices_front as $n)      
                 <li><a href="{{ $n->file_path }}" target="_blank">{{ $n->title }} </a></li>
                 @endforeach
+                <li><a href="{{ url('/exhibition/guwahati-exhibition') }}">Virtual Philately Exhibition by Guwahati Division from ___________ Click Here to visit***</a></li>
             </ul>
         </marquee>
     </div>

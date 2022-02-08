@@ -300,8 +300,7 @@
 
 </body>
 
-</html>
- --}}
+</html> --}}
 
 @extends('layouts.app')
 <!-- ======= About Section ======= -->
@@ -312,23 +311,22 @@
             <h3 class="section-header">About Assam Circle</h3>
 
             <div class="about-img py-3">
-                <img class="img-fluid" src="assets/img/postal-map.JPG" alt="map">
+                <img class="img-fluid" src="assets/img/assam_map.jpg" alt="map">
             </div>
 
-            <p class="about-para">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit
-                esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa
-                qui officia deserunt mollit anim id est laborum.Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
-                do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit
-                in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            <p class="about-para">Assam Postal Circle consists of 9 Postal Divisions and 2 RMS Divisions. There are 19
+                Head Post Offices, 605 Sub Post Offices and 3383 Branch Post Offices. Covering an area of approximately
+                784400 sq kilometres and provides postal services to over 30 lakh population, and processing approximately
+                10 lakhs articles per day. <br>
+
+                Making utmost efforts to bring vulnerable sections of the society under Financial Inclusion Umbrella by
+                providing Aadhaar Services (Enrolment and Updation) through 216 Post Office Aadhaar Kendras and providing
+                Postal Life Insurance(PLI) and Rural Postal Life Insurance(RPLI) services throughout the state of Assam.</p>
 
         </div>
     </section><!-- End About Section -->
 
-    <section class="message-block">
+    {{-- <section class="message-block">
         <div class="container">
 
             <div class="message-wrapper">
@@ -365,6 +363,6 @@
             </div>
 
         </div>
-    </section>
+    </section> --}}
     <!-- End About Section -->
 @endsection
