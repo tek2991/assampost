@@ -57,6 +57,25 @@
                 </div>
             </li>
 
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Master Section
+            </div>
+             <li class="nav-item active">
+                <a class="nav-link" href="{{route('admin.category.index')}}">
+                    <i class="fas fa-fw fa-tasks"></i>
+                    <span>Create / Manage Category</span></a>
+            </li>
+
+            <hr class="sidebar-divider">
+
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Events & notice Section
+            </div>
+
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#event"

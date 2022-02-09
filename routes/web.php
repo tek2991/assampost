@@ -150,4 +150,11 @@ Route::group(['prefix' => 'admin/banner'],function(){
     Route::delete('/delete/{banners}', [App\Http\Controllers\Admin\BannerController::class, 'destroy'])->name('admin.banner.destroy');
 });
 Route::get('/my-activity', [App\Http\Controllers\HomeController::class, 'activity'])->name('admin.my-activity')->middleware('auth');
-    
+Route::group(['prefix' => 'admin/category'],function(){
+    Route::get('/', [App\Http\Controllers\Admin\CategoryController::class, 'index'])->name('admin.category.index');
+    Route::get('/create', [App\Http\Controllers\Admin\CategoryController::class, 'create'])->name('admin.category.create');
+    Route::post('/store', [App\Http\Controllers\Admin\CategoryController::class, 'store'])->name('admin.category.store');
+    Route::get('/edit/{category}', [App\Http\Controllers\Admin\CategoryController::class, 'edit'])->name('admin.category.edit');
+    Route::post('/update/{category}', [App\Http\Controllers\Admin\CategoryController::class, 'update'])->name('admin.category.update');
+    Route::delete('/delete/{category}', [App\Http\Controllers\Admin\CategoryController::class, 'destroy'])->name('admin.category.destroy');
+});
