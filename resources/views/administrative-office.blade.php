@@ -96,21 +96,21 @@
                                         <strong>Email:</strong> {{ $office->email ? $office->email : 'N/A' }}
                                     </p>
                                 </div>
-                                    @php
-                                        $lat_lng = $office->latitude_longitude ? $office->latitude_longitude : null;
-                                        $query = $office->address_line1;
-                                        $google_maps_url = "https://maps.google.com/maps/search/?api=1&query=$query";
-                                        if($lat_lng){
-                                            $google_maps_url = "https://maps.google.com/maps/search/?api=1&query=$query&query=$lat_lng";
-                                        }
-                                    @endphp
+                                @php
+                                    $lat_lng = $office->latitude_longitude ? $office->latitude_longitude : null;
+                                    $query = str_replace([' ', ','], ['+', ''], $office->address_line1);
+                                    $google_maps_url = "https://maps.google.com/maps/search/?api=1&query=$query";
+                                    if ($lat_lng) {
+                                        $google_maps_url = "https://maps.google.com/maps/search/?api=1&query=$query&query=$lat_lng";
+                                    }
+                                @endphp
 
-                                    <a class="btn btn-success btn-icon-split" href="{{ $google_maps_url }}" target="_blank">
-                                        <span class="icon text-white-50">
-                                            <i class="fas fa-check"></i>
-                                        </span>
-                                        <span class="text">Open in Google maps</span>
-                                    </a>
+                                <a class="btn btn-success btn-icon-split" href="{{ $google_maps_url }}" target="_blank">
+                                    <span class="icon text-white-50">
+                                        <i class="fas fa-check"></i>
+                                    </span>
+                                    <span class="text">Open in Google maps</span>
+                                </a>
                             </div>
                         </div>
                     @empty

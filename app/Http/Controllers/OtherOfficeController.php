@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Office;
 use App\Models\District;
 use App\Models\Division;
 use App\Models\OtherOffice;
@@ -14,7 +15,7 @@ class OtherOfficeController extends Controller
             'search' => 'nullable|string',
             'division_id' => 'nullable|exists:divisions,id',
             'district_id' => 'nullable|exists:districts,id',
-            'office_id' => 'nullable|exists:offices,id',
+            'admin_office_id' => 'nullable|exists:offices,id',
         ]);
 
         $query = OtherOffice::query();
@@ -28,12 +29,13 @@ class OtherOfficeController extends Controller
             $query->where('district_id', $request->district_id);
         }
         if($request->filled('office_id')){
-            $query->where('office_id', $request->office_id);
+            $query->where('office_id', $request->admin_office_id);
         }
-        $offices = $query->paginate(10);
+        $offices = $query->with('office')->paginate(10);
+        $admin_offices = Office::all();
         $districts = District::all();
         $divisions = Division::all();
         
-        return view('other-office',compact('offices', 'districts', 'divisions', 'request'));
+        return view('other-office',compact('offices', 'admin_offices', 'districts', 'divisions', 'request'));
     }
 }
