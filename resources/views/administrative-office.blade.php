@@ -6,8 +6,6 @@
 
     <section class="conact admin">
         <div class="container">
-
-
             <div class="row">
                 <div class="col-md-3">
                     <form action="{{ route('view-administrative-office') }}" method="GET">
@@ -21,11 +19,11 @@
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-3">
-                                            <label for="str" style="padding-top:5px">Search</label>
+                                            <label for="search" style="padding-top:5px">Search</label>
                                         </div>
                                         <div class="col-md-9">
-                                            <input type="text" class="form-control" name="str" id="str"
-                                                placeholder="name or Pincode">
+                                            <input type="text" class="form-control" name="search" id="search"
+                                                placeholder="name or Pincode" value="{{ $request->search }}">
                                         </div>
                                     </div>
                                 </div>
@@ -39,7 +37,7 @@
                                             <select name="division_id" class="form-control" id="division_id">
                                                 <option value="">Select Division</option>
                                                 @foreach ($divisions as $division)
-                                                    <option value="{{ $division->id }}">
+                                                    <option value="{{ $division->id }}" {{ $request->division_id == $division->id ? 'selected' : '' }}>
                                                         {{ $division->name }}</option>
                                                 @endforeach
                                             </select>
@@ -55,7 +53,7 @@
                                             <select name="district_id" class="form-control" id="district_id">
                                                 <option value="">Select district</option>
                                                 @foreach ($districts as $district)
-                                                    <option value="{{ $district->id }}">{{ $district->name }}</option>
+                                                    <option value="{{ $district->id }}" {{ $request->district_id == $district->id ? 'selected' : '' }}>{{ $district->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -64,7 +62,7 @@
                                 <div class="form-group" style="margin-top:1rem">
                                     <div class="row">
                                         <div class="col-md-12 text-center">
-                                            <button type="submit" name="submit" class="btn btn-success btn-icon-split">
+                                            <button type="submit" class="btn btn-success btn-icon-split">
                                                 <span class="icon text-white-50">
                                                     <i class="fas fa-check"></i>
                                                 </span>
