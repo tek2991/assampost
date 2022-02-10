@@ -100,13 +100,13 @@
                                         $lat = $office->latitude ? $office->latitude : null;
                                         $lng = $office->longitude ? $office->longitude : null;
                                         $query = $office->address_line1;
-                                        $google_maps_url = "https://maps.google.com/?query=$query";
+                                        $google_maps_url = "https://maps.google.com/maps/search/?api=1&query=$query";
                                         if($lat && $lng){
-                                            $google_maps_url = "https://maps.google.com/?query=$lat,$lng&query=$query";
+                                            $google_maps_url = "https://maps.google.com/maps/search/?api=1&query=$lat,$lng&query=$query";
                                         }
                                     @endphp
 
-                                    <a class="btn btn-success btn-icon-split" href="{{ $google_maps_url }}">
+                                    <a class="btn btn-success btn-icon-split" href="{{ $google_maps_url }}" target="_blank">
                                         <span class="icon text-white-50">
                                             <i class="fas fa-check"></i>
                                         </span>
