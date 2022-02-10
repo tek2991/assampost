@@ -97,12 +97,11 @@
                                     </p>
                                 </div>
                                     @php
-                                        $lat = $office->latitude ? $office->latitude : null;
-                                        $lng = $office->longitude ? $office->longitude : null;
+                                        $lat_lng = $office->latitude_longitude ? $office->latitude_longitude : null;
                                         $query = $office->address_line1;
                                         $google_maps_url = "https://maps.google.com/maps/search/?api=1&query=$query";
-                                        if($lat && $lng){
-                                            $google_maps_url = "https://maps.google.com/maps/search/?api=1&query=$lat,$lng&query=$query";
+                                        if($lat_lng){
+                                            $google_maps_url = "https://maps.google.com/maps/search/?api=1&query=$query&query=$lat_lng";
                                         }
                                     @endphp
 

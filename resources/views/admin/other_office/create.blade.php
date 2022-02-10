@@ -129,23 +129,10 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <label for="latitude">Latitude</label>
+                                    <label for="latitude_longitude">Latitude & Longitude</label>
                                 </div>
                                 <div class="col-md-9">
-                                    <input type="number" class="form-control" name="latitude" id="latidute"
-                                        step=".0000001">
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="row">
-                                <div class="col-md-3">
-                                    <label for="latitude">Longitude</label>
-                                </div>
-                                <div class="col-md-9">
-                                    <input type="number" class="form-control" name="longitude" id="longidute"
-                                        step=".0000001">
+                                    <input type="text" class="form-control" name="latitude_longitude" id="latidute_longitude">
                                 </div>
                             </div>
                         </div>

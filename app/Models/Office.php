@@ -10,7 +10,7 @@ class Office extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    protected $fillable = ['title', 'address_line1', 'address_line2', 'phone_no', 'email', 'website', 'other_description', 'is_active', 'division_id', 'district_id', 'pincode', 'latitude', 'longitude'];
+    protected $fillable = ['title', 'address_line1', 'address_line2', 'phone_no', 'email', 'website', 'other_description', 'is_active', 'division_id', 'district_id', 'pincode', 'latitude_longitude'];
 
     public function otherOffices(){
         return $this->hasMany(OtherOffice::class);

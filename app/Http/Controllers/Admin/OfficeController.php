@@ -63,8 +63,7 @@ class OfficeController extends Controller
             $office->pincode = $request->pincode;
             $office->address_line1 = $request->address_line1;
             $office->address_line2 = $request->address_line2;
-            $office->latitude = $request->latitude;
-            $office->longitude = $request->longitude;
+            $office->latitude_longitude = $request->latitude_longitude;
             $office->phone_no = $request->phone_no;
             $office->email = $request->email;
             $office->website = $request->website;
@@ -132,8 +131,7 @@ class OfficeController extends Controller
             $office->title = $request->title;
             $office->division_id = $request->division_id;
             $office->district_id = $request->district_id;
-            $office->latitude = $request->latitude;
-            $office->longitude = $request->longitude;
+            $office->latitude_longitude = $request->latitude_longitude;
             $office->pincode = $request->pincode;
             $office->address_line1 = $request->address_line1;
             $office->address_line2 = $request->address_line2;
