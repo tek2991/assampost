@@ -18,7 +18,7 @@ class OfficeController extends Controller
 
         $query = Office::query();
         if($request->filled('search') ){
-            $query->where('title', 'like', '%'.$request->search.'%');
+            $query->where('title', 'like', '%'.$request->search.'%')->orWhere('address_line1', 'like', '%'.$request->search.'%')->orWhere('address_line2', 'like', '%'.$request->search.'%')->orWhere('pincode', 'like', '%'.$request->search.'%');
         }
         if($request->filled('division_id')){
             $query->where('division_id', $request->division_id);
