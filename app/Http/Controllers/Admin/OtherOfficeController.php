@@ -37,7 +37,6 @@ class OtherOfficeController extends Controller
         $districts = District::all();
         $divisions = Division::all();
         return view('admin.other_office.create', compact('offices', 'districts', 'divisions'));
-        
     }
 
     /**
@@ -49,19 +48,19 @@ class OtherOfficeController extends Controller
     public function store(Request $request)
     {
         //
-        $validator = Validator::make($request->all(),[
-            'title'=>'required | max:250',
-            'office_id'=>'required | numeric | exists:offices,id',
+        $validator = Validator::make($request->all(), [
+            'title' => 'required | max:250',
+            'office_id' => 'required | numeric | exists:offices,id',
             'division_id' => 'required | exists:divisions,id',
             'district_id' => 'required | exists:districts,id',
             'address_line1' => 'required',
             'pincode' => 'required | numeric',
         ]);
-        if($validator->fails()){
+        if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-        try{
-            
+        try {
+
             $office = new OtherOffice();
             $office->office_id = $request->office_id;
             $office->division_id = $request->division_id;
@@ -80,8 +79,7 @@ class OtherOfficeController extends Controller
             $office->save();
             'App\Helper\Helper'::addToLog("Created Other Office: {$office->title}");
             return redirect()->route('admin.other-office.index')->with('success', 'Office added successfully');
-        }
-        catch(\Exception $e){
+        } catch (\Exception $e) {
             Log::error($e->getMessage());
             return redirect()->back()->with('error', 'Something went wrong');
         }
@@ -109,7 +107,9 @@ class OtherOfficeController extends Controller
         //
         $office = OtherOffice::find($id);
         $offices = Office::get();
-        return view('admin.other_office.edit', compact('office','offices'));
+        $districts = District::all();
+        $divisions = Division::all();
+        return view('admin.other_office.edit', compact('office', 'offices', 'districts', 'divisions'));
     }
 
     /**
@@ -123,15 +123,24 @@ class OtherOfficeController extends Controller
     {
         //
         $office = OtherOffice::find($id);
-        $validator = Validator::make($request->all(),[
-            'title'=>'required | max:250',
-            'office_id'=>'required | numeric',
+        $validator = Validator::make($request->all(), [
+            'title' => 'required | max:250',
+            'office_id' => 'required | numeric',
+            'division_id' => 'required | exists:divisions,id',
+            'district_id' => 'required | exists:districts,id',
+            'address_line1' => 'required',
+            'pincode' => 'required | numeric',
         ]);
-        if($validator->fails()){
+        if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
-        try{
+        try {
             $office->office_id = $request->office_id;
+            $office->division_id = $request->division_id;
+            $office->district_id = $request->district_id;
+            $office->latitude = $request->latitude;
+            $office->longitude = $request->longitude;
+            $office->pincode = $request->pincode;
             $office->title = $request->title;
             $office->address_line1 = $request->address_line1;
             $office->address_line2 = $request->address_line2;
@@ -142,8 +151,7 @@ class OtherOfficeController extends Controller
             $office->save();
             'App\Helper\Helper'::addToLog("Updated Other Office: {$office->title}");
             return redirect()->route('admin.other-office.index')->with('success', 'Office updated successfully');
-        }
-        catch(\Exception $e){
+        } catch (\Exception $e) {
             Log::error($e->getMessage());
             return redirect()->back()->with('error', 'Something went wrong');
         }
@@ -159,12 +167,11 @@ class OtherOfficeController extends Controller
     {
         //
         $otherOffice = OtherOffice::find($id);
-        try{
+        try {
             $otherOffice->delete();
             'App\Helper\Helper'::addToLog("Deleted Other Office: {$otherOffice->title}");
             return redirect()->route('admin.other-office.index')->with('success', 'Office deleted successfully');
-        }
-        catch(\Exception $e){
+        } catch (\Exception $e) {
             Log::error($e->getMessage());
             return redirect()->back()->with('error', 'Something went wrong');
         }
