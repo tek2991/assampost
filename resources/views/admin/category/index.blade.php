@@ -63,7 +63,7 @@
                         <td>{{ $category->name }}</td>
                         <td>
                         <a href="{{route('admin.category.edit',$category->id)}}" class="btn btn-primary btn-sm">
-    <i class="fa fa-edit"></i> Edit</a>
+                        <i class="fa fa-edit"></i> Edit</a>
                         <form action="{{route('admin.category.destroy',$category->id)}}" method="post" class="d-inline">
                         @csrf
                         @method('delete')

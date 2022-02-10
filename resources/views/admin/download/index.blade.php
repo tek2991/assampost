@@ -30,7 +30,7 @@
 <div class="container">
 <form action="" method="get" enctype="multipart/form-data">
     <div class="row">
-        
+
             <div class="col-lg-1">
                 Title
             </div>
@@ -40,7 +40,7 @@
             <div class="col-lg-1">
                 <button type="submit" class="btn btn-primary btn-sm" id="search_btn">Search</button>
             </div>
-        
+
     </div>
     </form>
 </div>
@@ -48,6 +48,7 @@
 <thead>
 <th>#</th>
 <th>Title</th>
+<th>Category</th>
 <th>Action</th>
 </thead>
 <tbody>
@@ -56,6 +57,7 @@
     <tr>
     <td>{{$downloads->firstItem()+$k}}</td>
     <td>{{$download->title}}</td>
+    <td>{{$download->category->name}}</td>
     <td>
     <a href="{{route('admin.download.edit',$download->id)}}" class="btn btn-primary btn-sm">
     <i class="fa fa-edit"></i> Edit</a>
@@ -84,8 +86,7 @@
 @endforelse
 </tbody>
 </table>
- </div> 
- {{$downloads->links()}}          
+ </div>
+ {{$downloads->links()}}
 @endsection
-            
-     
+

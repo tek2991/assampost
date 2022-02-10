@@ -76,6 +76,8 @@ class CategoryController extends Controller
     public function edit($id)
     {
         //
+        $category = Category::find($id);
+        return view('admin.category.edit',compact('category'));
     }
 
     /**
@@ -88,6 +90,20 @@ class CategoryController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $validator = Validator::make($request->all(),[
+            'name' => 'required|max:250'
+        ]);
+        if($validator->fails()){
+            return redirect()->back()->withErrors($validator)->withInput();
+        }
+        try{
+            $category = Category::find($id);
+            $category->name = $request->name;
+            $category->save();
+            return redirect()->route('admin.category.index')->with('success','Category updated successfully');
+        }catch(\Exception $e){
+            return redirect()->back()->with('error',$e->getMessage());
+        }
     }
 
     /**
@@ -99,5 +115,12 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         //
+        try{
+            $category = Category::find($id);
+            $category->delete();
+            return redirect()->back()->with('success','Category deleted successfully');
+        }catch(\Exception $e){
+            return redirect()->back()->with('error','Something went wrong');
+        }
     }
 }

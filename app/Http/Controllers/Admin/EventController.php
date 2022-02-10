@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Event;
 use Illuminate\Support\Facades\Validator;
@@ -31,7 +32,8 @@ class EventController extends Controller
     public function create()
     {
         //
-        return view('admin.event.create');
+        $categories = Category::get();
+        return view('admin.event.create',compact('categories'));
     }
 
     /**
@@ -45,6 +47,7 @@ class EventController extends Controller
         //
         $validator = Validator::make($request->all(),
             ['title' => 'required|max:255',
+            'category_id' => 'required|numeric',
             'picture' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
             ]
         );
@@ -64,6 +67,7 @@ class EventController extends Controller
             $event = new Event();
             $event->title = $request->title;
             $event->picture = $filename;
+            $event->category_id = $request->category_id;
             $event->slug = Str::slug($request->title);
             $event->brief_description = $request->brief_description;
             $event->description = $request->description;
@@ -100,7 +104,8 @@ class EventController extends Controller
     {
         //
         $event = Event::find($id);
-        return view('admin.event.edit',compact('event'));
+        $categories = Category::get();
+        return view('admin.event.edit',compact('event','categories'));
 
     }
 
@@ -134,6 +139,7 @@ class EventController extends Controller
             }
             $event->title = $request->title;
             $event->picture = $filename;
+            $event->category_id = $request->category_id;
             $event->brief_description = $request->brief_description;
             $event->description = $request->description;
             $event->save();

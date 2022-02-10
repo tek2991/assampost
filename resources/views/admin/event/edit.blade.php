@@ -55,6 +55,21 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-2">
+                                <label for="">Category <span class="mendatory">*</span></label>
+                            </div>
+                            <div class="col-md-9">
+                                <select name="category_id" class="form-control">
+                                <option value="">Select Category</option>
+                                @foreach($categories as $category)
+                                <option value="{{$category->id}}" @if($category->id == $event->category_id) selected @endif>{{$category->name}}</option>
+                                @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
                                 <label for="">Picture</label>
                             </div>
                             <div class="col-md-9">
@@ -107,7 +122,7 @@
             </div>
          </div>
     </div>
- </div>           
+ </div>
 @endsection
 
 @section('scripts')
@@ -123,8 +138,7 @@
         filebrowserImageUploadUrl: "{{ route('ckfinder_connector') }}?command=QuickUpload&type=Images",
         filebrowserFlashUploadUrl: "{{ route('ckfinder_connector') }}?command=QuickUpload&type=Flash",
         height: 350,
-    }); 
+    });
     </script>
 @endsection
-            
-     
+

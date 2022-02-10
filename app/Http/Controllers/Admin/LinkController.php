@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Link;
 use Illuminate\Http\Request;
 use Validator;
@@ -21,7 +22,7 @@ class LinkController extends Controller
         })->paginate(20);
         return view('admin.link.index', compact('links'));
     }
-    
+
 
     /**
      * Show the form for creating a new resource.
@@ -31,7 +32,8 @@ class LinkController extends Controller
     public function create()
     {
         //
-        return view('admin.link.create');
+        $categories = Category::get();
+        return view('admin.link.create',compact('categories'));
     }
 
     /**
@@ -54,6 +56,7 @@ class LinkController extends Controller
             $link = new Link();
             $link->title = $request->title;
             $link->url = $request->url;
+            $link->category_id = $request->category_id;
             $link->save();
             'App\Helper\Helper'::addToLog("New Link: {$link->title}");
             return redirect()->route('admin.link.index')->with('success','New Link added successfully');
@@ -83,8 +86,9 @@ class LinkController extends Controller
     public function edit($id)
     {
         //
+        $categories = Category::get();
         $link = Link::find($id);
-        return view('admin.link.edit',compact('link'));
+        return view('admin.link.edit',compact('link','categories'));
 
     }
 
@@ -109,6 +113,7 @@ class LinkController extends Controller
             $link = Link::find($id);
             $link->title = $request->title;
             $link->url = $request->url;
+            $link->category_id = $request->category_id;
             $link->save();
             'App\Helper\Helper'::addToLog("Updated link: {$link->title}");
             return redirect()->route('admin.link.index')->with('success','Link updated successfully');

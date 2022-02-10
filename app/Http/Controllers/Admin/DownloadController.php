@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\Download;
 use Illuminate\Http\Request;
 use Validator;
@@ -21,7 +22,7 @@ class DownloadController extends Controller
         })->paginate(20);
         return view('admin.download.index', compact('downloads'));
     }
-    
+
     /**
      * Show the form for creating a new resource.
      *
@@ -30,8 +31,8 @@ class DownloadController extends Controller
     public function create()
     {
         //
-        
-        return view('admin.download.create');
+        $categories = Category::get();
+        return view('admin.download.create',compact('categories'));
     }
 
     /**
@@ -59,6 +60,7 @@ class DownloadController extends Controller
             $download->title = $request->title;
             $download->filename = $name;
             $download->file_path = $filename;
+            $download->category_id = $request->category_id;
             $download->save();
             'App\Helper\Helper'::addToLog("New download: {$download->title}");
             return redirect()->route('admin.download.index')->with('success','New Download added successfully');
@@ -89,7 +91,8 @@ class DownloadController extends Controller
     {
         //
         $download = Download::find($id);
-        return view('admin.download.edit',compact('download'));
+        $categories = Category::get();
+        return view('admin.download.edit',compact('download','categories'));
     }
 
     /**
@@ -119,6 +122,7 @@ class DownloadController extends Controller
                 $file->move(public_path().'/download-files/',$name);
                 $download->filename = $name;
                 $download->file_path = $filename;
+                $download->category_id = $request->category_id;
             }
             $download->save();
             'App\Helper\Helper'::addToLog("Updated download: {$download->title}");
@@ -135,7 +139,7 @@ class DownloadController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-   
+
 
     public function destroy($id)
     {

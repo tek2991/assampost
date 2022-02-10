@@ -8,7 +8,7 @@
 						<div class="d-flex align-items-center">
 							<div class="logo">
 								<a href="{{ url('/')}}">
-									<img src="assets/img/logo.png" alt="" class="img-fluid">
+									<img src="{{asset('assets/img/logo.png')}}" alt="" class="img-fluid">
 								</a>
 							</div>
 

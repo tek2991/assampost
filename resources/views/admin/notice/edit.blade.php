@@ -55,6 +55,21 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-2">
+                                <label for="">Category <span class="mendatory">*</span></label>
+                            </div>
+                            <div class="col-md-9">
+                                <select name="category_id" class="form-control">
+                                <option value="">Select Category</option>
+                                @foreach($categories as $category)
+                                <option value="{{$category->id}}" @if($category->id == $notice->category_id) selected @endif>{{$category->name}}</option>
+                                @endforeach
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
                                 <label for="">File</label>
                             </div>
                             <div class="col-md-6">
@@ -76,7 +91,7 @@
                             </div>
                         </div>
                     </div>
-                   
+
 
                     <div class="form-group">
                         <div class="row">
@@ -97,7 +112,6 @@
             </div>
          </div>
     </div>
- </div>           
+ </div>
 @endsection
-            
-     
+

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Validator;
 use App\Models\Notice;
@@ -30,7 +31,8 @@ class NoticeController extends Controller
     public function create()
     {
         //
-        return view('admin.notice.create');
+        $categories = Category::get();
+        return view('admin.notice.create',compact('categories'));
     }
 
     /**
@@ -44,6 +46,7 @@ class NoticeController extends Controller
         //
         $validator = Validator::make($request->all(),[
             'title' => 'required|max:250',
+            'category_id' => 'required|numeric',
             'filename' => 'required|mimes:pdf|max:2048',
         ]);
         if($validator->fails()){
@@ -56,6 +59,7 @@ class NoticeController extends Controller
             $file->move(public_path().'/notice-files/',$name);
             $notice = new Notice();
             $notice->title = $request->title;
+            $notice->category_id = $request->category_id;
             $notice->filename = $name;
             $notice->file_path = $filename;
             $notice->publish_to_scroll = $request->publish_to_scroll;
@@ -90,8 +94,9 @@ class NoticeController extends Controller
     public function edit($id)
     {
         //
+        $categories = Category::get();
         $notice = Notice::find($id);
-        return view('admin.notice.edit',compact('notice'));
+        return view('admin.notice.edit',compact('notice','categories'));
     }
 
     /**
@@ -106,6 +111,7 @@ class NoticeController extends Controller
         //
         $validator = Validator::make($request->all(),[
             'title' => 'required|max:250',
+            'category_id' => 'required|numeric',
             'filename' => 'nullable|mimes:pdf|max:2048',
         ]);
         if($validator->fails()){
@@ -122,6 +128,7 @@ class NoticeController extends Controller
                 $notice->filename = $name;
                 $notice->file_path = $filename;
             }
+            $notice->category_id = $request->category_id;
             $notice->publish_to_scroll = $request->publish_to_scroll;
             $notice->save();
             'App\Helper\Helper'::addToLog("Updated notice: {$notice->title}");

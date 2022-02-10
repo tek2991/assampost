@@ -30,7 +30,7 @@
 <div class="container">
 <form action="" method="get" enctype="multipart/form-data">
     <div class="row">
-        
+
             <div class="col-lg-1">
                 Title
             </div>
@@ -40,7 +40,7 @@
             <div class="col-lg-1">
                 <button type="submit" class="btn btn-primary btn-sm" id="search_btn">Search</button>
             </div>
-        
+
     </div>
     </form>
 </div>
@@ -48,6 +48,7 @@
 <thead>
 <th>#</th>
 <th>Title</th>
+<th>Category</th>
 <th>Action</th>
 </thead>
 <tbody>
@@ -55,6 +56,7 @@
 @forelse ($notices as $k=>$notice)
     <tr>
     <td>{{$notices->firstItem()+$k}}</td>
+    <td>{{$notice->category->name}}</td>
     <td>{{$notice->title}}</td>
     <td>
     <a href="{{route('admin.notice.edit',$notice->id)}}" class="btn btn-primary btn-sm">
@@ -84,8 +86,7 @@
 @endforelse
 </tbody>
 </table>
- </div> 
- {{$notices->links()}}          
+ </div>
+ {{$notices->links()}}
 @endsection
-            
-     
+

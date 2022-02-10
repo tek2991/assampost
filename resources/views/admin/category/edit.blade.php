@@ -11,7 +11,7 @@
 @endsection
 @section('breadcrumb')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-<h1 class="h3 mb-0 text-gray-800">Link Section</h1>
+<h1 class="h3 mb-0 text-gray-800">Update Category</h1>
 </div>
 @endsection
 @section('content')
@@ -40,7 +40,7 @@
                     <div class="alert alert-danger">{{$error}}</div>
                 @endforeach
             @endif
-                <form action="{{route('admin.link.update',$link->id)}}" method="POST" enctype="multipart/form-data">
+                <form action="{{route('admin.category.update',$category->id)}}" method="POST" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <div class="row">
@@ -48,22 +48,11 @@
                                 <label for="">Title <span class="mendatory">*</span></label>
                             </div>
                             <div class="col-md-9">
-                                <input type="text" class="form-control" name="title" id="title" placeholder="Title" required value="{{$link->title}}">
+                                <input type="text" class="form-control" name="name" id="name" placeholder="Title" required value="{{$category->name}}">
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <div class="row">
-                            <div class="col-md-2">
-                                <label for="">Url</label>
-                            </div>
-                            <div class="col-md-6">
-                                <input type="url" class="form-control" name="url" id="url" value="{{$link->url}}">
-                               
-                            </div>
-                        </div>
-                    </div>
-
+                  
                    
 
                     <div class="form-group">

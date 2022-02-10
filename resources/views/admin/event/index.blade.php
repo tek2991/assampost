@@ -30,7 +30,7 @@
 <div class="container">
 <form action="" method="get" enctype="multipart/form-data">
     <div class="row">
-        
+
             <div class="col-lg-1">
                 Title
             </div>
@@ -40,7 +40,7 @@
             <div class="col-lg-1">
                 <button type="submit" class="btn btn-primary btn-sm" id="search_btn">Search</button>
             </div>
-        
+
     </div>
     </form>
 </div>
@@ -48,6 +48,7 @@
 <thead>
 <th>#</th>
 <th>Title</th>
+<th>Category</th>
 <th>Action</th>
 </thead>
 <tbody>
@@ -56,6 +57,7 @@
     <tr>
     <td>{{$events->firstItem()+$k}}</td>
     <td>{{$event->title}}</td>
+    <td>{{$notice->category->name}}</td>
     <td>
     <a href="{{route('admin.event.edit',$event->id)}}" class="btn btn-primary btn-sm">
     <i class="fa fa-edit"></i> Edit</a>
@@ -84,8 +86,7 @@
 @endforelse
 </tbody>
 </table>
- </div> 
- {{$events->links()}}          
+ </div>
+ {{$events->links()}}
 @endsection
-            
-     
+

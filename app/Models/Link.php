@@ -10,5 +10,10 @@ class Link extends Model
 {
     use HasFactory;
     use SoftDeletes;
-    protected $fillable = ['title', 'url'];
+    protected $with = ['category'];
+    protected $fillable = ['title','category_id', 'url'];
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
