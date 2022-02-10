@@ -1,13 +1,14 @@
 <?php
 
-use App\Http\Controllers\OfficeController;
-use App\Models\Download;
-use App\Models\Event;
 use App\Models\Link;
+use App\Models\Event;
 use App\Models\Notice;
-use Illuminate\Support\Facades\Route;
 use App\Models\Office;
+use App\Models\Download;
 use App\Models\OtherOffice;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\OfficeController as PublicOfficeController;
+use App\Http\Controllers\OtherOfficeController as PublicOtherOfficeController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,12 +24,9 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/administrative-office', [OfficeController::class, 'index'])->name('view-administrative-office');
+Route::get('/administrative-office', [PublicOfficeController::class, 'index'])->name('view-administrative-office');
 
-Route::get('/other-office',function(){
-    $offices = OtherOffice::paginate(10);
-    return view('other-office',compact('offices'));
-});
+Route::get('/other-office',[PublicOtherOfficeController::class, 'index'])->name('view-other-office');
 
 Route::get('/event',function(){
     $events = Event::where('is_active',1)->paginate(1);
