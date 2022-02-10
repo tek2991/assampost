@@ -102,7 +102,9 @@ class OfficeController extends Controller
     {
         //
         $office = Office::find($id);
-        return view('admin.office.edit', compact('office'));
+        $districts = District::all();
+        $divisions = Division::all();
+        return view('admin.office.edit', compact('office', 'districts', 'divisions'));
     }
 
     /**
@@ -117,15 +119,24 @@ class OfficeController extends Controller
         //
         $office = Office::find($id);
         $validator = Validator::make($request->all(),[
-            'title'=>'required | max:250'
+            'title'=>'required | max:250',
+            'division_id' => 'required | exists:divisions,id',
+            'district_id' => 'required | exists:districts,id',
+            'address_line1' => 'required',
+            'pincode' => 'required | numeric',
         ]);
         if($validator->fails()){
             return redirect()->back()->withErrors($validator)->withInput();
         }
         try{
             $office->title = $request->title;
+            $office->division_id = $request->division_id;
+            $office->district_id = $request->district_id;
+            $office->pincode = $request->pincode;
             $office->address_line1 = $request->address_line1;
             $office->address_line2 = $request->address_line2;
+            $office->latitude = $request->latitude;
+            $office->longitude = $request->longitude;
             $office->phone_no = $request->phone_no;
             $office->email = $request->email;
             $office->website = $request->website;
