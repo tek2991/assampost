@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OfficeController;
 use App\Models\Download;
 use App\Models\Event;
 use App\Models\Link;
@@ -22,11 +23,7 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/administrative-office',function(){
-    $offices = Office::paginate(10);
-    return view('administrative-office',compact('offices'));
-    
-});
+Route::get('/administrative-office', [OfficeController::class, 'index'])->name('view-administrative-office');
 
 Route::get('/other-office',function(){
     $offices = OtherOffice::paginate(10);
