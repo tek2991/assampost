@@ -24,7 +24,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <input type="text" class="form-control" name="search" id="search"
-                                                placeholder="name or Pincode" value="{{ $request->search }}">
+                                                placeholder="Name or pincode" value="{{ $request->search }}">
                                         </div>
                                     </div>
                                 </div>
