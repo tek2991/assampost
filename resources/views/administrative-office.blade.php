@@ -37,7 +37,8 @@
                                             <select name="division_id" class="form-control" id="division_id">
                                                 <option value="">Select Division</option>
                                                 @foreach ($divisions as $division)
-                                                    <option value="{{ $division->id }}" {{ $request->division_id == $division->id ? 'selected' : '' }}>
+                                                    <option value="{{ $division->id }}"
+                                                        {{ $request->division_id == $division->id ? 'selected' : '' }}>
                                                         {{ $division->name }}</option>
                                                 @endforeach
                                             </select>
@@ -53,7 +54,9 @@
                                             <select name="district_id" class="form-control" id="district_id">
                                                 <option value="">Select district</option>
                                                 @foreach ($districts as $district)
-                                                    <option value="{{ $district->id }}" {{ $request->district_id == $district->id ? 'selected' : '' }}>{{ $district->name }}</option>
+                                                    <option value="{{ $district->id }}"
+                                                        {{ $request->district_id == $district->id ? 'selected' : '' }}>
+                                                        {{ $district->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -76,19 +79,39 @@
                     </form>
                 </div>
                 <div class="col-md-9">
-                    @forelse ($offices as $office)
+                    @forelse ($offices as $key => $office)
                         <div class="card address-card-1">
                             <div class="card-header">
-                                <h5>{{ $office->title }}</h5>
+                                <h5> {{ $key + 1 }}. {{ $office->title }}</h5>
                             </div>
 
                             <div class="card-body">
-                                <p class="card-text">
-                                    {{ $office->address_line1 }} <br />
-                                    {{ $office->address_line2 }}<br />
-                                    Ph No. {{ $office->phone_no }} <br />
-                                    Email: {{ $office->email }}
-                                </p>
+                                <div>
+                                    <p><strong>Address:</strong> {{ $office->address_line1 }},
+                                        {{ $office->address_line2 }} </p>
+                                    <p><strong>District: </strong> {{ $office->district->name }} &nbsp
+                                        <strong>Pincode:</strong> {{ $office->pincode }}
+                                    </p>
+                                    <p><strong>Phone:</strong> {{ $office->phone ? $office->phone : 'N/A' }} &nbsp
+                                        <strong>Email:</strong> {{ $office->email ? $office->email : 'N/A' }}
+                                    </p>
+                                </div>
+                                    @php
+                                        $lat = $office->latitude ? $office->latitude : null;
+                                        $lng = $office->longitude ? $office->longitude : null;
+                                        $query = $office->address_line1;
+                                        $google_maps_url = "https://maps.google.com/?query=$query";
+                                        if($lat && $lng){
+                                            $google_maps_url = "https://maps.google.com/?query=$lat,$lng&query=$query";
+                                        }
+                                    @endphp
+
+                                    <a class="btn btn-success btn-icon-split" href="{{ $google_maps_url }}">
+                                        <span class="icon text-white-50">
+                                            <i class="fas fa-check"></i>
+                                        </span>
+                                        <span class="text">Open in Google maps</span>
+                                    </a>
                             </div>
                         </div>
                     @empty
