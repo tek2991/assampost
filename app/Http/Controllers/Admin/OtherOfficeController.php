@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
 use App\Models\Office;
-use Validator,Log;
-use Illuminate\Http\Request;
+use App\Models\District;
+use App\Models\Division;
 use App\Models\OtherOffice;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
+
 class OtherOfficeController extends Controller
 {
     /**
@@ -30,7 +34,9 @@ class OtherOfficeController extends Controller
     {
         //
         $offices = Office::get();
-        return view('admin.other_office.create', compact('offices'));
+        $districts = District::all();
+        $divisions = Division::all();
+        return view('admin.other_office.create', compact('offices', 'districts', 'divisions'));
         
     }
 
@@ -45,7 +51,11 @@ class OtherOfficeController extends Controller
         //
         $validator = Validator::make($request->all(),[
             'title'=>'required | max:250',
-            'office_id'=>'required | numeric',
+            'office_id'=>'required | numeric | exists:offices,id',
+            'division_id' => 'required | exists:divisions,id',
+            'district_id' => 'required | exists:districts,id',
+            'address_line1' => 'required',
+            'pincode' => 'required | numeric',
         ]);
         if($validator->fails()){
             return redirect()->back()->withErrors($validator)->withInput();
@@ -54,6 +64,11 @@ class OtherOfficeController extends Controller
             
             $office = new OtherOffice();
             $office->office_id = $request->office_id;
+            $office->division_id = $request->division_id;
+            $office->district_id = $request->district_id;
+            $office->latitude = $request->latitude;
+            $office->longitude = $request->longitude;
+            $office->pincode = $request->pincode;
             $office->title = $request->title;
             $office->address_line1 = $request->address_line1;
             $office->address_line2 = $request->address_line2;
