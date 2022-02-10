@@ -11,7 +11,7 @@ class OtherOffice extends Model
     use SoftDeletes;
 
     protected $with = ['office'];
-    protected $fillable = ['office_id','title', 'address_line1', 'address_line2', 'phone_no', 'email', 'website', 'other_description', 'is_active', 'division_id', 'district_id'];
+    protected $fillable = ['office_id','title', 'address_line1', 'address_line2', 'phone_no', 'email', 'website', 'other_description', 'is_active', 'division_id', 'district_id', 'pincode', 'latitude', 'longitude'];
 
     public function office(){
         return $this->belongsTo(Office::class);

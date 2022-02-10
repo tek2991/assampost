@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\District;
+use App\Models\Division;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Office;
@@ -29,8 +31,10 @@ class OfficeController extends Controller
      */
     public function create()
     {
-        //
-        return view('admin.office.create');
+        $districts = District::all();
+        $divisions = Division::all();
+
+        return view('admin.office.create', compact('districts', 'divisions'));
     }
 
     /**
@@ -41,19 +45,26 @@ class OfficeController extends Controller
      */
     public function store(Request $request)
     {
-        //
         $validator = Validator::make($request->all(),[
-            'title'=>'required | max:250'
+            'title'=>'required | max:250',
+            'division_id' => 'required | exists:divisions,id',
+            'district_id' => 'required | exists:districts,id',
+            'address_line1' => 'required',
+            'pincode' => 'required | numeric',
         ]);
         if($validator->fails()){
             return redirect()->back()->withErrors($validator)->withInput();
         }
         try{
-            
             $office = new Office();
             $office->title = $request->title;
+            $office->division_id = $request->division_id;
+            $office->district_id = $request->district_id;
+            $office->pincode = $request->pincode;
             $office->address_line1 = $request->address_line1;
             $office->address_line2 = $request->address_line2;
+            $office->latitude = $request->latitude;
+            $office->longitude = $request->longitude;
             $office->phone_no = $request->phone_no;
             $office->email = $request->email;
             $office->website = $request->website;
