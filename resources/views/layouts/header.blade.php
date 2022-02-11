@@ -77,7 +77,7 @@
 						<li class="dropdown">
 							<a href="#"><span>Resources</span> <i class="bi bi-chevron-down"></i></a>
 							<ul>
-								<li><a href="{{ url('/downloads') }}">Download</a></li>
+								<li><a href="{{ url('/download') }}">Downloads</a></li>
 								<li><a href="{{ url('/links') }}">Links</a></li>
 							</ul>
 						</li>

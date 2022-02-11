@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\NoticeController as PublicNoticeController;
 use App\Http\Controllers\OfficeController as PublicOfficeController;
 use App\Http\Controllers\OtherOfficeController as PublicOtherOfficeController;
+use App\Http\Controllers\DownloadController as PublicDownloadController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,10 +45,7 @@ Route::get('/event/{slug}',function(){
 Route::get('notice', [PublicNoticeController::class, 'index'])->name('view-notice');
 
 
-Route::get('/downloads',function(){
-    $downloads = Download::where('is_active',1)->orderBy('id','desc')->paginate(10);
-    return view('downloads',compact('downloads'));
-});
+Route::get('/download', [PublicDownloadController::class, 'index'])->name('view-download');
 
 Route::get('/links',function(){
     $links = Link::where('is_active',1)->orderBy('id','desc')->paginate(10);

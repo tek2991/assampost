@@ -10,7 +10,7 @@ class Download extends Model
     use HasFactory;
     use SoftDeletes;
     protected $with = ['category'];
-    protected $fillable = ['title','category_id', 'filename', 'file_path'];
+    protected $fillable = ['title','category_id', 'filename', 'file_path', 'date'];
     public function category()
     {
         return $this->belongsTo(Category::class);
