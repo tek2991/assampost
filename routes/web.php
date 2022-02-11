@@ -6,9 +6,12 @@ use App\Models\Notice;
 use App\Models\Office;
 use App\Models\Download;
 use App\Models\OtherOffice;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\NoticeController as PublicNoticeController;
 use App\Http\Controllers\OfficeController as PublicOfficeController;
 use App\Http\Controllers\OtherOfficeController as PublicOtherOfficeController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -38,10 +41,8 @@ Route::get('/event/{slug}',function(){
     return view('event-detail',compact('event'));
 })->name('event.detail');
 
-Route::get('/notice',function(){
-    $notices = Notice::where('is_active',1)->orderBy('id','desc')->paginate(10);
-    return view('notice',compact('notices'));
-});
+Route::get('notice', [PublicNoticeController::class, 'index'])->name('view-notice');
+
 
 Route::get('/downloads',function(){
     $downloads = Download::where('is_active',1)->orderBy('id','desc')->paginate(10);
