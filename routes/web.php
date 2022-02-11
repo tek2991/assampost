@@ -12,6 +12,7 @@ use App\Http\Controllers\NoticeController as PublicNoticeController;
 use App\Http\Controllers\OfficeController as PublicOfficeController;
 use App\Http\Controllers\OtherOfficeController as PublicOtherOfficeController;
 use App\Http\Controllers\DownloadController as PublicDownloadController;
+use App\Http\Controllers\LinkController as PublicLinkController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,10 +48,7 @@ Route::get('notice', [PublicNoticeController::class, 'index'])->name('view-notic
 
 Route::get('/download', [PublicDownloadController::class, 'index'])->name('view-download');
 
-Route::get('/links',function(){
-    $links = Link::where('is_active',1)->orderBy('id','desc')->paginate(10);
-    return view('links',compact('links'));
-});
+Route::get('/links', [PublicLinkController::class, 'index'])->name('view-link');
 
 Route::get('/about',function(){
     return view('about');

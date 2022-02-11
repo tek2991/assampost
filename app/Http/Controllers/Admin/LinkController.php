@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\Category;
 use App\Models\Link;
+use App\Models\Category;
 use Illuminate\Http\Request;
-use Validator;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 class LinkController extends Controller
 {
     /**
@@ -48,6 +48,8 @@ class LinkController extends Controller
         $validator = Validator::make($request->all(),[
             'title' => 'required|max:250',
             'url' => 'required',
+            'date' => 'required|date',
+            'category_id' => 'required|numeric|exists:categories,id',
         ]);
         if($validator->fails()){
             return redirect()->back()->withErrors($validator)->withInput();
@@ -56,6 +58,7 @@ class LinkController extends Controller
             $link = new Link();
             $link->title = $request->title;
             $link->url = $request->url;
+            $link->date = $request->date;
             $link->category_id = $request->category_id;
             $link->save();
             'App\Helper\Helper'::addToLog("New Link: {$link->title}");
@@ -105,6 +108,8 @@ class LinkController extends Controller
         $validator = Validator::make($request->all(),[
             'title' => 'required|max:250',
             'url' => 'required',
+            'date' => 'required|date',
+            'category_id' => 'required|numeric|exists:categories,id',
         ]);
         if($validator->fails()){
             return redirect()->back()->withErrors($validator)->withInput();
@@ -113,6 +118,7 @@ class LinkController extends Controller
             $link = Link::find($id);
             $link->title = $request->title;
             $link->url = $request->url;
+            $link->date = $request->date;
             $link->category_id = $request->category_id;
             $link->save();
             'App\Helper\Helper'::addToLog("Updated link: {$link->title}");

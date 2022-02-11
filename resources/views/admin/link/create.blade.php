@@ -67,6 +67,18 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <label for="date">Date</label>
+                            </div>
+                            <div class="col-md-2">
+                                <input type="date" class="form-control" name="date" id="date">
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-2">
@@ -77,8 +89,6 @@
                             </div>
                         </div>
                     </div>
-
-
 
                     <div class="form-group">
                         <div class="row">
@@ -92,10 +102,7 @@
                             </div>
                         </div>
                     </div>
-
                 </form>
-
-
             </div>
          </div>
     </div>

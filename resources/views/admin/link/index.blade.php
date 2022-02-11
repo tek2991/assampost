@@ -58,7 +58,7 @@
     <tr>
     <td>{{$links->firstItem()+$k}}</td>
     <td>{{$link->title}}</td>
-    <td>{{$notice->category->name}}</td>
+    <td>{{$link->category->name}}</td>
     <td>{{$link->url}}</td>
     <td>
     <a href="{{route('admin.link.edit',$link->id)}}" class="btn btn-primary btn-sm">

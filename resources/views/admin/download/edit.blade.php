@@ -64,7 +64,7 @@
                                     <select name="category_id" class="form-control">
                                         <option value="">Select Category</option>
                                         @foreach ($categories as $category)
-                                            <option value="{{ $category->id }}" @if ($category->id == $download->category_id) selected @endif>
+                                            <option value="{{ $category->id }}" {{ $category->id == $download->category_id ? 'selected' : '' }} >
                                                 {{ $category->name }}</option>
                                         @endforeach
                                     </select>
@@ -92,7 +92,7 @@
                                     <label for="date">Date</label>
                                 </div>
                                 <div class="col-md-2">
-                                    <input type="date" class="form-control" name="date" id="date">
+                                    <input type="date" class="form-control" name="date" id="date" value="{{ $download->date }}">
                                 </div>
                             </div>
                         </div>
