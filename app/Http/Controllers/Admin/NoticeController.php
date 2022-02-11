@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Notice;
 use App\Models\Category;
 use Illuminate\Http\Request;
-use Validator;
-use App\Models\Notice;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
 class NoticeController extends Controller
 {
     /**
@@ -46,8 +46,9 @@ class NoticeController extends Controller
         //
         $validator = Validator::make($request->all(),[
             'title' => 'required|max:250',
-            'category_id' => 'required|numeric',
+            'category_id' => 'required|numeric|exists:categories,id',
             'filename' => 'required|mimes:pdf|max:2048',
+            'date' => 'required|date',
         ]);
         if($validator->fails()){
             return redirect()->back()->withErrors($validator)->withInput();
@@ -60,6 +61,7 @@ class NoticeController extends Controller
             $notice = new Notice();
             $notice->title = $request->title;
             $notice->category_id = $request->category_id;
+            $notice->date = $request->date;
             $notice->filename = $name;
             $notice->file_path = $filename;
             $notice->publish_to_scroll = $request->publish_to_scroll;
@@ -111,8 +113,9 @@ class NoticeController extends Controller
         //
         $validator = Validator::make($request->all(),[
             'title' => 'required|max:250',
-            'category_id' => 'required|numeric',
+            'category_id' => 'required|numeric|exists:categories,id',
             'filename' => 'nullable|mimes:pdf|max:2048',
+            'date' => 'required|date',
         ]);
         if($validator->fails()){
             return redirect()->back()->withErrors($validator)->withInput();

@@ -9,7 +9,7 @@ class Notice extends Model
 {
     use HasFactory, SoftDeletes;
     protected $with = ['category'];
-    protected $fillable = ['title', 'filename', 'file_path','publish_to_scroll'];
+    protected $fillable = ['title', 'filename', 'file_path','publish_to_scroll', 'date', 'category_id'];
 
     public function category()
     {
