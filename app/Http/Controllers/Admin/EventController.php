@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Models\Event;
+use App\Models\GalleryPicture;
 use Illuminate\Support\Facades\Validator;
 use Str;
 class EventController extends Controller
@@ -48,12 +49,14 @@ class EventController extends Controller
         $validator = Validator::make($request->all(),
             ['title' => 'required|max:255',
             'category_id' => 'required|numeric',
-            'picture' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
+            'picture' => 'required|image|mimes:jpeg,png,jpg|max:2048',
+            'gallary_picture.*' => 'nullable|image|mimes:jpeg,png,jpg|max:2048'
             ]
         );
         if($validator->fails()){
             return redirect()->back()->withErrors($validator)->withInput();
         }
+        
         try{
             if($request->has('picture')){
                 $file = $request->file('picture');
@@ -72,6 +75,24 @@ class EventController extends Controller
             $event->brief_description = $request->brief_description;
             $event->description = $request->description;
             $event->save();
+            if($request->has('gallary_picture')){
+                foreach($request->file('gallary_picture') as $file)
+                {
+                    $name = time().rand(1,100).'.'.$file->getClientOriginalName();
+                    $file_path = asset('/events-images/'.Str::slug($request->title)).'/'.$name;
+                    $file->move(public_path().'/events-images/'.Str::slug($request->title),$name);
+                    $file_paths[] = $file_path ;
+                }
+                $fileModal = new GalleryPicture();
+                $fileModal->event_id = $event->id;
+                $fileModal ->file_path = json_encode($file_paths);
+                $fileModal ->save();
+                
+            }
+            
+
+
+            
             'App\Helper\Helper'::addToLog("Created Event: {$request->title}");
             return redirect()->route('admin.event.index')->with('success','Event created successfully');
         }

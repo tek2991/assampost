@@ -84,6 +84,38 @@
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-2">
+                                <label for="">Gallery Picture</label>
+                            </div>
+                            <div class="col-md-6">
+                                <input type="file" class="form-control" name="gallary_picture[]" id="gallary_picture">
+                            </div>
+                            <div class="col-md-2">
+                                        <button class="btn btn-sm btn-primary" type="button" id="append">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="inc"></div>
+                   
+                    @if($event->galleryPictures)
+                    @php
+                        $gallary_pictures = json_decode($event->galleryPictures->file_path);
+                    @endphp
+                    <div class="form-group">
+                    <div class="row">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-6">
+                    @foreach($gallary_pictures as $key => $file_path)
+                    
+                        <a href="{{$file_path}}" target="_blank">{{$file_path}}</a> <a href="javascript:void(0)" class="btn btn-danger btn-sm" data-id="{{$event->galleryPictures->id}}" onclick="return confirm('Are You sure to delete?')"><i class="fa fa-minus"></i></a><br>
+                    @endforeach
+                    </div>
+                    </div>
+                    </div>
+                    @endif
+
+                    <div class="form-group">
+                        <div class="row">
+                            <div class="col-md-2">
                                 <label for="">Brief Description</label>
                             </div>
                             <div class="col-md-9">
@@ -140,5 +172,30 @@
         height: 350,
     });
     </script>
+    <script>
+        $(document).ready( function () {
+            $("#append").click( function(e) {
+              e.preventDefault();
+              var html = '<div class="form-group row"><div class="col-md-2">';
+              html += '<label for="">Gallery Picture</label>';
+              html += '</div>';
+              html += '<div class="col-md-6">';
+              html += '<input type="file" class="form-control" name="gallary_picture[]" id="gallary_picture">';
+              html += '</div>';
+              html += '<div class="col-md-2"> <a href="#" class="remove_this btn btn-danger"><i class="fa fa-minus"></i></a></div>';
+              html += '</div>';
+              
+    
+            $(".inc").append(html);
+            return false;
+            });
+    
+        $(document).on('click', '.remove_this', function() {
+            $(this).parent().parent().remove();
+            return false;
+            });
+         
+      });
+      </script>
 @endsection
 

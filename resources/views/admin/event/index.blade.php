@@ -57,7 +57,7 @@
     <tr>
     <td>{{$events->firstItem()+$k}}</td>
     <td>{{$event->title}}</td>
-    <td>{{$notice->category->name}}</td>
+    <td>{{$event->category->name}}</td>
     <td>
     <a href="{{route('admin.event.edit',$event->id)}}" class="btn btn-primary btn-sm">
     <i class="fa fa-edit"></i> Edit</a>
