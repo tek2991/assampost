@@ -13,7 +13,7 @@
     document.addEventListener('DOMContentLoaded', function() {
         new Splide('#image-slider', {
             cover: true,
-            heightRatio: 0.3,
+            heightRatio: 0.35,
             type: 'loop',
             autoplay: true,
         }).mount();
