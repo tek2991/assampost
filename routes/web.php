@@ -150,3 +150,6 @@ Route::group(['prefix' => 'admin/category'],function(){
     Route::post('/update/{category}', [App\Http\Controllers\Admin\CategoryController::class, 'update'])->name('admin.category.update');
     Route::delete('/delete/{category}', [App\Http\Controllers\Admin\CategoryController::class, 'destroy'])->name('admin.category.destroy');
 });
+
+Route::get('/change-password', 'App\Http\Controllers\Auth\PasswordController@create')->name('changePassword');
+Route::post('/update-password', 'App\Http\Controllers\Auth\PasswordController@store')->name('changePassword.update');

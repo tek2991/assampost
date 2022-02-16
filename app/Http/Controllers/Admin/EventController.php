@@ -56,7 +56,7 @@ class EventController extends Controller
         if($validator->fails()){
             return redirect()->back()->withErrors($validator)->withInput();
         }
-        
+
         try{
             if($request->has('picture')){
                 $file = $request->file('picture');
@@ -81,25 +81,25 @@ class EventController extends Controller
                     $name = time().rand(1,100).'.'.$file->getClientOriginalName();
                     $file_path = asset('/events-images/'.Str::slug($request->title)).'/'.$name;
                     $file->move(public_path().'/events-images/'.Str::slug($request->title),$name);
-                    $file_paths[] = $file_path ;
+                    $galary['event_id'] = $event->id;
+                    $galary['file_path'] = $file_path;
+                    GalleryPicture::create($galary);
                 }
-                $fileModal = new GalleryPicture();
-                $fileModal->event_id = $event->id;
-                $fileModal ->file_path = json_encode($file_paths);
-                $fileModal ->save();
-                
+
+
+
             }
-            
 
 
-            
+
+
             'App\Helper\Helper'::addToLog("Created Event: {$request->title}");
             return redirect()->route('admin.event.index')->with('success','Event created successfully');
         }
         catch(\Exception $e){
             return redirect()->back()->withErrors($e->getMessage())->withInput();
         }
-       
+
 
 
     }
@@ -170,7 +170,7 @@ class EventController extends Controller
         catch(\Exception $e){
             return redirect()->back()->withErrors($e->getMessage())->withInput();
         }
-       
+
     }
 
     /**
