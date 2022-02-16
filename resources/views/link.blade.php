@@ -3,7 +3,6 @@
     Links
 @endsection
 @section('content')
-
     <section class="conact admin">
         <div class="container">
             <div class="row">
@@ -63,11 +62,8 @@
                                 <div class="form-group" style="margin-top:1rem">
                                     <div class="row">
                                         <div class="col-md-12 text-center">
-                                            <button type="submit" class="btn btn-success btn-icon-split">
-                                                <span class="icon text-white-50">
-                                                    <i class="fas fa-check"></i>
-                                                </span>
-                                                <span class="text">Submit</span>
+                                            <button type="submit" class="secondary-btn btn btn-sm">
+                                                Submit
                                             </button>
                                         </div>
                                     </div>
@@ -77,33 +73,22 @@
                     </form>
                 </div>
                 <div class="col-md-9">
-                    @forelse ($links as $key => $link)
-                        <div class="card address-card-1">
-                            <div class="card-header">
-                                <h5> {{ $key + 1 }}. {{ $link->title }}</h5>
-                            </div>
-
-                            <div class="card-body">
-                                <div>
-                                    <p><strong>Category:</strong> {{ $link->category->name }} </p>
-                                    <p><strong>Publishing date:</strong> {{ \Carbon\Carbon::parse( $link->date )->toFormattedDateString() }} </p>
-                                    <p><strong>URL:</strong> {{ $link->url ? $link->url : 'N/A' }}</p>
-                                </div>
-
-                                <a class="btn btn-success btn-icon-split" href="{{ $link->url }}"
-                                    target="_blank" {{ $link->url ? '' : 'disabled' }}>
-                                    <span class="icon text-white-50">
-                                        <i class="fas fa-check"></i>
-                                    </span>
-                                    <span class="text">Open link</span>
-                                </a>
-                            </div>
-                        </div>
-                    @empty
-                        <div class="alert alert-danger">
-                            No links Found
-                        </div>
-                    @endforelse
+                    <ul class="list-group">
+                        @forelse ($links as $key => $link)
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span>{{ $key + 1 }}. {{ $link->title }} <i
+                                        class="text-secondary">({{ $link->category->name }},
+                                        {{ \Carbon\Carbon::parse($link->date)->toFormattedDateString() }})</i>
+                                </span>
+                                <span><a class="btn btn-success btn-sm" href="{{ $link->url ? $link->url : '#' }}"
+                                        target="_blank" {{ $link->url ? '' : 'disabled' }}>
+                                        <span class="text">Goto link</span>
+                                    </a></span>
+                            </li>
+                        @empty
+                            <li class="list-group-item">No items found!</li>
+                        @endforelse
+                    </ul>
                 </div>
             </div>
             {{ $links->links() }}
