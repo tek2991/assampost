@@ -22,7 +22,6 @@
                 </ul>
             </div>
         </div>
-
     </div>
     <div class="notification">
         <marquee direction="left">
