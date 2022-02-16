@@ -40,9 +40,6 @@
         <div class="container d-flex align-items-center justify-content-between">
             <nav id="navbar" class="navbar">
                 <ul>
-					<li class=".d-block .d-sm-none"><a class="nav-link scrollto" href="https://www.indiapost.gov.in/vas/pages/LocatePostOffices.aspx">Locate Post Office</a></li>
-					<li class=".d-block .d-sm-none"><a class="nav-link scrollto" href="https://www.indiapost.gov.in/_layouts/15/DOP.Portal.Tracking/TrackConsignment.aspx">Track Consignment</a></li>
-
                     <li><a class="nav-link scrollto active" href="{{ url('/') }}">Home</a></li>
                     <li class="dropdown">
                         <a href="#"><span>Virtual Exhibitions</span> <i class="bi bi-chevron-down"></i></a>
@@ -78,6 +75,8 @@
                         </ul>
                     </li>
                     <li><a class="nav-link scrollto" href="{{ url('/about') }}">About</a></li>
+					<li class=".d-block .d-sm-none"><a class="nav-link scrollto" href="https://www.indiapost.gov.in/vas/pages/LocatePostOffices.aspx">Locate Post Office</a></li>
+					<li class=".d-block .d-sm-none"><a class="nav-link scrollto" href="https://www.indiapost.gov.in/_layouts/15/DOP.Portal.Tracking/TrackConsignment.aspx">Track Consignment</a></li>
                 </ul>
 				<i class="bi bi-list mobile-nav-toggle"></i>
             </nav><!-- .navbar -->
