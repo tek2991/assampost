@@ -439,16 +439,6 @@
                     <div class="col-md-3">
                         <div class="card service-card-1">
                             <div class="card-body">
-                                <h5 class="card-title">Letter</h5>
-                                <p class="card-text">Some quick example text to build on the card title and make up
-                                    the bulk of the card's content.</p>
-                                <a class="black-btn" href="#" target="_blank"> Details </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card service-card-1">
-                            <div class="card-body">
                                 <h5 class="card-title">Mutual Funds​</h5>
                                 <p class="card-text">The Post Office has traditionally been a distributor of financial
                                     services, from money orders to banking services. </p>
