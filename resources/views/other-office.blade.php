@@ -35,7 +35,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <select name="division_id" class="form-control" id="division_id">
-                                                <option value="">Select division</option>
+                                                <option value="">All</option>
                                                 @foreach ($divisions as $division)
                                                     <option value="{{ $division->id }}"
                                                         {{ $request->division_id == $division->id ? 'selected' : '' }}>
@@ -52,7 +52,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <select name="district_id" class="form-control" id="district_id">
-                                                <option value="">Select district</option>
+                                                <option value="">All</option>
                                                 @foreach ($districts as $district)
                                                     <option value="{{ $district->id }}"
                                                         {{ $request->district_id == $district->id ? 'selected' : '' }}>
@@ -69,7 +69,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <select name="admin_office_id" class="form-control" id="district_id">
-                                                <option value="">Select office</option>
+                                                <option value="">All</option>
                                                 @foreach ($admin_offices as $admin_office)
                                                     <option value="{{ $admin_office->id }}"
                                                         {{ $request->admin_office_id == $admin_office->id ? 'selected' : '' }}>

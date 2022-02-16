@@ -34,7 +34,7 @@
                                         </div>
                                         <div class="col-md-9">
                                             <select name="category_id" class="form-control" id="category_id">
-                                                <option value="">Select category</option>
+                                                <option value="">All</option>
                                                 @foreach ($categories as $category)
                                                     <option value="{{ $category->id }}"
                                                         {{ $request->category_id == $category->id ? 'selected' : '' }}>
@@ -47,7 +47,7 @@
                                 <div class="form-group" style="margin-top:1rem">
                                     <div class="row">
                                         <div class="col-md-3">
-                                            <label for="order_by" style="padding-top:5px">Order</label>
+                                            <label for="order_by" style="padding-top:5px">Sort</label>
                                         </div>
                                         <div class="col-md-9">
                                             <select name="order_by" class="form-control" id="order_by">
