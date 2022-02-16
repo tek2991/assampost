@@ -5,12 +5,15 @@
 @section('content')
     <section class="conact admin">
         <div class="container">
+            <div class="row mb-4">
+                <h3 class="section-header">Links</h3>
+            </div>
             <div class="row">
                 <div class="col-md-3">
                     <form action="{{ route('view-link') }}" method="GET">
                         <div class="card">
                             <div class="card-header">
-                                <h5>Filters</h5>
+                                <h5>Filter</h5>
                             </div>
 
                             <div class="card-body">
@@ -80,10 +83,15 @@
                                         class="text-secondary">({{ $link->category->name }},
                                         {{ \Carbon\Carbon::parse($link->date)->toFormattedDateString() }})</i>
                                 </span>
-                                <span><a class="btn btn-success btn-sm" href="{{ $link->url ? $link->url : '#' }}"
-                                        target="_blank" {{ $link->url ? '' : 'disabled' }}>
-                                        <span class="text">Goto link</span>
-                                    </a></span>
+                                <span>
+                                    <a href="{{ $link->url ? $link->url : '#' }}" target="_blank"
+                                        {{ $link->url ? '' : 'disabled' }}>
+                                        Visit link
+                                        <span class="material-icons" style="vertical-align: bottom !important;">
+                                            link
+                                        </span>
+                                    </a>
+                                </span>
                             </li>
                         @empty
                             <li class="list-group-item">No items found!</li>

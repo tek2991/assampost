@@ -5,6 +5,9 @@
 @section('content')
     <section class="conact admin">
         <div class="container">
+            <div class="row mb-4">
+                <h3 class="section-header">Downloads</h3>
+            </div>
             <div class="row">
                 <div class="col-md-3">
                     <form action="{{ route('view-download') }}" method="GET">
@@ -80,10 +83,15 @@
                                         class="text-secondary">({{ $download->category->name }},
                                         {{ \Carbon\Carbon::parse($download->date)->toFormattedDateString() }})</i>
                                 </span>
-                                <span><a class="btn btn-success btn-sm" href="{{ $download->file_path }}" target="_blank"
+                                <span>
+                                    <a href="{{ $download->file_path }}" target="_blank"
                                         {{ $download->file_path ? '' : 'disabled' }}>
-                                        <span class="text">Download file</span>
-                                    </a></span>
+                                        Download
+                                        <span class="material-icons" style="vertical-align: bottom !important;">
+                                            download
+                                        </span>
+                                    </a>
+                                </span>
                             </li>
                         @empty
                             <li class="list-group-item">No items found!</li>
