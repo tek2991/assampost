@@ -10,7 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Event extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $with = ['category','galleryPicture'];
+    protected $with = ['category','galleryPictures'];
     protected $fillable = ['title','category_id', 'picture', 'brief_description', 'description', 'is_active','slug'];
     public function category()
     {

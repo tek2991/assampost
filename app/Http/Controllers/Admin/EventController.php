@@ -2,13 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\Category;
-use Illuminate\Http\Request;
 use App\Models\Event;
+use App\Models\Category;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use App\Models\GalleryPicture;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
-use Str;
 
 class EventController extends Controller
 {
