@@ -10,4 +10,8 @@ class GalleryPicture extends Model
     use HasFactory;
     use SoftDeletes;
     protected  $fillable = ['event_id','file_path'];
+
+    public function event(){
+        return $this->belongsTo(Event::class);
+    }
 }

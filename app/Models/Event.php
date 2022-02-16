@@ -17,7 +17,7 @@ class Event extends Model
         return $this->belongsTo(Category::class);
     }
 
-    public function galleryPicture(){
-        return $this->hasOne(GalleryPicture::class);
+    public function galleryPictures(){
+        return $this->hasMany(GalleryPicture::class);
     }
 }
