@@ -9,24 +9,39 @@
 @endsection
 @section('content')
  <div class="row">
- @if(Session::has('success'))
-<div class="container">
+    @if(Session::has('success'))
     <div class="row">
         <div class="col-lg-12">
-            <div class="alert {{ Session::get('alert-class', 'alert-success') }}">
+            <div class="alert alert-success">
                 {{-- <i class="fe fe-check mr-2" aria-hidden="true"></i> --}}
-                <button type="button" class="close" data-dismiss="alert"></button>
                 {!! Session::get('success') !!}
             </div>
         </div>
     </div>
-</div>
-@endif
- @if ($errors->any())
-    @foreach ($errors->all() as $error)
-        <div class="alert alert-danger">{{$error}}</div>
-    @endforeach
- @endif
+    @endif
+
+
+    @if(Session::has('error'))
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="alert alert-danger">
+                {{-- <i class="fe fe-alert-triangle mr-2" aria-hidden="true"></i> --}}
+
+                {!! Session::get('error') !!}
+            </div>
+        </div>
+    </div>
+    @endif
+
+
+   @if(!empty($errors->all()))
+   <div class="alert alert-danger">
+       {{-- <strong><i class="fe fe-bell mr-2" aria-hidden="true"></i></strong>    --}}
+       @foreach($errors->all() as $error)
+           {{$error}}<br>
+       @endforeach
+   </div>
+   @endif
 <div class="container">
     <form action="{{ route('changePassword.update') }}" method="Post">
         @csrf
