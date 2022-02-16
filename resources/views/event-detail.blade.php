@@ -323,12 +323,12 @@
 
                 <h3 class="section-header my-4"> Gallery </h3>
 
-                <div id="event-main-image-slider" class="splide mb-4">
+                <div id="event-main-image-slider" class="splide mb-2 col-md-8 offset-md-2">
                     <div class="splide__track">
                         <ul class="splide__list">
                             @foreach ($event->galleryPictures as $image)
                                 <li class="splide__slide">
-                                    <img style="width: 100%" src="{{ $image->file_path }}">
+                                    <img src="{{ $image->file_path }}">
                                 </li>
                             @endforeach
                         </ul>
@@ -374,12 +374,19 @@
                 rewind: true,
                 pagination: false,
                 arrows: false,
-                autoHeight: true,
+                fixedHeight: '550px',
+                autoWidth: true,
+                cover: true,
+                breakpoints: {
+                    600: {
+                      fixedHeight: '200px',
+                    },
+                },
             });
 
             var thumbnails = new Splide('#event-thumbnail-image-slider', {
-                fixedWidth: 200,
-                fixedHeight: 120,
+                fixedWidth: 150,
+                fixedHeight: 90,
                 gap: 10,
                 rewind: true,
                 pagination: false,
