@@ -91,6 +91,7 @@ Route::group(['prefix'=>'admin/events','middleware'=>'auth'],function(){
     Route::delete('/delete/{event}', [App\Http\Controllers\Admin\EventController::class, 'destroy'])->name('admin.event.destroy');
     Route::post('/publish/{event}', [App\Http\Controllers\Admin\EventController::class, 'publish'])->name('admin.event.publish');
     Route::post('/unpublish/{event}', [App\Http\Controllers\Admin\EventController::class, 'unpublish'])->name('admin.event.unpublish');
+    Route::post('/delete/gallery', [App\Http\Controllers\Admin\EventController::class, 'deleteGallery'])->name('admin.event.gallery.delete');
 });
 
 Route::group(['prefix'=>'admin/notices','middleware'=>'auth'],function(){

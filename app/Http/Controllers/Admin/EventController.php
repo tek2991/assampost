@@ -100,9 +100,15 @@ class EventController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function deleteGallery(Request $request)
     {
         //
+        $galary = GalleryPicture::find($request->id);
+        $galary->delete();
+        return response()->json([
+            'status' => 'success',
+            'message' => 'Gallery Picture Deleted Successfully'
+        ]);
     }
 
     /**
@@ -155,6 +161,16 @@ class EventController extends Controller
             $event->brief_description = $request->brief_description;
             $event->description = $request->description;
             $event->save();
+            if ($request->has('gallary_picture')) {
+                foreach ($request->file('gallary_picture') as $file) {
+                    $name = time() . rand(1, 100) . '.' . $file->getClientOriginalName();
+                    $file_path = asset('/events-images/' . Str::slug($request->title)) . '/' . $name;
+                    $file->move(public_path() . '/events-images/' . Str::slug($request->title), $name);
+                    $galary['event_id'] = $event->id;
+                    $galary['file_path'] = $file_path;
+                    GalleryPicture::create($galary);
+                }
+            }
             'App\Helper\Helper'::addToLog("Updated Event: {$request->title}");
             return redirect()->route('admin.event.index')->with('success', 'Event updated successfully');
         } catch (\Exception $e) {
