@@ -3,12 +3,7 @@
         <div id="image-slider" class="splide">
             <div class="splide__track">
                 <ul class="splide__list">
-                    @php
-                        $banners = DB::table('banners')
-                            ->where('is_active', 1)
-                            ->get();
-                    @endphp
-                    @foreach ($banners as $banner)
+                    @foreach (App\Models\Banner::where('is_active', 1)->get() as $banner)
                         <li class="splide__slide">
                             @if ($banner->url != '')
                                 <a href="{{ $banner->url }}" target="_blank">
