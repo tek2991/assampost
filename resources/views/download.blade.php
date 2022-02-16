@@ -3,7 +3,6 @@
     Downloads
 @endsection
 @section('content')
-
     <section class="conact admin">
         <div class="container">
             <div class="row">
@@ -63,11 +62,8 @@
                                 <div class="form-group" style="margin-top:1rem">
                                     <div class="row">
                                         <div class="col-md-12 text-center">
-                                            <button type="submit" class="btn btn-success btn-icon-split">
-                                                <span class="icon text-white-50">
-                                                    <i class="fas fa-check"></i>
-                                                </span>
-                                                <span class="text">Submit</span>
+                                            <button type="submit" class="secondary-btn btn btn-sm">
+                                                Submit
                                             </button>
                                         </div>
                                     </div>
@@ -77,38 +73,22 @@
                     </form>
                 </div>
                 <div class="col-md-9">
-                    @forelse ($downloads as $key => $download)
-                        <div class="card address-card-1">
-                            <div class="card-header">
-                                <h5> {{ $key + 1 }}. {{ $download->title }}</h5>
-                            </div>
-
-                            <div class="card-body">
-                                <div>
-                                    <p><strong>Category:</strong> {{ $download->category->name }} </p>
-                                    <p><strong>Publishing date:</strong> {{ \Carbon\Carbon::parse( $download->date )->toFormattedDateString() }} </p>
-
-                                    @php
-                                        $file_path = $download->file_path;
-                                        $file_name = substr($file_path, strpos($file_path, '/download-files/') + 16);
-                                    @endphp
-                                    <p><strong>Attachment:</strong> {{ $download->file_path ? $file_name : 'N/A' }}</p>
-                                </div>
-
-                                <a class="btn btn-success btn-icon-split" href="{{ $download->file_path }}"
-                                    target="_blank" {{ $download->file_path ? '' : 'disabled' }}>
-                                    <span class="icon text-white-50">
-                                        <i class="fas fa-check"></i>
-                                    </span>
-                                    <span class="text">Download file</span>
-                                </a>
-                            </div>
-                        </div>
-                    @empty
-                        <div class="alert alert-danger">
-                            No downloads Found
-                        </div>
-                    @endforelse
+                    <ul class="list-group">
+                        @forelse ($downloads as $key => $download)
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <span>{{ $key + 1 }}. {{ $download->title }} <i
+                                        class="text-secondary">({{ $download->category->name }},
+                                        {{ \Carbon\Carbon::parse($download->date)->toFormattedDateString() }})</i>
+                                </span>
+                                <span><a class="btn btn-success btn-sm" href="{{ $download->file_path }}" target="_blank"
+                                        {{ $download->file_path ? '' : 'disabled' }}>
+                                        <span class="text">Download file</span>
+                                    </a></span>
+                            </li>
+                        @empty
+                            <li class="list-group-item">No items found!</li>
+                        @endforelse
+                    </ul>
                 </div>
             </div>
             {{ $downloads->links() }}
