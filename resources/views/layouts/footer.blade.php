@@ -60,9 +60,14 @@
                 </div>
 
 
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <ul><li><a href="{{ route('login') }}">Admin Login</a></li></ul>
+                </div>
+
+
                 <div class="col-lg-3 col-md-3 footer-newsletter">
 
-                    <div class="social-links text-center text-lg-right pt-3 pt-lg-0">
+                    <div class="social-links pt-3 pt-lg-0">
                         <a href="https://twitter.com/cpmgassam" target="_blank" class="twitter"><i
                                 class="bx bxl-twitter"></i></a>
                         <a href="https://www.facebook.com/cpmgassam/" target="_blank" class="facebook"><i
