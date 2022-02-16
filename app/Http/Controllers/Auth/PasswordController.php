@@ -50,6 +50,7 @@ class PasswordController extends Controller
 
             $user->password = Hash::make($request->password);
             $user->save();
+            'App\Helper\Helper'::addToLog("Password Changed for user: {$user->name}");
           }
           catch(\Exception $e){
             return back()->with('error', $e->getMessage());
