@@ -95,21 +95,17 @@
                         </div>
                     </div>
                     <div class="inc"></div>
-                   
                     @if($event->galleryPictures)
-                    @php
-                        $gallary_pictures = json_decode($event->galleryPictures->file_path);
-                    @endphp
+                    @foreach($event->galleryPictures as $galleryPicture)
                     <div class="form-group">
-                    <div class="row">
-                    <div class="col-md-2"></div>
-                    <div class="col-md-6">
-                    @foreach($gallary_pictures as $key => $file_path)
-                    
-                        <a href="{{$file_path}}" target="_blank">{{$file_path}}</a> <a href="javascript:void(0)" class="btn btn-danger btn-sm" data-id="{{$event->galleryPictures->id}}" onclick="return confirm('Are You sure to delete?')"><i class="fa fa-minus"></i></a><br>
+                        <div class="row">
+                        <div class="col-md-2"></div>
+                        <div class="col-md-6">
+                        <a href="{{$galleryPicture->file_path}}" target="_blank">{{$galleryPicture->file_path}}</a> <a href="javascript:void(0)" class="btn btn-danger btn-sm rm" data-id="{{$galleryPicture->id}}" onclick="return confirm('Are You sure to delete?')"><i class="fa fa-minus"></i></a><br>
+                        </div>
+                    </div>
                     @endforeach
-                    </div>
-                    </div>
+
                     </div>
                     @endif
 
@@ -184,18 +180,36 @@
               html += '</div>';
               html += '<div class="col-md-2"> <a href="#" class="remove_this btn btn-danger"><i class="fa fa-minus"></i></a></div>';
               html += '</div>';
-              
-    
+
+
             $(".inc").append(html);
             return false;
             });
-    
+
         $(document).on('click', '.remove_this', function() {
             $(this).parent().parent().remove();
             return false;
             });
-         
+
       });
+      $('.rm').click(function(){
+        var id = $(this).data('id');
+        $.ajax({
+            url: "{{route('admin.event.gallery.delete')}}",
+            type: "POST",
+            data: {
+                id: id,
+                _token: "{{csrf_token()}}"
+            },
+            dataType:'json',
+            success: function(response){
+                if(response.status == 'success'){
+                    alert('Gallery Picture Deleted');
+                    location.reload();
+                }
+            }
+        });
+      })
       </script>
 @endsection
 
