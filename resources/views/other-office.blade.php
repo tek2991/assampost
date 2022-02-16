@@ -3,7 +3,6 @@
     Other Office
 @endsection
 @section('content')
-
     <section class="conact admin">
         <div class="container">
 
@@ -83,11 +82,8 @@
                                 <div class="form-group" style="margin-top:1rem">
                                     <div class="row">
                                         <div class="col-md-12 text-center">
-                                            <button type="submit" class="btn btn-success btn-icon-split">
-                                                <span class="icon text-white-50">
-                                                    <i class="fas fa-check"></i>
-                                                </span>
-                                                <span class="text">Submit</span>
+                                            <button type="submit" class="secondary-btn btn btn-sm">
+                                                Submit
                                             </button>
                                         </div>
                                     </div>
@@ -98,38 +94,43 @@
                 </div>
                 <div class="col-md-9">
                     @forelse ($offices as $key => $office)
-                        <div class="card address-card-1">
-                            <div class="card-header">
-                                <h5> {{ $key + 1 }}. {{ $office->title }}</h5>
+                        @php
+                            $lat_lng = $office->latitude_longitude ? $office->latitude_longitude : null;
+                            $query = str_replace([' ', ','], ['+', ''], $office->address_line1);
+                            $google_maps_url = "https://maps.google.com/maps/search/?api=1&query=$query";
+                            if ($lat_lng) {
+                                $google_maps_url = "https://maps.google.com/maps/search/?api=1&query=$query&query=$lat_lng";
+                            }
+                        @endphp
+                        <div class="card mb-2">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <span>{{ $key + 1 }}. {{ $office->title }}
+                                    <i>({{ $office->office->title }}, {{ $office->division->name }})</i></span>
+                                <span>
+                                    <a href="{{ $google_maps_url }}" target="_blank">
+                                        Map
+                                        <span class="material-icons"
+                                            style="vertical-align: bottom !important;">
+                                            place
+                                        </span>
+                                    </a>
+                                </span>
                             </div>
-
                             <div class="card-body">
-                                <div>
-                                    <p><strong>Parent Office:</strong> {{ $office->office->title }} </p>
-                                    <p><strong>Address:</strong> {{ $office->address_line1 }},
-                                        {{ $office->address_line2 }} </p>
-                                    <p><strong>District: </strong> {{ $office->district->name }} &nbsp
-                                        <strong>Pincode:</strong> {{ $office->pincode }}
-                                    </p>
-                                    <p><strong>Phone:</strong> {{ $office->phone ? $office->phone : 'N/A' }} &nbsp
-                                        <strong>Email:</strong> {{ $office->email ? $office->email : 'N/A' }}
-                                    </p>
-                                </div>
-                                @php
-                                    $lat_lng = $office->latitude_longitude ? $office->latitude_longitude : null;
-                                    $query = str_replace([' ', ','], ['+', ''], $office->address_line1);
-                                    $google_maps_url = "https://maps.google.com/maps/search/?api=1&query=$query";
-                                    if ($lat_lng) {
-                                        $google_maps_url = "https://maps.google.com/maps/search/?api=1&query=$query&query=$lat_lng";
-                                    }
-                                @endphp
+                                <ul class="list-group">
 
-                                <a class="btn btn-success btn-icon-split" href="{{ $google_maps_url }}" target="_blank">
-                                    <span class="icon text-white-50">
-                                        <i class="fas fa-check"></i>
-                                    </span>
-                                    <span class="text">Open in Google maps</span>
-                                </a>
+                                    <li class="d-flex justify-content-between align-items-center">
+                                        <span><strong>Address:</strong> {{ $office->address_line1 }},
+                                            {{ $office->address_line2 }}, {{ $office->pincode }}</span>
+                                    </li>
+                                    <li class="d-flex justify-content-between align-items-center">
+                                        <span><strong>District: </strong> {{ $office->district->name }}</span>
+                                        <span><strong>Phone: </strong>
+                                            {{ $office->phone ? $office->phone : 'N/A' }}</span>
+                                        <span><strong>Email: </strong>
+                                            {{ $office->email ? $office->email : 'N/A' }}</span>
+                                    </li>
+                                </ul>
                             </div>
                         </div>
                     @empty
@@ -146,5 +147,4 @@
         </div>
         </div>
     </section>
-
 @endsection
