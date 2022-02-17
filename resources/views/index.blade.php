@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title')
+    Home
+@endsection
         <!-- ======= About Section ======= -->
 		@section('content')
         <section id="services" class="services">
