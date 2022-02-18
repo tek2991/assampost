@@ -1,6 +1,6 @@
 <section class="banner">
     <div data-aos="fade-in">
-        <div id="image-slider" class="splide">
+        <div id="banner-slider" class="splide">
             <div class="splide__track">
                 <ul class="splide__list">
                     @foreach (App\Models\Banner::where('is_active', 1)->get() as $banner)
@@ -8,7 +8,7 @@
                             @if ($banner->url != '')
                                 <a href="{{ $banner->url }}" target="_blank">
                             @endif
-                            <img src="{{ $banner->banner_image }}">
+                            <img src="{{ $banner->banner_image }}" style="width:100%">
                             @if ($banner->url != '')
                                 </a>
                             @endif
@@ -34,4 +34,13 @@
         </marquee>
     </div>
 
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            new Splide('#banner-slider', {
+                autoHeight: true,
+                type: 'loop',
+                autoplay: true,
+            }).mount();
+        });
+    </script>
 </section>

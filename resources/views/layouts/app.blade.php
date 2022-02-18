@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
-	<title>@yield('title')</title>
+	<title>@yield('title') | Assam Postal Circle</title>
 	<meta content="@yield('description')" name="description">
 	<meta content="@yield('keyword')" name="keywords">
 	@include('layouts.css')

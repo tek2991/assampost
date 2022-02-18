@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('title')
+    Banking & Insurance
+@endsection
 @section('content')
     <section id="about" class="about">
         <div class="container">

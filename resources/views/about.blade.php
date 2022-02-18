@@ -1,5 +1,7 @@
 @extends('layouts.app')
-<!-- ======= About Section ======= -->
+@section('title')
+    About
+@endsection
 @section('content')
     <section id="about" class="about">
         <div class="container">
