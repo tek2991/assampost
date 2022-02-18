@@ -8,7 +8,7 @@
                             @if ($banner->url != '')
                                 <a href="{{ $banner->url }}" target="_blank">
                             @endif
-                            <img src="{{ $banner->banner_image }}">
+                            <img src="{{ $banner->banner_image }}" style="width:100%">
                             @if ($banner->url != '')
                                 </a>
                             @endif
@@ -37,15 +37,9 @@
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             new Splide('#banner-slider', {
-                cover: true,
-                fixedHeight: '550px',
+                autoHeight: true,
                 type: 'loop',
                 autoplay: true,
-                breakpoints: {
-                    600: {
-                        fixedHeight: '250px',
-                    },
-                },
             }).mount();
         });
     </script>
