@@ -124,15 +124,14 @@ class OfficeController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
         $office = Office::find($id);
         $validator = Validator::make($request->all(),[
             'title'=>'required | max:250',
             'division_id' => 'required | exists:divisions,id',
             'district_id' => 'required | exists:districts,id',
             'address_line1' => 'required',
-            'pincode' => 'required | numeric',
-            'filename' => 'nullable | mimes:pdf,doc,docx,xls,xlsx,ppt,pptx',
+            'pincode' => 'required|numeric',
+            'filename' => 'nullable|mimes:pdf,doc,docx,xls,xlsx,ppt,pptx|max:2048',
         ]);
         if($validator->fails()){
             return redirect()->back()->withErrors($validator)->withInput();

@@ -3,7 +3,6 @@
     Administrative Office
 @endsection
 @section('content')
-
     <section class="conact admin">
         <div class="container">
             <div class="row">
@@ -90,10 +89,20 @@
                                 <span>{{ $key + 1 }}. {{ $office->title }}
                                     <i>({{ $office->division->name }})</i></span>
                                 <span>
+                                    @if ($office->file_path)
+                                        <span>
+                                            <a href="{{ $office->file_path }}" target="_blank">
+                                                Postman list
+                                                <span class="material-icons" style="vertical-align: bottom !important;">
+                                                    download
+                                                </span>
+                                            </a>
+                                            <span class="px-4"></span>
+                                        </span>
+                                    @endif
                                     <a href="{{ $google_maps_url }}" target="_blank">
                                         Map
-                                        <span class="material-icons"
-                                            style="vertical-align: bottom !important;">
+                                        <span class="material-icons" style="vertical-align: bottom !important;">
                                             place
                                         </span>
                                     </a>
@@ -107,21 +116,15 @@
                                             {{ $office->address_line2 }}, {{ $office->pincode }}</span>
                                     </li>
                                     <li class="d-flex justify-content-between align-items-center">
-                                        <span><strong>District: </strong> {{ $office->district->name }}</span>
+                                        <span><strong>District: </strong> {{ $office->district->name }}
+                                        </span>
                                         <span><strong>Phone: </strong>
-                                            {{ $office->phone ? $office->phone : 'N/A' }}</span>
+                                            {{ $office->phone ? $office->phone : 'N/A' }}
+                                        </span>
                                         <span><strong>Email: </strong>
-                                            {{ $office->email ? $office->email : 'N/A' }}</span>
-                                        @if($office->file_path)
-                                            <span><strong>File: </strong>
-                                                <a href="{{ $office->file_path }}" target="_blank">
-                                                    <span class="material-icons"
-                                                        style="vertical-align: bottom !important;">
-                                                        attach_file
-                                                    </span>
-                                                </a>
-                                            </span>
-                                        @endif
+                                            {{ $office->email ? $office->email : 'N/A' }}
+                                        </span>
+
                                     </li>
                                 </ul>
                             </div>
@@ -131,20 +134,11 @@
                             <div class="card-body">
                                 <h5>No Office Found</h5>
                             </div>
+                        </div>
                     @endforelse
-
-
-
                 </div>
-
-
+                {{ $offices->links() }}
             </div>
-            {{ $offices->links() }}
-        </div>
-
-
-
         </div>
     </section>
-
 @endsection
