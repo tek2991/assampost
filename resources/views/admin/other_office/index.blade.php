@@ -51,42 +51,34 @@
                         </div>
                     </div>
                 </div>
-                <h6>{{$office->office ? $office->office->title : 'Not Available'}}</h6>
-                <p>{{$office->address_line1}}</p>
-                <p>{{$office->address_line2}}</p>
-                <p>{{$office->phone_no}}</p>
-                @if($office->file_path)
-                <div class="row">
-                    <div class="col-md-12">
-                        <a href="{{$office->file_path}}" target="_blank">File url:  <a href="{{$office->file_path}}" target="_blank">{{$office->file_path}}</a></a>
+                <h6>{{ $office->office ? $office->office->title : 'Not Available' }}</h6>
+                <p>{{ $office->address_line1 }}</p>
+                <p>{{ $office->address_line2 }}</p>
+                <p>{{ $office->phone_no }}</p>
+                @if ($office->file_path)
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="{{ $office->file_path }}" target="_blank">File url: <a
+                                    href="{{ $office->file_path }}" target="_blank">{{ $office->file_path }}</a></a>
+                        </div>
                     </div>
-                </div>
                 @endif
                 <div class="row">
                     <div class="col-md-6">
-                        <a href="{{route('admin.other-office.edit',$office->id)}}" class="btn btn-primary btn-block btn-sm"><i class="fa fa-edit"></i></a>
+                        <a href="{{ route('admin.other-office.edit', $office->id) }}"
+                            class="btn btn-primary btn-block btn-sm"><i class="fa fa-edit"></i></a>
                     </div>
                     <div class="col-md-6">
-                        <form action="{{route('admin.other-office.destroy',$office->id)}}" method="Post">
+                        <form action="{{ route('admin.other-office.destroy', $office->id) }}" method="Post">
                             @csrf
                             @method('DELETE')
-                            <button type="submit" class="btn btn-danger btn-block  btn-sm" onclick="return confirm('Are you sure to delete?')"><i class="fa fa-trash"></i></button>
+                            <button type="submit" class="btn btn-danger btn-block  btn-sm"
+                                onclick="return confirm('Are you sure to delete?')"><i class="fa fa-trash"></i></button>
                         </form>
                     </div>
                 </div>
-
-
             </div>
         @endforeach
     </div>
-<<<<<<< HEAD
-@endforeach
-
- </div>
- {{$otherOffices->links()}}
-@endsection
-
-=======
     {{ $otherOffices->links() }}
 @endsection
->>>>>>> 8a91b1d6bd1a869b80bd0191a4f83888cbc11fad

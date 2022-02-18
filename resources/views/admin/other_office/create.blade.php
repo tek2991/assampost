@@ -187,7 +187,7 @@
                         <div class="form-group">
                             <div class="row">
                                 <div class="col-md-3">
-                                    <label for="">Upload File</label>
+                                    <label for="">Upload Postman List</label>
                                 </div>
                                 <div class="col-md-9">
                                     <input type="file" name="filename" id="filename" class="form-control">

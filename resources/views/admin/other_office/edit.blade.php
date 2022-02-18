@@ -33,7 +33,7 @@
                             <div class="alert alert-danger">{{ $error }}</div>
                         @endforeach
                     @endif
-                    <form action="{{ route('admin.other-office.update', $office->id) }}" method="POST">
+                    <form action="{{ route('admin.other-office.update', $office->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <div class="row">
@@ -44,7 +44,8 @@
                                     <select name="office_id" class="form-control">
                                         <option value="">Select Office</option>
                                         @foreach ($offices as $off)
-                                            <option value="{{ $off->id }}" @if ($off->id == $office->office->id) selected @endif>{{ $off->title }}
+                                            <option value="{{ $off->id }}"
+                                                @if ($off->id == $office->office->id) selected @endif>{{ $off->title }}
                                             </option>
                                         @endforeach
                                     </select>
@@ -89,7 +90,9 @@
                                     <select name="district_id" class="form-control">
                                         <option value="">Select district</option>
                                         @foreach ($districts as $district)
-                                            <option value="{{ $district->id }}" {{ $office->district_id == $district->id ? 'selected' : '' }} >{{ $district->name }}</option>
+                                            <option value="{{ $district->id }}"
+                                                {{ $office->district_id == $district->id ? 'selected' : '' }}>
+                                                {{ $district->name }}</option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -189,6 +192,21 @@
                                 <div class="col-md-9">
                                     <textarea name="other_description" id="other_description" rows="5"
                                         class="form-control">{{ $office->other_description }}</textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="">Upload Postman List</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <input type="file" class="form-control" name="filename" id="filename">
+                                    @if ($office->file_path)
+                                        <a href="{{ $office->file_path }}" target="_blank"
+                                            class="btn btn-primary btn-sm">View File</a>
+                                    @endif
                                 </div>
                             </div>
                         </div>
