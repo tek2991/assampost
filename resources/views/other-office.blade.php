@@ -129,6 +129,16 @@
                                             {{ $office->phone ? $office->phone : 'N/A' }}</span>
                                         <span><strong>Email: </strong>
                                             {{ $office->email ? $office->email : 'N/A' }}</span>
+                                            @if($office->file_path)
+                                            <span><strong>File: </strong>
+                                                <a href="{{ $office->file_path }}" target="_blank">
+                                                    <span class="material-icons"
+                                                        style="vertical-align: bottom !important;">
+                                                        attach_file
+                                                    </span>
+                                                </a>
+                                            </span>
+                                        @endif
                                     </li>
                                 </ul>
                             </div>

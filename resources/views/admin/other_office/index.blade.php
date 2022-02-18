@@ -40,6 +40,13 @@
                 <p>{{$office->address_line1}}</p>
                 <p>{{$office->address_line2}}</p>
                 <p>{{$office->phone_no}}</p>
+                @if($office->file_path)
+                <div class="row">
+                    <div class="col-md-12">
+                        <a href="{{$office->file_path}}" target="_blank">File url:  <a href="{{$office->file_path}}" target="_blank">{{$office->file_path}}</a></a>
+                    </div>
+                </div>
+                @endif
                 <div class="row">
                     <div class="col-md-6">
                         <a href="{{route('admin.other-office.edit',$office->id)}}" class="btn btn-primary btn-block btn-sm"><i class="fa fa-edit"></i></a>
@@ -52,15 +59,14 @@
                         </form>
                     </div>
                 </div>
-                
-               
+
+
             </div>
          </div>
     </div>
 @endforeach
 
- </div> 
- {{$otherOffices->links()}}          
+ </div>
+ {{$otherOffices->links()}}
 @endsection
-            
-     
+

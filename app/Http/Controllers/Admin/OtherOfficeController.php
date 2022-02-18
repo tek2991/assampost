@@ -55,6 +55,7 @@ class OtherOfficeController extends Controller
             'district_id' => 'required | exists:districts,id',
             'address_line1' => 'required',
             'pincode' => 'required | numeric',
+            'filename' => 'nullable | mimes:pdf,doc,docx,xls,xlsx,ppt,pptx',
         ]);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
@@ -75,6 +76,13 @@ class OtherOfficeController extends Controller
             $office->website = $request->website;
             $office->other_description = $request->other_description;
             $office->is_active = $request->is_active;
+            if($request->has('filename')){
+                $file = $request->file('filename');
+                $name = time().$file->getClientOriginalName();
+                $filename = asset('/office/').'/'.$name;
+                $file->move(public_path().'/office/',$name);
+                $office->file_path = $filename;
+            }
             $office->save();
             'App\Helper\Helper'::addToLog("Created Other Office: {$office->title}");
             return redirect()->route('admin.other-office.index')->with('success', 'Office added successfully');
@@ -129,6 +137,7 @@ class OtherOfficeController extends Controller
             'district_id' => 'required | exists:districts,id',
             'address_line1' => 'required',
             'pincode' => 'required | numeric',
+            'filename' => 'nullable | mimes:pdf,doc,docx,xls,xlsx,ppt,pptx',
         ]);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
@@ -146,6 +155,13 @@ class OtherOfficeController extends Controller
             $office->email = $request->email;
             $office->website = $request->website;
             $office->other_description = $request->other_description;
+            if($request->has('filename')){
+                $file = $request->file('filename');
+                $name = time().$file->getClientOriginalName();
+                $filename = asset('/office/').'/'.$name;
+                $file->move(public_path().'/office/',$name);
+                $office->file_path = $filename;
+            }
             $office->save();
             'App\Helper\Helper'::addToLog("Updated Other Office: {$office->title}");
             return redirect()->route('admin.other-office.index')->with('success', 'Office updated successfully');

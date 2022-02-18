@@ -51,11 +51,13 @@ class OfficeController extends Controller
             'district_id' => 'required | exists:districts,id',
             'address_line1' => 'required',
             'pincode' => 'required | numeric',
+            'filename' => 'nullable | mimes:pdf,doc,docx,xls,xlsx,ppt,pptx',
         ]);
         if($validator->fails()){
             return redirect()->back()->withErrors($validator)->withInput();
         }
         try{
+
             $office = new Office();
             $office->title = $request->title;
             $office->division_id = $request->division_id;
@@ -68,6 +70,13 @@ class OfficeController extends Controller
             $office->email = $request->email;
             $office->website = $request->website;
             $office->other_description = $request->other_description;
+            if($request->has('filename')){
+                $file = $request->file('filename');
+                $name = time().$file->getClientOriginalName();
+                $filename = asset('/office/').'/'.$name;
+                $file->move(public_path().'/office/',$name);
+                $office->file_path = $filename;
+            }
             $office->save();
             'App\Helper\Helper'::addToLog("Created Office: {$office->title}");
             return redirect()->route('admin.office.index')->with('success','Office created successfully');
@@ -76,7 +85,7 @@ class OfficeController extends Controller
             Log::error('OfficeController@store: '.$e->getMessage());
             return redirect()->back()->with('error','Something went wrong');
         }
-        
+
 
     }
 
@@ -123,6 +132,7 @@ class OfficeController extends Controller
             'district_id' => 'required | exists:districts,id',
             'address_line1' => 'required',
             'pincode' => 'required | numeric',
+            'filename' => 'nullable | mimes:pdf,doc,docx,xls,xlsx,ppt,pptx',
         ]);
         if($validator->fails()){
             return redirect()->back()->withErrors($validator)->withInput();
@@ -139,6 +149,13 @@ class OfficeController extends Controller
             $office->email = $request->email;
             $office->website = $request->website;
             $office->other_description = $request->other_description;
+            if($request->has('filename')){
+                $file = $request->file('filename');
+                $name = time().$file->getClientOriginalName();
+                $filename = asset('/office/').'/'.$name;
+                $file->move(public_path().'/office/',$name);
+                $office->file_path = $filename;
+            }
             $office->save();
             'App\Helper\Helper'::addToLog("Updated Office: {$office->title}");
             return redirect()->route('admin.office.index')->with('success','Office updated successfully');

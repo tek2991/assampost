@@ -33,7 +33,7 @@
                             <div class="alert alert-danger">{{ $error }}</div>
                         @endforeach
                     @endif
-                    <form action="{{ route('admin.office.store') }}" method="POST">
+                    <form action="{{ route('admin.office.store') }}" enctype="multipart/form-data" method="POST">
                         @csrf
                         <div class="form-group">
                             <div class="row">
@@ -165,6 +165,17 @@
                                 <div class="col-md-9">
                                     <textarea name="other_description" id="other_description" rows="5"
                                         class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="">Upload File</label>
+                                </div>
+                                <div class="col-md-9">
+                                    <input type="file" name="filename" id="filename" class="form-control">
                                 </div>
                             </div>
                         </div>
