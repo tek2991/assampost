@@ -47,7 +47,7 @@ class DownloadController extends Controller
         $validator = Validator::make($request->all(),[
             'title' => 'required|max:250',
             'category_id' => 'required|numeric|exists:categories,id',
-            'filename' => 'required|mimes:pdf|max:2048',
+            'filename' => 'required|mimes:pdf,doc,docx,xls,xlsx,ppt,pptx|max:2048',
             'date' => 'required|date',
         ]);
         if($validator->fails()){
@@ -111,7 +111,7 @@ class DownloadController extends Controller
         //
         $validator = Validator::make($request->all(),[
             'title' => 'required|max:250',
-            'filename' => 'nullable|mimes:pdf|max:2048',
+            'filename' => 'nullable|mimes:pdf,doc,docx,xls,xlsx,ppt,pptx|max:2048',
         ]);
         if($validator->fails()){
             return redirect()->back()->withErrors($validator)->withInput();
