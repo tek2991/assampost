@@ -34,7 +34,7 @@ Route::get('/administrative-office', [PublicOfficeController::class, 'index'])->
 Route::get('/other-office',[PublicOtherOfficeController::class, 'index'])->name('view-other-office');
 
 Route::get('/event',function(){
-    $events = Event::where('is_active',1)->paginate(1);
+    $events = Event::where('is_active',1)->paginate();
     return view('events',compact('events'));
 });
 

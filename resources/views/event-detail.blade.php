@@ -92,6 +92,7 @@
         .event-picture {
             background-image: url('{{ $event->picture }}');
             background-size: cover;
+            background-position: center;
             width: 100%;
             padding-top: 40%;
         }
