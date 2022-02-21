@@ -94,7 +94,8 @@
             background-size: cover;
             background-position: center;
             width: 100%;
-            padding-top: 60%;
+            padding-top: 50%;
+            margin: auto;
         }
 
         .splide__slide {
