@@ -46,8 +46,8 @@
                         <ul>
                             <li><a href="{{ url('/exhibition/guwahati-exhibition') }}">Virtual Philatelic
                                     Exhibition Guwahati 2022</a></li>
-                            <li><a href="{{ url('/exhibition/jorhat-exhibition') }}">Virtual Philatelic
-                                    Exhibition Jorhat 2022</a></li>
+                            {{-- <li><a href="{{ url('/exhibition/jorhat-exhibition') }}">Virtual Philatelic
+                                    Exhibition Jorhat 2022</a></li> --}}
                         </ul>
                     </li>
                     <li class="dropdown">
