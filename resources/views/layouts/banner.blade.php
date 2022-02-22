@@ -3,7 +3,7 @@
         <div id="banner-slider" class="splide">
             <div class="splide__track">
                 <ul class="splide__list">
-                    @foreach (App\Models\Banner::where('is_active', 1)->get() as $banner)
+                    @foreach (App\Models\Banner::where('is_active', 1)->orderBy('updated_at', 'desc')->get() as $banner)
                         <li class="splide__slide">
                             @if ($banner->url != '')
                                 <a href="{{ $banner->url }}" target="_blank">
@@ -25,6 +25,7 @@
                     $notices_front = DB::table('notices')
                         ->where('is_active', 1)
                         ->where('publish_to_scroll', 1)
+                        ->orderBy('updated_at', 'desc')
                         ->get();
                 @endphp
                 @foreach ($notices_front as $n)
@@ -40,6 +41,7 @@
                 autoHeight: true,
                 type: 'loop',
                 autoplay: true,
+                interval: '3000',
             }).mount();
         });
     </script>
