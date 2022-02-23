@@ -71,8 +71,8 @@
                             IPPB has expanded its strength across India covering post offices, through a network
                             of 650 IPPB branches.
                         </p>
-                        <a href="https://www.indiapost.gov.in/VAS/Pages/CalculatePostage.aspx" target="_blank"
-                            class="highlight-btn" style="max-width: 200px">Calculate Postage</a>
+                        <a href="https://www.ippbonline.com/" target="_blank"
+                            class="highlight-btn" style="max-width: 200px">More Details</a>
                     </div>
                 </div>
             </div>
