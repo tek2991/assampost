@@ -30,8 +30,8 @@
                             </div>
                         </div>
                     @endforelse
-                    {{ $events->links() }}
                 </div>
+                {{ $events->links() }}
             </div>
         </div>
     </section>

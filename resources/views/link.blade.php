@@ -97,9 +97,9 @@
                             <li class="list-group-item">No items found!</li>
                         @endforelse
                     </ul>
+                    {{ $links->links() }}
                 </div>
             </div>
-            {{ $links->links() }}
         </div>
     </section>
 @endsection

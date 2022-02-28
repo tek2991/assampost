@@ -134,8 +134,8 @@
                             </div>
                         </div>
                     @endforelse
+                    {{ $offices->links() }}
                 </div>
-                {{ $offices->links() }}
             </div>
         </div>
     </section>

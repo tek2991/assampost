@@ -97,9 +97,9 @@
                             <li class="list-group-item">No items found!</li>
                         @endforelse
                     </ul>
+                    {{ $downloads->links() }}
                 </div>
             </div>
-            {{ $downloads->links() }}
         </div>
     </section>
 @endsection
