@@ -117,7 +117,7 @@
                                         <span><strong>District: </strong> {{ $office->district->name }}
                                         </span>
                                         <span><strong>Phone: </strong>
-                                            {{ $office->phone ? $office->phone : 'N/A' }}
+                                            {{ $office->phone_no ? $office->phone_no : 'N/A' }}
                                         </span>
                                         <span><strong>Email: </strong>
                                             {{ $office->email ? $office->email : 'N/A' }}
