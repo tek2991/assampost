@@ -1,10 +1,8 @@
 @extends('layouts.app')
-@section('title')
-    Administrative Office
-@endsection
 @section('content')
     <section class="conact admin">
         <div class="container">
+            <h3 class="section-header">Administrative Offices</h3>
             <div class="row">
                 <div class="col-md-3">
                     <form action="{{ route('view-administrative-office') }}" method="GET">

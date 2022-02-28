@@ -27,7 +27,7 @@ use App\Http\Controllers\LinkController as PublicLinkController;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('home-page');
 
 Route::get('/administrative-office', [PublicOfficeController::class, 'index'])->name('view-administrative-office');
 

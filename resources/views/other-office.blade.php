@@ -1,14 +1,11 @@
 @extends('layouts.app')
-@section('title')
-    Other Office
-@endsection
 @section('content')
     <section class="conact admin">
         <div class="container">
-
+            <h3 class="section-header">All Offices</h3>
             <div class="row">
                 <div class="col-md-3">
-                    <form action="{{ route('view-administrative-office') }}" method="GET">
+                    <form action="{{ route('view-other-office') }}" method="GET">
                         <div class="card">
                             <div class="card-header">
                                 <h5>Filters</h5>
