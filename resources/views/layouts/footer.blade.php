@@ -53,7 +53,7 @@
                         <li><a href="https://www.indiapost.gov.in/MBE/Pages/Content/POPSK.aspx" target="_blank">Passport
                                 Seva Kendra</a></li>
                         <li><a href="https://www.indiapost.gov.in/MBE/Pages/Content/AadhaarUpdationCentres.aspx"
-                                target="_blank">Aadhar Service</a></li>
+                                target="_blank">Aadhaar Service</a></li>
                         <li><a href="https://www.indiapost.gov.in/MBE/Pages/Content/IPPRS.aspx" target="_blank">PRS</a>
                         </li>
                     </ul>

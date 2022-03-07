@@ -55,6 +55,9 @@
                         <ul>
                             <li><a href="{{ url('/mail-services') }}">Mail Services</a></li>
                             <li><a href="{{ url('/banking-services') }}">Banking &amp; Insurance</a></li>
+                            <li><a href="{{ url('/business-services') }}">Business Services</a></li>
+                            <li><a href="{{ url('/retail-services') }}">Retail Services</a></li>
+                            <li><a href="{{ url('/philately-services') }}">Philately</a></li>
                         </ul>
                     </li>
 

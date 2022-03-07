@@ -3,208 +3,134 @@
     Mail Services
 @endsection
 @section('content')
+    @php
+    $services = [
+        'Premium' => [
+            'Speed Post' => [
+                'link' => 'https://www.indiapost.gov.in/MBE/Pages/Content/Speed-Post.aspx',
+                'image' => 'https://i.imgur.com/hApuNmY.jpg',
+            ],
+            'Business Parcel' => [
+                'link' => 'https://www.indiapost.gov.in/MBE/Pages/Content/Business-Parcel-New.aspx',
+                'image' => 'https://i.imgur.com/hApuNmY.jpg',
+            ],
+            'Logistic Post' => [
+                'link' => 'https://www.indiapost.gov.in/MBE/Pages/Content/Logistic-Post-New.aspx',
+                'image' => 'https://i.imgur.com/hApuNmY.jpg',
+            ],
+        ],
+
+        'Domestic' => [
+            'Letter' => [
+                'link' => 'https://www.indiapost.gov.in/MBE/Pages/Content/Letter.aspx',
+                'image' => 'https://i.imgur.com/hApuNmY.jpg',
+            ],
+            'Blind Literature Packet' => [
+                'link' => 'https://www.indiapost.gov.in/MBE/Pages/Content/Blind-Literature-Packet.aspx',
+                'image' => 'https://i.imgur.com/hApuNmY.jpg',
+            ],
+            'Inland Letter Card' => [
+                'link' => 'https://www.indiapost.gov.in/MBE/Pages/Content/Inland-Letter-Card.aspx',
+                'image' => 'https://i.imgur.com/hApuNmY.jpg',
+            ],
+            'Insurance' => [
+                'link' => 'https://www.indiapost.gov.in/MBE/Pages/Content/Insurance.aspx',
+                'image' => 'https://i.imgur.com/hApuNmY.jpg',
+            ],
+            'Post Card' => [
+                'link' => 'https://www.indiapost.gov.in/MBE/Pages/Content/Post-Card.aspx',
+                'image' => 'https://i.imgur.com/hApuNmY.jpg',
+            ],
+            'Registration' => [
+                'link' => 'https://www.indiapost.gov.in/MBE/Pages/Content/Registration.aspx',
+                'image' => 'https://i.imgur.com/hApuNmY.jpg',
+            ],
+            'Value Payable Post' => [
+                'link' => 'https://www.indiapost.gov.in/MBE/Pages/Content/Value-Payable-Post.aspx',
+                'image' => 'https://i.imgur.com/hApuNmY.jpg',
+            ],
+            'Surface Air Lifted' => [
+                'link' => 'https://www.indiapost.gov.in/MBE/Pages/Content/Surface-Air-Lifted.aspx',
+                'image' => 'https://i.imgur.com/hApuNmY.jpg',
+            ],
+            'Book Packet' => [
+                'link' => 'https://www.indiapost.gov.in/MBE/Pages/Content/Book-Packet.aspx',
+                'image' => 'https://i.imgur.com/hApuNmY.jpg',
+            ],
+            'Registered Newspaper' => [
+                'link' => 'https://www.indiapost.gov.in/MBE/Pages/Content/Registered-Newspaper.aspx',
+                'image' => 'https://i.imgur.com/hApuNmY.jpg',
+            ],
+            'Parcel' => [
+                'link' => 'https://www.indiapost.gov.in/MBE/Pages/Content/Parcel.aspx',
+                'image' => 'https://i.imgur.com/hApuNmY.jpg',
+            ],
+        ],
+
+        'International' => [
+            'Letter' => [
+                'link' => 'https://www.indiapost.gov.in/MBE/Pages/Content/Letter.aspx',
+                'image' => 'https://i.imgur.com/hApuNmY.jpg',
+            ],
+            'Parcel' => [
+                'link' => 'https://www.indiapost.gov.in/MBE/Pages/Content/Parcel.aspx',
+                'image' => 'https://i.imgur.com/hApuNmY.jpg',
+            ],
+            'EMS Speed Post' => [
+                'link' => 'https://www.indiapost.gov.in/MBE/Pages/Content/EMS-Speed-Post.aspx',
+                'image' => 'https://i.imgur.com/hApuNmY.jpg',
+            ],
+            'International Air Parcels' => [
+                'link' => 'https://www.indiapost.gov.in/MBE/Pages/Content/International-Air-Parcels.aspx',
+                'image' => 'https://i.imgur.com/hApuNmY.jpg',
+            ],
+            'International Tracked Packet' => [
+                'link' => 'https://www.indiapost.gov.in/MBE/Pages/Content/International-Tracked-Packet.aspx',
+                'image' => 'https://i.imgur.com/hApuNmY.jpg',
+            ],
+            'Information on Custom Matters' => [
+                'link' => 'https://www.indiapost.gov.in/MBE/Pages/Content/Information-on-Custom-Matters.aspx',
+                'image' => 'https://i.imgur.com/hApuNmY.jpg',
+            ],
+        ],
+    ];
+    @endphp
     <section id="about" class="about">
         <div class="container">
 
-            <h3 class="section-header">Domestic Mail</h3>
+            @foreach ($services as $name => $products)
+                <h3 class="section-header mb-4"> {{ $name }} </h3>
 
-            <div class="services-wrap mb-5">
-                <div class="row">
-                    <div class="col-md-3">
-                        <div class="card service-card-1">
-                            <div class="card-body">
-                                <h5 class="card-title">Letter</h5>
-                                <p class="card-text">A Letter means any communication, which is enclosed in an envelope
-                                    and addressed.</p>
-                                <a class="black-btn" href="https://www.indiapost.gov.in/MBE/Pages/Content/Letter.aspx"
-                                    target="_blank"> Details </a>
+                <div class="services-wrap mb-5">
+                    <ul class="row">
+                        @foreach ($products as $title => $product)
+                            <li class="col-md-3">
+                                <a href="{{ $product['link'] }}" target="_blank">
+                                    <h5 class="card-title">{{ $title }}
+                                    </h5>
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
+
+
+                    {{-- <div class="row">
+                        @foreach ($products as $title => $product)
+                            <div class="col-md-3 mb-4">
+                                <div class="card" style="width: 18rem;">
+                                    <img src="{{ $product['image'] }}" class="card-img-top" alt="{{ $title }}">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $title }}</h5>
+                                        <a class="black-btn" href="{{ $product['link'] }}" target="_blank"> Details
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card service-card-1">
-                            <div class="card-body">
-                                <h5 class="card-title">Book Packet</h5>
-                                <p class="card-text">Shall not contain any paper money, postage or other stamps,
-                                    Cheque​ etc</p>
-                                <a class="black-btn"
-                                    href="https://www.indiapost.gov.in/MBE/Pages/Content/Book-Packet.aspx" target="_blank">
-                                    Details </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card service-card-1">
-                            <div class="card-body">
-                                <h5 class="card-title">Parcel</h5>
-                                <p class="card-text">Anything can be sent in a parcel except articles whose
-                                    transmission is prohibited.</p>
-                                <a class="black-btn" href="https://www.indiapost.gov.in/MBE/Pages/Content/Parcel.aspx"
-                                    target="_blank"> Details </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card service-card-1">
-                            <div class="card-body">
-                                <h5 class="card-title">Reg Newspaper</h5>
-                                <p class="card-text">Registered​​ News paper for publication consisting wholly or in
-                                    great part of political or other news.</p>
-                                <a class="black-btn"
-                                    href="https://www.indiapost.gov.in/MBE/Pages/Content/Registered-Newspaper.aspx"
-                                    target="_blank"> Details </a>
-                            </div>
-                        </div>
-                    </div>
+                        @endforeach
+                    </div> --}}
+
                 </div>
-            </div>
-
-            <div class="services-wrap mb-5">
-                <h3 class="section-header">International Mail</h3>
-
-                <div class="row">
-                    <div class="col-md-3">
-
-                        <div class="card service-card-1">
-                            <div class="card-body">
-                                <h5 class="card-title">International Letters</h5>
-                                <p class="card-text">India Post provides international postal services and can be
-                                    booked in all the Departmental Post offices across the country.</p>
-                                <a class="black-btn"
-                                    href="https://www.indiapost.gov.in/MBE/Pages/Content/International-Letter.aspx"
-                                    target="_blank"> Details </a>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card service-card-1">
-                            <div class="card-body">
-                                <h5 class="card-title">EMS Speed Post</h5>
-                                <p class="card-text">International Speed Post (EMS), the premium and time bound
-                                    intern​ational postal service for documents and merchandise.</p>
-                                <a class="black-btn"
-                                    href="https://www.indiapost.gov.in/MBE/Pages/Content/EMS-SpeedPost.aspx"
-                                    target="_blank"> Details </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card service-card-1">
-                            <div class="card-body">
-                                <h5 class="card-title">Air Parcels</h5>
-                                <p class="card-text">This service is a dedicated ser vice for corporate and retail
-                                    customers to provide economical and fast merchandise services.</p>
-                                <a class="black-btn"
-                                    href="https://www.indiapost.gov.in/MBE/Pages/Content/International-Air-Parcels.aspx"
-                                    target="_blank"> Details </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card service-card-1">
-                            <div class="card-body">
-                                <h5 class="card-title">Tracked Packet</h5>
-                                <p class="card-text">International Tracked Packet is specially designed to cater to​
-                                    the needs of eCommerce for cross border transactions. </p>
-                                <a class="black-btn"
-                                    href="https://www.indiapost.gov.in/MBE/Pages/Content/International-Tracked-Packet-.aspx"
-                                    target="_blank"> Details </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="services-wrap mb-5">
-                <h3 class="section-header">Premium Services</h3>
-
-                <div class="row">
-                    <div class="col-md-3">
-
-                        <div class="card service-card-1">
-                            <div class="card-body">
-                                <h5 class="card-title">Speed Post</h5>
-                                <p class="card-text">Speed Post is available for both domestic and International mail.
-                                </p>
-                                <a class="black-btn"
-                                    href="https://www.indiapost.gov.in/MBE/Pages/Content/Speed-Post.aspx" target="_blank">
-                                    Details </a>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card service-card-1">
-                            <div class="card-body">
-                                <h5 class="card-title">Busioness Parcel</h5>
-                                <p class="card-text">Business Parcel is a premium surface service to suit the
-                                    requirements of business customers for an economical and reliable distribution
-                                    solution.​</p>
-                                <a class="black-btn"
-                                    href="https://www.indiapost.gov.in/MBE/Pages/Content/Business-Parcel-New.aspx"
-                                    target="_blank"> Details </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card service-card-1">
-                            <div class="card-body">
-                                <h5 class="card-title">Logistics Post</h5>
-                                <p class="card-text">Logistics Post provides business customers a cost-effective and
-                                    efficient solution.</p>
-                                <a class="black-btn"
-                                    href="https://www.indiapost.gov.in/MBE/Pages/Content/Logistic-Post-New.aspx"
-                                    target="_blank"> Details </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="services-wrap mb-5">
-                <h3 class="section-header">Business Solutions</h3>
-
-                <div class="row">
-                    <div class="col-md-3">
-
-                        <div class="card service-card-1">
-                            <div class="card-body">
-                                <h5 class="card-title">Book Now Pay Later</h5>
-                                <p class="card-text">Bulk customer is eligible for credit facility provided he enters
-                                    in to an agreement with the Department.</p>
-                                <a class="black-btn" href="https://www.indiapost.gov.in/MBE/Pages/Content/BNPL.aspx"
-                                    target="_blank"> Details </a>
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card service-card-1">
-                            <div class="card-body">
-                                <h5 class="card-title">COD Option</h5>
-                                <p class="card-text">In order to meet the requirement of bulk customers for collection
-                                    of amount, Cash on Delivery facility is available.</p>
-                                <a class="black-btn" href="https://www.indiapost.gov.in/MBE/Pages/Content/COD.aspx"
-                                    target="_blank"> Details </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-3">
-                        <div class="card service-card-1">
-                            <div class="card-body">
-                                <h5 class="card-title">Volume Discounts</h5>
-                                <p class="card-text">For corporate customers and regular users, Speed Post provides
-                                    customised solutions for your needs.</p>
-                                <a class="black-btn"
-                                    href="https://www.indiapost.gov.in/MBE/Pages/Content/Speed-Post-Discount-Structures.aspx"
-                                    target="_blank"> Details </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            @endforeach
         </div>
     </section>
 @endsection

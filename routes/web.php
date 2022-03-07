@@ -63,6 +63,18 @@ Route::get('/banking-services',function(){
     return view('banking-services');
 });
 
+Route::get('/business-services',function(){
+    return view('business-services');
+});
+
+Route::get('/retail-services',function(){
+    return view('retail-services');
+});
+
+Route::get('/philately-services',function(){
+    return view('philately-services');
+});
+
 Auth::routes(['register' => false]);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware('auth');
 Route::group(['prefix'=>'admin/office','middleware'=>'auth'],function(){
