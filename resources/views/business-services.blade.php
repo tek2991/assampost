@@ -58,7 +58,7 @@
             @foreach ($services as $name => $products)
                 <h3 class="section-header mb-4"> {{ $name }} </h3>
 
-                <div class="services-wrap mb-5">
+                <div class="mb-4">
                     <ul class="row">
                         @foreach ($products as $title => $product)
                             <li class="col-md-3">
