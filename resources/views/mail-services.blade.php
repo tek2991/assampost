@@ -77,7 +77,7 @@
                 'image' => 'https://i.imgur.com/hApuNmY.jpg',
             ],
             'EMS Speed Post' => [
-                'link' => 'https://www.indiapost.gov.in/MBE/Pages/Content/EMS-Speed-Post.aspx',
+                'link' => 'https://www.indiapost.gov.in/MBE/Pages/Content/EMS-SpeedPost.aspx',
                 'image' => 'https://i.imgur.com/hApuNmY.jpg',
             ],
             'International Air Parcels' => [
@@ -85,11 +85,11 @@
                 'image' => 'https://i.imgur.com/hApuNmY.jpg',
             ],
             'International Tracked Packet' => [
-                'link' => 'https://www.indiapost.gov.in/MBE/Pages/Content/International-Tracked-Packet.aspx',
+                'link' => 'https://www.indiapost.gov.in/MBE/Pages/Content/International-Tracked-Packet-.aspx',
                 'image' => 'https://i.imgur.com/hApuNmY.jpg',
             ],
             'Information on Custom Matters' => [
-                'link' => 'https://www.indiapost.gov.in/MBE/Pages/Content/Information-on-Custom-Matters.aspx',
+                'link' => 'https://www.indiapost.gov.in/MBE/Pages/Content/Information-on-Customs-Matters.aspx',
                 'image' => 'https://i.imgur.com/hApuNmY.jpg',
             ],
         ],

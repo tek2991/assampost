@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title')
-    Banking & Insurance
+    Business Services
 @endsection
 @section('content')
     @php

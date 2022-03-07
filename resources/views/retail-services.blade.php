@@ -1,13 +1,13 @@
 @extends('layouts.app')
 @section('title')
-    Banking & Insurance
+    Retail Services
 @endsection
 @section('content')
     @php
     $services = [
         'Retail Services' => [
             'Retail Post' => [
-                'link' => 'http://phttps://www.indiapost.gov.in/MBE/Pages/Content/Retail-Post.aspx',
+                'link' => 'https://www.indiapost.gov.in/MBE/Pages/Content/Retail-Post.aspx',
                 'image' => 'https://i.imgur.com/hApuNmY.jpg',
             ],
             'Aadhaar Updation' => [

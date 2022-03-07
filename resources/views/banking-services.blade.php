@@ -15,7 +15,7 @@
                 'image' => 'https://i.imgur.com/hApuNmY.jpg'
             ],
             'Jansuraksha Scheme' => [
-                'link' => 'https://www.indiapost.gov.in/Financial/Pages/Content/Jansuraksha-Scheme.aspx',
+                'link' => 'https://www.indiapost.gov.in/Financial/Pages/content/JansurakshaScheme.aspx',
                 'image' => 'https://i.imgur.com/hApuNmY.jpg'
             ],
             'Money Order' => [
