@@ -44,9 +44,9 @@
                     <li class="dropdown">
                         <a href="#"><span>Virtual Exhibitions</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
-                            <li><a href="{{ url('/public/exhibition/guwahati-exhibition') }}">Virtual Philatelic
+                            <li><a href="{{ url('/exhibition/public/guwahati-exhibition') }}">Virtual Philatelic
                                     Exhibition Guwahati 2021-22</a></li>
-                            <li><a href="{{ url('/public/exhibition/sivasagar-exhibition') }}">Virtual Philatelic
+                            <li><a href="{{ url('/exhibition/public/sivasagar-exhibition') }}">Virtual Philatelic
                                     Exhibition Sivasagar 2021-22</a></li>
                         </ul>
                     </li>
