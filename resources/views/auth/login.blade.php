@@ -33,7 +33,7 @@
 </head>
 
 <body class="bg-gray-200">
-  
+
   <main class="main-content  mt-0">
     <div class="page-header align-items-start min-vh-100" >
       <span class="mask bg-gradient-dark opacity-6"></span>
@@ -42,8 +42,8 @@
           <div class="col-lg-4 col-md-8 col-12 mx-auto">
             <div class="card z-index-0 fadeIn3 fadeInBottom">
               <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2">
-                
-                
+
+
                   <div class="row mt-3">
                     <div class="col-12 text-center ms-auto">
                       <a class="btn btn-link px-3" href="javascript:;">
@@ -52,7 +52,7 @@
                     </div>
                   </div>
                 </div>
-              
+
               <div class="card-body">
                 <form method="POST" action="{{ route('login') }}" onSubmit="return LoginEncrypter(this)" autocomplete="off">
                 @csrf
@@ -81,7 +81,7 @@
 
                   <div class="input-group input-group-outline mb-3">
                     <label class="form-label">Captcha</label>
-                    <input id="captcha"  type="number" class="form-control" name="captcha"  autocomplete="off">
+                    <input id="captcha"  type="text" class="form-control" name="captcha"  autocomplete="off">
                     @if($errors->has('captcha'))
                         <span class="invalid-feedback" role="alert">
                             <strong>{{ $errors->first('captcha') }}</strong>
@@ -95,14 +95,14 @@
                   <div class="text-center">
                     <button type="submit" class="btn bg-gradient-primary w-100 my-4 mb-2">Sign in</button>
                   </div>
-                 
+
                 </form>
               </div>
             </div>
           </div>
         </div>
       </div>
-     
+
     </div>
   </main>
   <!--   Core JS Files   -->

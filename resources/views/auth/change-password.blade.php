@@ -66,6 +66,7 @@
                             </div>
                             <div class="col-md-8">
                                 <input type="password" class="form-control" name="password" placeholder="Enter New Password" required>
+                                Your password must contain 6 characters, at least one uppercase letter, one lowercase letter and one number.
                             </div>
                         </div>
                         </div>

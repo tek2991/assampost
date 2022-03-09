@@ -10,6 +10,16 @@
     <meta name="author" content="">
 
     <title>@yield('title')</title>
+    <style id="antiClickjack">body{display:none !important;}</style>
+    <script type="text/javascript">
+        if (self === top) {
+            var antiClickjack = document.getElementById("antiClickjack");
+            antiClickjack.parentNode.removeChild(antiClickjack);
+        } else {
+            alert("Error! Invalid request");
+            top.location = self.location;
+        }
+    </script>
     @include('admin.layouts.css') @yield('css')
 </head>
 
@@ -46,7 +56,7 @@
             <!-- End of Main Content -->
 
             <!-- Footer -->
-           
+
             <!-- End of Footer -->
             @include('admin.layouts.footer')
         </div>
@@ -78,7 +88,7 @@
                                                      document.getElementById('logout-form').submit();">Logout</a>
                      <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
-                                    </form>  
+                                    </form>
                 </div>
             </div>
         </div>

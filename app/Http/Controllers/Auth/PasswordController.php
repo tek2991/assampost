@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth,Hash;
+use Illuminate\Validation\Rules\Password;
 class PasswordController extends Controller
 {
     /**
@@ -39,7 +40,11 @@ class PasswordController extends Controller
         //
         $request->validate([
             'current_password' => 'required',
-            'password' => 'required|string|min:6|confirmed',
+            'password' =>  ['required', 'confirmed', Password::min(6)->mixedCase()],
+            // Makes the password require at least one letter.
+            'password' =>  ['required', 'confirmed', Password::min(6)->letters()],
+            // Makes the password require at least one number.
+            'password' =>  ['required', 'confirmed', Password::min(6)->numbers()],
             'password_confirmation' => 'required',
           ]);
           try{
@@ -50,14 +55,17 @@ class PasswordController extends Controller
 
             $user->password = Hash::make($request->password);
             $user->save();
+            Auth::logout();
+            auth()->logoutOtherDevices(bcrypt($request->current_password));
             'App\Helper\Helper'::addToLog("Password Changed for user: {$user->name}");
+            return redirect()->route('login')->with('success', 'Password changed successfully!');
           }
           catch(\Exception $e){
             return back()->with('error', $e->getMessage());
           }
 
 
-          return back()->with('success', 'Password successfully changed!');
+
     }
 
     /**
