@@ -61,7 +61,7 @@
 
 
                 <div class="col-lg-3 col-md-6 footer-links">
-                    <ul><li><a href="{{ route('login') }}">Admin Login</a></li></ul>
+
                 </div>
 
 
