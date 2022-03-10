@@ -1,5 +1,5 @@
 <!-- Bootstrap core JavaScript-->
-    <script src="{{asset('cms/vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{asset('assets/js/jquery-3.6.0.min.js')}}"></script>
     <script src="{{asset('cms/vendor/bootstrap/js/bootstrap.bundle.min.js')}}"></script>
 
     <!-- Core plugin JavaScript-->
