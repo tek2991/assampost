@@ -38,7 +38,7 @@
                 'link' => 'https://www.indiapost.gov.in/Philately/Pages/Content/Deen-Dayal-SPARSH-Yojana.aspx',
                 'image' => 'https://i.imgur.com/hApuNmY.jpg',
             ],
-            'StampCalendar' => [
+            'Stamp Calendar' => [
                 'link' => 'https://www.indiapost.gov.in/Philately/Pages/Content/StampCalendar.aspx',
                 'image' => 'https://i.imgur.com/hApuNmY.jpg',
             ],

@@ -10,7 +10,7 @@
                 'link' => 'https://www.indiapost.gov.in/MBE/Pages/Content/Retail-Post.aspx',
                 'image' => 'https://i.imgur.com/hApuNmY.jpg',
             ],
-            'Aadhaar Updation' => [
+            'AADHAR Enrollment and Updation' => [
                 'link' => 'https://www.indiapost.gov.in/MBE/Pages/Content/AadhaarUpdationCentres.aspx',
                 'image' => 'https://i.imgur.com/hApuNmY.jpg',
             ],
