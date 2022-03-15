@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Session;
 use App\Helper\Helper;
+use Illuminate\Support\Facades\Auth;
+
 class LoginController extends Controller
 {
     /*
@@ -78,6 +80,7 @@ class LoginController extends Controller
         }
 
         if ($this->attemptLogin($request)) {
+            Auth::logoutOtherDevices($password);
             return $this->sendLoginResponse($request);
         }
 

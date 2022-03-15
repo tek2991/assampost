@@ -43,7 +43,7 @@
    </div>
    @endif
 <div class="container">
-    <form action="{{ route('changePassword.update') }}" method="Post">
+    <form action="{{ route('changePassword.update') }}" method="Post"  onSubmit="return LoginEncrypter(this)">
         @csrf
     <div class="row">
         <div class="col-lg-8 col-md-8 col-sm-8 mb-8">
@@ -55,7 +55,7 @@
                                 <label for="exampleInputEmail1">Current Password</label>
                             </div>
                             <div class="col-md-8">
-                                <input type="password" class="form-control" name="current_password" placeholder="Enter Current Password" required>
+                                <input type="password" class="form-control" name="current_password" id="current_password" placeholder="Enter Current Password" required>
                             </div>
                         </div>
                         </div>
@@ -108,5 +108,21 @@
     </div>
     </form>
 </div>
+@php
+$admin_login_crypt_change = md5(time().uniqid());
+\Session::put('admin_login_crypt_change', $admin_login_crypt_change);
+@endphp
 @endsection
 
+
+
+@section('js')
+<script src="{{asset('assets/js/aes.js')}}"></script>
+  <script src="{{asset('assets/js/aes-json-format.js')}}"></script>
+  <script>
+    LoginEncrypter = function(Obj){
+        var current_password = CryptoJS.AES.encrypt($("#current_password").val(), "{{$admin_login_crypt_change}}", {format: CryptoJSAesJson}).toString();
+        $("#current_password").val(current_password);
+        return true;
+    }
+</script>

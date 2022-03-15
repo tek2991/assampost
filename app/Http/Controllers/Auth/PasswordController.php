@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Auth,Hash;
 use Illuminate\Validation\Rules\Password;
+use App\Helper\Helper;
+use Illuminate\Support\Facades\Session;
 class PasswordController extends Controller
 {
     /**
@@ -40,23 +42,21 @@ class PasswordController extends Controller
         //
         $request->validate([
             'current_password' => 'required',
-            'password' =>  ['required', 'confirmed', Password::min(6)->mixedCase()],
-            // Makes the password require at least one letter.
-            'password' =>  ['required', 'confirmed', Password::min(6)->letters()],
-            // Makes the password require at least one number.
-            'password' =>  ['required', 'confirmed', Password::min(6)->numbers()],
+            'password' =>  ['required', 'confirmed', Password::min(6)->mixedCase()->letters()->numbers()],
             'password_confirmation' => 'required',
           ]);
           try{
             $user = Auth::user();
-            if (!Hash::check($request->current_password, $user->password)) {
+            $passphrase = (Session::has("admin_login_crypt_change") ? Session::get("admin_login_crypt_change") : null);
+            $password = Helper::cryptoJsAesDecrypt($passphrase, $request->current_password);
+            if (!Hash::check($password, $user->password)) {
                 return back()->with('error', 'Current password does not match!');
             }
 
             $user->password = Hash::make($request->password);
             $user->save();
+            auth()->logoutOtherDevices($request->password);
             Auth::logout();
-            auth()->logoutOtherDevices(bcrypt($request->current_password));
             'App\Helper\Helper'::addToLog("Password Changed for user: {$user->name}");
             return redirect()->route('login')->with('success', 'Password changed successfully!');
           }
@@ -112,4 +112,6 @@ class PasswordController extends Controller
     {
         //
     }
+
+
 }

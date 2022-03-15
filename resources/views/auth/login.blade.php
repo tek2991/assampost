@@ -30,6 +30,16 @@
             border-color: #a94442 !important;
         }
 </style>
+<style id="antiClickjack">body{display:none !important;}</style>
+<script type="text/javascript">
+    if (self === top) {
+        var antiClickjack = document.getElementById("antiClickjack");
+        antiClickjack.parentNode.removeChild(antiClickjack);
+    } else {
+        alert("Error! Invalid request");
+        top.location = self.location;
+    }
+</script>
 </head>
 
 <body class="bg-gray-200">
