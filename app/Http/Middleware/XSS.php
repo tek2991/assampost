@@ -29,7 +29,7 @@ class XSS
         $userInput = strip_tags($userInput);
         });
         $request->merge($userInput);
-        $allowed_host = array('http://167.71.235.8/');
+        $allowed_host = array('167.71.235.8');
         dd($_SERVER['HTTP_HOST']);
         if (!isset($_SERVER['HTTP_HOST']) || !in_array($_SERVER['HTTP_HOST'], $allowed_host))
         {
