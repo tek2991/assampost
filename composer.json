@@ -14,7 +14,8 @@
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
-        "mews/captcha": "^3.2"
+        "mews/captcha": "^3.2",
+        "spatie/laravel-csp": "^2.6"
     },
     "require-dev": {
         "facade/ignition": "^2.5",
