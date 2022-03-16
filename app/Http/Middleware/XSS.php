@@ -29,6 +29,12 @@ class XSS
         $userInput = strip_tags($userInput);
         });
         $request->merge($userInput);
+        $allowed_host = array('localhost');
+        if (!isset($_SERVER['HTTP_HOST']) || !in_array($_SERVER['HTTP_HOST'], $allowed_host))
+        {
+            abort(404);
+            exit();
+        }
         return $next($request);
     }
 }
