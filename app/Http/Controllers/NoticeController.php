@@ -25,7 +25,7 @@ class NoticeController extends Controller
         if ($request->filled('order_by')) {
             $query->orderBy('date', $request->order_by);
         }else{
-            $query->orderBy('created_at', 'desc');
+            $query->orderBy('date', 'desc');
         }
         $notices = $query->paginate(10);
         $categories = Category::get();

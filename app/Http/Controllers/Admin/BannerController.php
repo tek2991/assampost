@@ -39,17 +39,34 @@ class BannerController extends Controller
      */
     public function store(Request $request)
     {
-
-
+        
+        $regex = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
         $validator = Validator::make($request->all(), [
-            'banner_image' => 'required | image | mimes:jpeg,png,jpg,gif,svg | max:2048',
-            // 'url'=>'required',
+            'banner_image' => 'required | image | mimes:jpeg,png,jpg | max:2048',
+             'url'=>'nullable | url|regex:'.$regex,
         ]);
         if ($validator->fails()) {
             return redirect()->back()->withErrors($validator)->withInput();
         }
         try {
-
+            $file = $request->file('banner_image');
+            $finfo = new \finfo(FILEINFO_MIME_TYPE);
+            $mime_type = $finfo->file($request->file('banner_image'));
+            if(substr_count($request->file('banner_image'), '.') > 1){
+                return redirect()->back()->with('error', 'Doube dot in filename');
+            }
+            if($mime_type != "image/png" && $mime_type != "image/jpeg")
+            {
+                return redirect()->back()->with('error', 'File type not allowed');
+            }
+            $extension = $request->file('banner_image')->getClientOriginalExtension();
+            if($extension != "jpg" && $extension != "jpeg" && $extension != "png")
+            {
+                return redirect()->back()->with('error', 'File type not allowed');
+            }
+            if(!filter_var($request->url, FILTER_VALIDATE_URL)){
+                return redirect()->back()->with('error', 'Invalid URL');
+            }
             // $destinationPath = storage_path( 'app/public/banner_image' );
             // $file = $request->banner_image;
             // $fileName = time() . '.'.$file->getClientOriginalExtension();
@@ -61,7 +78,7 @@ class BannerController extends Controller
             ]);
 
 
-            $fileName = time() . $request->banner_image->getClientOriginalName();
+            $fileName = time().'.'.$request->banner_image->getClientOriginalExtension();
             Request()->file('banner_image')->move(public_path('uploads/' . $banner->id), $fileName);
             $banner_image_path = asset('uploads/' . $banner->id) . '/' . $fileName;
 
@@ -105,8 +122,10 @@ class BannerController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $regex = '/^(https?:\/\/)?([\da-z\.-]+)\.([a-z\.]{2,6})([\/\w \.-]*)*\/?$/';
         $validator = Validator::make($request->all(), [
             'banner_image' => 'nullable | image | mimes:jpeg,png,jpg | max:2048',
+            'url'=>'nullable | url|regex:'.$regex,
         ]);
 
         if ($validator->fails()) {
@@ -117,12 +136,30 @@ class BannerController extends Controller
         try {
             $banner = Banner::find($id);
             if($request->hasFile('banner_image')){
-                $fileName = time() . $request->banner_image->getClientOriginalName();
+                $file = $request->file('banner_image');
+            $finfo = new \finfo(FILEINFO_MIME_TYPE);
+            $mime_type = $finfo->file($request->file('banner_image'));
+            if(substr_count($request->file('banner_image'), '.') > 1){
+                return redirect()->back()->with('error', 'Doube dot in filename');
+            }
+            if($mime_type != "image/png" && $mime_type != "image/jpeg")
+            {
+                return redirect()->back()->with('error', 'File type not allowed');
+            }
+            $extension = $request->file('banner_image')->getClientOriginalExtension();
+            if($extension != "jpg" && $extension != "jpeg" && $extension != "png")
+            {
+                return redirect()->back()->with('error', 'File type not allowed');
+            }
+            if(!filter_var($request->url, FILTER_VALIDATE_URL)){
+                return redirect()->back()->with('error', 'Invalid URL');
+            }
+            $fileName = time().'.'.$request->banner_image->getClientOriginalExtension();
                 Request()->file('banner_image')->move(public_path('uploads/' . $banner->id), $fileName);
                 $banner_image_path = asset('uploads/' . $banner->id) . '/' . $fileName;
                 $banner->update([
                     'banner_image' => $banner_image_path,
-                    'url' => $request->url
+                    'url' => strip_tags($request->url)
                 ]);
             }
             else{

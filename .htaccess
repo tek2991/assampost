@@ -10,9 +10,6 @@
     </IfModule>
 
     RewriteEngine On
-    RewriteBase /
-    RewriteCond %{HTTP_HOST} ^www\.(.*)$ [NC]
-    RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
     # Prevent Direct Access to Protected Files
     <FilesMatch "(?i)(^artisan$|\.env|\.log|\composer.json|\.lock|\.gitignore|\.json|\^.git)">
         Order deny,allow

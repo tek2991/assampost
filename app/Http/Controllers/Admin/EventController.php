@@ -63,7 +63,21 @@ class EventController extends Controller
         try {
             if ($request->has('picture')) {
                 $file = $request->file('picture');
-                $name = time() . $file->getClientOriginalName();
+                $finfo = new \finfo(FILEINFO_MIME_TYPE);
+                $mime_type = $finfo->file($request->file('picture'));
+                if(substr_count($request->file('picture'), '.') > 1){
+                    return redirect()->back()->with('error', 'Doube dot in filename');
+                }
+                if($mime_type != "image/png" && $mime_type != "image/jpeg")
+                {
+                    return redirect()->back()->with('error', 'File type not allowed');
+                }
+                $extension = $request->file('picture')->getClientOriginalExtension();
+                if($extension != "jpg" && $extension != "jpeg" && $extension != "png")
+                {
+                    return redirect()->back()->with('error', 'File type not allowed');
+                }
+                $name = time().'.'.$file->getClientOriginalExtension();
                 $filename = asset('/events-images/') . '/' . $name;
                 $file->move(public_path() . '/events-images/', $name);
             } else {
@@ -79,7 +93,22 @@ class EventController extends Controller
             $event->save();
             if ($request->has('gallary_picture')) {
                 foreach ($request->file('gallary_picture') as $file) {
-                    $name = time() . rand(1, 100) . '.' . $file->getClientOriginalName();
+                    $name = time() . rand(1, 100) . '.' . $file->getClientOriginalExtension();
+                    $finfo = new \finfo(FILEINFO_MIME_TYPE);
+                    $mime_type = $finfo->file($file);
+                   
+                    if(substr_count($file, '.') > 1){
+                        return redirect()->back()->with('error', 'Doube dot in filename');
+                    }
+                    if($mime_type != "image/png" && $mime_type != "image/jpeg")
+                    {
+                        return redirect()->back()->with('error', 'File type not allowed');
+                    }
+                    $extension = $file->getClientOriginalExtension();
+                    if($extension != "jpg" && $extension != "jpeg" && $extension != "png")
+                    {
+                        return redirect()->back()->with('error', 'File type not allowed');
+                    }
                     $file_path = asset('/events-images/' . Str::slug($request->title)) . '/' . $name;
                     $file->move(public_path() . '/events-images/' . Str::slug($request->title), $name);
                     $galary['event_id'] = $event->id;
@@ -149,7 +178,21 @@ class EventController extends Controller
             $event = Event::find($id);
             if ($request->has('picture')) {
                 $file = $request->file('picture');
-                $name = time() . $file->getClientOriginalName();
+                $finfo = new \finfo(FILEINFO_MIME_TYPE);
+                $mime_type = $finfo->file($request->file('picture'));
+                if(substr_count($request->file('picture'), '.') > 1){
+                    return redirect()->back()->with('error', 'Doube dot in filename');
+                }
+                if($mime_type != "image/png" && $mime_type != "image/jpeg")
+                {
+                    return redirect()->back()->with('error', 'File type not allowed');
+                }
+                $extension = $request->file('picture')->getClientOriginalExtension();
+                if($extension != "jpg" && $extension != "jpeg" && $extension != "png")
+                {
+                    return redirect()->back()->with('error', 'File type not allowed');
+                }
+                $name = time().'.'.$file->getClientOriginalExtension();
                 $filename = asset('/events-images/') . '/' . $name;
                 $file->move(public_path() . '/events-images/', $name);
             } else {
@@ -164,6 +207,21 @@ class EventController extends Controller
             if ($request->has('gallary_picture')) {
                 foreach ($request->file('gallary_picture') as $file) {
                     $name = time() . rand(1, 100) . '.' . $file->getClientOriginalName();
+                    $finfo = new \finfo(FILEINFO_MIME_TYPE);
+                    $mime_type = $finfo->file($file);
+                   
+                    if(substr_count($file, '.') > 1){
+                        return redirect()->back()->with('error', 'Doube dot in filename');
+                    }
+                    if($mime_type != "image/png" && $mime_type != "image/jpeg")
+                    {
+                        return redirect()->back()->with('error', 'File type not allowed');
+                    }
+                    $extension = $file->getClientOriginalExtension();
+                    if($extension != "jpg" && $extension != "jpeg" && $extension != "png")
+                    {
+                        return redirect()->back()->with('error', 'File type not allowed');
+                    }
                     $file_path = asset('/events-images/' . Str::slug($request->title)) . '/' . $name;
                     $file->move(public_path() . '/events-images/' . Str::slug($request->title), $name);
                     $galary['event_id'] = $event->id;

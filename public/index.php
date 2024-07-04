@@ -1,5 +1,6 @@
 <?php
-
+error_reporting(E_ALL);
+ini_set("display_errors",1);
 use Illuminate\Contracts\Http\Kernel;
 use Illuminate\Http\Request;
 
@@ -30,7 +31,6 @@ if (file_exists($maintenance = __DIR__.'/../storage/framework/maintenance.php'))
 | into the script here so we don't need to manually load our classes.
 |
 */
-
 require __DIR__.'/../vendor/autoload.php';
 
 /*
@@ -50,6 +50,6 @@ $kernel = $app->make(Kernel::class);
 
 $response = $kernel->handle(
     $request = Request::capture()
-)->send();
-
+    )->send();
+    
 $kernel->terminate($request, $response);

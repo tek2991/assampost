@@ -6,7 +6,7 @@
                     @foreach (App\Models\Banner::where('is_active', 1)->orderBy('updated_at', 'desc')->get() as $banner)
                         <li class="splide__slide">
                             @if ($banner->url != '')
-                                <a href="{{ $banner->url }}" target="_blank">
+                                <a href="{!! $banner->url !!}" target="_blank">
                             @endif
                             <img src="{{ $banner->banner_image }}" style="width:100%">
                             @if ($banner->url != '')

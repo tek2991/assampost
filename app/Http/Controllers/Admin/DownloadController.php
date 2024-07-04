@@ -47,7 +47,7 @@ class DownloadController extends Controller
         $validator = Validator::make($request->all(),[
             'title' => 'required|max:250',
             'category_id' => 'required|numeric|exists:categories,id',
-            'filename' => 'required|mimes:pdf,doc,docx,xls,xlsx,ppt,pptx|max:2048',
+            'filename' => 'required|mimes:pdf,doc,docx,xls,xlsx,ppt,pptx|max:9048',
             'date' => 'required|date',
         ]);
         if($validator->fails()){
@@ -55,7 +55,21 @@ class DownloadController extends Controller
         }
         try{
             $file = $request->file('filename');
-            $name = time().$file->getClientOriginalName();
+            $finfo = new \finfo(FILEINFO_MIME_TYPE);
+            $mime_type = $finfo->file($request->file('filename'));
+            if(substr_count($request->file('filename'), '.') > 1){
+                return redirect()->back()->with('error', 'Doube dot in filename');
+            }
+            if($mime_type != "application/pdf" && $mime_type != "application/vnd.ms-excel" && $mime_type != "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+            {
+                return redirect()->back()->with('error', 'File type not allowed');
+            }
+            $extension = $request->file('filename')->getClientOriginalExtension();
+            if($extension != "pdf" && $extension != "xls" && $extension != "xlsx")
+            {
+                return redirect()->back()->with('error', 'File type not allowed');
+            }
+            $name = time().'.'.$file->getClientOriginalExtension();
             $filename = asset('/download-files/').'/'.$name;
             $file->move(public_path().'/download-files/',$name);
             $download = new Download();
@@ -121,7 +135,21 @@ class DownloadController extends Controller
             $download->title = $request->title;
             if($request->has('filename')){
                 $file = $request->file('filename');
-                $name = time().$file->getClientOriginalName();
+                $name = time().'.'.$file->getClientOriginalExtension();
+                $finfo = new \finfo(FILEINFO_MIME_TYPE);
+                $mime_type = $finfo->file($request->file('filename'));
+                if(substr_count($request->file('filename'), '.') > 1){
+                    return redirect()->back()->with('error', 'Doube dot in filename');
+                }
+                if($mime_type != "application/pdf" && $mime_type != "application/vnd.ms-excel" && $mime_type != "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")
+                {
+                    return redirect()->back()->with('error', 'File type not allowed');
+                }
+                $extension = $request->file('filename')->getClientOriginalExtension();
+                if($extension != "pdf" && $extension != "xls" && $extension != "xlsx")
+                {
+                    return redirect()->back()->with('error', 'File type not allowed');
+                }
                 $filename = asset('/download-files/').'/'.$name;
                 $file->move(public_path().'/download-files/',$name);
                 $download->filename = $name;

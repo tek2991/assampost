@@ -65,7 +65,7 @@
                                 <label for="exampleInputEmail1">New Password</label>
                             </div>
                             <div class="col-md-8">
-                                <input type="password" class="form-control" name="password" placeholder="Enter New Password" required>
+                                <input type="password" class="form-control" name="password" id="password" placeholder="Enter New Password" required>
                                 Your password must contain 6 characters, at least one uppercase letter, one lowercase letter and one number.
                             </div>
                         </div>
@@ -76,7 +76,7 @@
                                 <label for="exampleInputEmail1">Confirm Password</label>
                             </div>
                             <div class="col-md-8">
-                                <input type="password" class="form-control" name="password_confirmation"  placeholder="Enter Confirm Password" required>
+                                <input type="password" class="form-control" name="password_confirmation" id="password_confirmation" placeholder="Enter Confirm Password" required>
                             </div>
                         </div>
                         </div>
@@ -114,15 +114,19 @@ $admin_login_crypt_change = md5(time().uniqid());
 @endphp
 @endsection
 
-
-
-@section('js')
+@section('scripts')
 <script src="{{asset('assets/js/aes.js')}}"></script>
   <script src="{{asset('assets/js/aes-json-format.js')}}"></script>
   <script>
     LoginEncrypter = function(Obj){
         var current_password = CryptoJS.AES.encrypt($("#current_password").val(), "{{$admin_login_crypt_change}}", {format: CryptoJSAesJson}).toString();
         $("#current_password").val(current_password);
+        var password = CryptoJS.AES.encrypt($("#password").val(), "{{$admin_login_crypt_change}}", {format: CryptoJSAesJson}).toString();
+        $("#password").val(password);
+
+        var password_confirmation = CryptoJS.AES.encrypt($("#password_confirmation").val(), "{{$admin_login_crypt_change}}", {format: CryptoJSAesJson}).toString();
+        $("#password_confirmation").val(password_confirmation);
         return true;
     }
 </script>
+@endsection

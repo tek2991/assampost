@@ -27,7 +27,7 @@
                             target="_blank"> Track Consignment </a>
                         <div class="logo">
                             <a href="https://amritmahotsav.nic.in/" target="_blank">
-                                <img src="{{ asset('assets/img/azadieng.png') }}" alt="" class="img-fluid">
+                                <img src="{{ asset('assets/img/g20.jpg') }}" alt="" class="img-fluid" style="padding:1rem;">
                             </a>
                         </div>
                     </div>
@@ -42,11 +42,18 @@
                 <ul>
                     <li><a class="nav-link scrollto active" href="{{ url('/') }}">Home</a></li>
                     <li class="dropdown">
+                        <a href="#"><span>Appointments</span> <i class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            <li><a href="{{ route('book-appointment') }}">Book new appointment</a></li>
+                            <li><a href="{{ route('search-appointment') }}">Check bookings</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
                         <a href="#"><span>Virtual Exhibitions</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
-                            <li><a href="https://assampost.org/exhibition/guwahati-exhibition/">Virtual Philatelic
+                            <li><a href="{{env('APP_URL')}}/exhibition/guwahati-exhibition/">Virtual Philatelic
                                     Exhibition Guwahati 2021-22</a></li>
-                            <li><a href="https://assampost.org/exhibition/sivasagar-exhibition/">Virtual Philatelic
+                            <li><a href="{{env('APP_URL')}}/exhibition/sivasagar-exhibition/">Virtual Philatelic
                                     Exhibition Sivasagar 2021-22</a></li>
                         </ul>
                     </li>
@@ -68,7 +75,8 @@
                             <li><a href="{{ url('/other-office') }}">All Offices</a></li>
                         </ul>
                     </li>
-                    <li><a class="nav-link scrollto" href="{{ url('/event') }}">Events</a></li>
+                    {{-- <li><a class="nav-link scrollto" href="{{ url('/event') }}">Events</a></li> --}}
+                    {{-- <li><a class="nav-link scrollto" href="{{ url('/event') }}">Events</a></li> --}}
                     <li><a class="nav-link scrollto " href="{{ url('/notice') }}">Notices</a></li>
                     <li class="dropdown">
                         <a href="#"><span>Resources</span> <i class="bi bi-chevron-down"></i></a>
