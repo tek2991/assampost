@@ -108,4 +108,14 @@ return [
 
     'password_timeout' => 10800,
 
+
+    'admin_emails' => [
+        'techassam@gmail.com',
+        'wakibulh@gmail.com',
+    ],
+
+    'counter_user_emails' => [
+        'tek2991@gmail.com',
+    ]
+
 ];
