@@ -7,6 +7,7 @@
     <title>@yield('title') | Assam Postal Circle</title>
     <meta content="@yield('description')" name="description">
     <meta content="@yield('keyword')" name="keywords">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     @include('layouts.css')
     @yield('css')
     <style id="antiClickjack">body{display:none !important;}</style>
@@ -31,6 +32,7 @@
         @include('layouts.banner')
     @endif
 
+    @include('layouts.logout')
 
 
     <main id="main">
