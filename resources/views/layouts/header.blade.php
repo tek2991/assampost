@@ -48,7 +48,7 @@
                             <li><a href="{{ route('search-appointment') }}">Check bookings</a></li>
                         </ul>
                     </li> --}}
-                    <li class="dropdown">
+                    {{-- <li class="dropdown">
                         <a href="#"><span>Virtual Exhibitions</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="{{env('APP_URL')}}/exhibition/guwahati-exhibition/">Virtual Philatelic
@@ -56,7 +56,7 @@
                             <li><a href="{{env('APP_URL')}}/exhibition/sivasagar-exhibition/">Virtual Philatelic
                                     Exhibition Sivasagar 2021-22</a></li>
                         </ul>
-                    </li>
+                    </li> --}}
                     <li class="dropdown">
                         <a href="#"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
