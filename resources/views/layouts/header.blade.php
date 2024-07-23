@@ -41,13 +41,13 @@
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a class="nav-link scrollto active" href="{{ url('/') }}">Home</a></li>
-                    <li class="dropdown">
+                    {{-- <li class="dropdown">
                         <a href="#"><span>Appointments</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
                             <li><a href="{{ route('book-appointment') }}">Book new appointment</a></li>
                             <li><a href="{{ route('search-appointment') }}">Check bookings</a></li>
                         </ul>
-                    </li>
+                    </li> --}}
                     <li class="dropdown">
                         <a href="#"><span>Virtual Exhibitions</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
