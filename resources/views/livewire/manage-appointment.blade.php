@@ -13,9 +13,9 @@
         <table class="table table-bordered table-hover">
             <thead>
                 <tr>
-                    <th scope="col">Appointment Date</th>
-                    <th scope="col">Appointment ID</th>
-                    <th scope="col">Service</th>
+                    <th scope="col">Date</th>
+                    <th scope="col">ID</th>
+                    <th scope="col">AC No</th>
                     <th scope="col">Name</th>
                     <th scope="col">Phone Number</th>
                     <th scope="col">Email</th>
@@ -35,7 +35,7 @@
                         <tr>
                             <td>{{ $appointment->date->format('d-M-Y') }} {{ $appointment->timeSlot->time }}</td>
                             <td>{{ $appointment->id }}</td>
-                            <td>{{ $appointment->counterService->name }}</td>
+                            <td>{{ $appointment->is_existing_customer ? $appointment->account_number : 'New Cust' }}</td>
                             <td>{{ $appointment->name }}</td>
                             <td>{{ $appointment->phone }}</td>
                             <td>{{ $appointment->email }}</td>

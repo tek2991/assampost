@@ -16,9 +16,13 @@ class SearchAppointment extends Component
 
     public function searchAppointment()
     {
+        // Do not search if search field is empty
+        if (!$this->searchField) {
+            return;
+        }
         // Search by id or phone number
         $this->appointments = Appointment::where('id', $this->searchField)
-            ->orWhere('phone', $this->searchField)
+            ->orWhere('phone', 'like', '%' . $this->searchField . '%')
             ->get();
 
         $this->searched = true;

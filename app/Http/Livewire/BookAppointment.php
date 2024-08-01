@@ -16,7 +16,7 @@ class BookAppointment extends Component
     public $errors = [];
     public $appointments = [];
     public $bookedTimeSlotIds = [];
-    public $succeess = '';
+    public $success = '';
 
     public $serviceId;
     public $name;
@@ -24,6 +24,10 @@ class BookAppointment extends Component
     public $phone;
     public $date;
     public $timeSlotId;
+    public $isExistingCustomer;
+    public $accountNumber;
+
+    public $cutoffTime = null;
 
     public function mount()
     {
@@ -31,8 +35,24 @@ class BookAppointment extends Component
 
         $this->loadServices();
         $this->loadTimeSlots();
+        $this->setCutOffTime();
 
         $this->getbookedTimeSlotIds();
+
+        $this->setDefaultService();
+
+        $this->unselectTimeSlot();
+        $this->getbookedTimeSlotIds();
+
+    }
+
+    public function setCutOffTime()
+    {
+        // Current time in IST
+        $now = now()->setTimezone('Asia/Kolkata');
+
+        // Set cut off time to 1 HR after current time
+        $this->cutoffTime = $now->addHours(1)->format('H:i');
     }
 
     public function loadServices()
@@ -52,6 +72,11 @@ class BookAppointment extends Component
             ->get();
     }
 
+    public function setDefaultService()
+    {
+        $this->serviceId = $this->services->first()->id;
+    }
+
     public function getbookedTimeSlotIds()
     {
         // service_id and date are required
@@ -66,8 +91,8 @@ class BookAppointment extends Component
 
     public function updatedServiceId()
     {
-        $this->unselectTimeSlot();
-        $this->getbookedTimeSlotIds();
+        // $this->unselectTimeSlot();
+        // $this->getbookedTimeSlotIds();
     }
 
     public function updatedDate()
@@ -95,12 +120,12 @@ class BookAppointment extends Component
     {
         // remove errors
         $this->errors = [];
-        $this->succeess = $message;
+        $this->success = $message;
     }
 
     public function resetForm()
     {
-        $this->serviceId = null;
+        // $this->serviceId = null;
         $this->name = '';
         $this->email = '';
         $this->phone = '';
@@ -113,13 +138,17 @@ class BookAppointment extends Component
         $this->validate([
             'serviceId' => 'required',
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'nullable|email',
             'phone' => 'required',
             'date' => 'required',
             'timeSlotId' => 'required',
+            'isExistingCustomer' => 'required|boolean',
+            'accountNumber' => 'nullable|required_if:isExistingCustomer,true',
         ]);
 
         $this->verifyTimeSlot();
+
+        $message = $this->isExistingCustomer ? 'Existing customer. Account number: ' . $this->accountNumber : 'New customer.';
 
         $appointment = Appointment::create([
             'counter_service_id' => $this->serviceId,
@@ -128,7 +157,9 @@ class BookAppointment extends Component
             'phone' => $this->phone,
             'date' => $this->date,
             'time_slot_id' => $this->timeSlotId,
-            'message' => '',
+            'is_existing_customer' => $this->isExistingCustomer,
+            'account_number' => $this->accountNumber,
+            'message' => $message,
         ]);
 
         $this->resetForm();
@@ -136,6 +167,9 @@ class BookAppointment extends Component
         $this->getbookedTimeSlotIds();
 
         $this->setSuccessMessage('Appointment booked successfully. Booking ID: ' . $appointment->id);
+
+        $this->unselectTimeSlot();
+        $this->getbookedTimeSlotIds();
     }
 
     public function render()

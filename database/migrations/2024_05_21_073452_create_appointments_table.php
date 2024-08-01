@@ -17,10 +17,12 @@ class CreateAppointmentsTable extends Migration
             $table->id()->startingValue(100001); // Start id from 100001
             $table->foreignId('time_slot_id')->constrained();
             $table->foreignId('counter_service_id')->constrained();
+            $table->boolean('is_existing_customer')->default(false);
+            $table->string('account_number')->nullable();
             $table->date('date');
             $table->string('name');
             $table->string('phone');
-            $table->string('email');
+            $table->string('email')->nullable();
             $table->text('message');
             $table->string('status')->default('pending');
             $table->foreignId('user_id')->nullable()->constrained();
