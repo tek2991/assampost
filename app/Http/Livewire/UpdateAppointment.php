@@ -16,8 +16,17 @@ class UpdateAppointment extends Component
 
     public $status = null;
     public $confirmed = null;
+    public $cancellation_reason = null;
 
     public $can_update = false;
+
+    public $cancelation_reasons = [
+        'Not turned up',
+        'Visited for other purpose',
+        'Others'
+    ];
+
+    public $remarks = '';
 
     public function mount($appointment_id)
     {
@@ -34,6 +43,13 @@ class UpdateAppointment extends Component
         }
     }
 
+    public function updatedStatus($value)
+    {
+        if($value == 'confirm') {
+            $this->cancellation_reason = null;
+        }
+    }
+
     public function setSuccessMessage($message)
     {
         // remove errors
@@ -46,10 +62,12 @@ class UpdateAppointment extends Component
         $this->validate([
             'status' => 'required',
             'confirmed' => 'required',
+            'cancellation_reason' => 'required_if:status,cancel',
         ]);
         $this->appointment->update([
             'status' => $this->status,
             'user_id' => auth()->id(),
+            'cancellation_reason' => $this->cancellation_reason,
         ]);
 
         $this->setSuccessMessage('Appointment updated successfully');

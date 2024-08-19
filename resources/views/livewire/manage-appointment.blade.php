@@ -35,16 +35,25 @@
                         <tr>
                             <td>{{ $appointment->date->format('d-M-Y') }} {{ $appointment->timeSlot->time }}</td>
                             <td>{{ $appointment->id }}</td>
-                            <td>{{ $appointment->is_existing_customer ? $appointment->account_number : 'New Cust' }}</td>
+                            <td>{{ $appointment->is_existing_customer ? $appointment->account_number : 'New Cust' }}
+                            </td>
                             <td>{{ $appointment->name }}</td>
                             <td>{{ $appointment->phone }}</td>
                             <td>{{ $appointment->email }}</td>
-                            <td>{{ $appointment->status }}</td>
                             <td>
-                                <a href="{{ route('update-appointment', $appointment->id) }}" class="btn btn-primary">Edit</a>
+                                {{ $appointment->status }}
+                                @if ($appointment->status == 'cancel')
+                                    <br>
+                                        ({{ $appointment->cancellation_reason }})
+                                    <br>
+                                @endif
+                            </td>
+                            <td>
+                                <a href="{{ route('update-appointment', $appointment->id) }}"
+                                    class="btn btn-primary">Edit</a>
                             </td>
                         </tr>
-                        @else
+                    @else
                         {{-- <tr>
                             <td>{{ $date }} {{ $slot->time }}</td>
                             <td colspan="6" class="text-center">No Appointments</td>

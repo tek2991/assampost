@@ -37,12 +37,20 @@
                     @foreach ($appointments as $appointment)
                         <tr>
                             <td>{{ $appointment->id }}</td>
-                            <td>{{ Str::mask($appointment->name, '*', 3, 3); }}</td>
+                            <td>{{ Str::mask($appointment->name, '*', 3, 3) }}</td>
                             <td>{{ Str::mask($appointment->phone, '*', 3, 5) }}</td>
-                            <td>{{ $appointment->is_existing_customer ? Str::mask($appointment->account_number, '*', 3, 3) : 'New Cust' }}</td>
+                            <td>{{ $appointment->is_existing_customer ? Str::mask($appointment->account_number, '*', 3, 3) : 'New Cust' }}
+                            </td>
                             <td>{{ Str::mask($appointment->email, '*', 3, 5) }}</td>
                             <td>{{ $appointment->date->format('d-M-Y') }} {{ $appointment->timeSlot->time }}</td>
-                            <td>{{ $appointment->status }}</td>
+                            <td>
+                                {{ $appointment->status }}
+                                @if ($appointment->status == 'cancel')
+                                    <br>
+                                    ({{ $appointment->cancellation_reason }})
+                                    <br>
+                                @endif
+                            </td>
                         </tr>
                     @endforeach
                 </tbody>

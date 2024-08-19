@@ -72,6 +72,20 @@
                             Cancel
                         </label>
                     </div>
+
+                    <div class="form-group pt-4">
+                        <label class="form-label" for="cancellation_reason">
+                            Cancellation Reason
+                        </label>
+                        <br>
+                        @if ($status == 'cancel')                            
+                            <input class="form-input" type="text" id="cancellation_reason" name="cancellation_reason"
+                                wire:model="cancellation_reason" value="cancel">
+                            @else
+                            <input class="form-input" disabled type="text" id="cancellation_reason" name="cancellation_reason"
+                            wire:model="cancellation_reason" value="cancel">
+                        @endif
+                    </div>
                 </div>
 
                 {{-- Confirm checkbox --}}
