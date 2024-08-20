@@ -46,6 +46,10 @@
                         <ul>
                             <li><a href="{{ route('book-appointment') }}">Book new appointment</a></li>
                             <li><a href="{{ route('search-appointment') }}">Check bookings</a></li>
+                            {{-- IF logged in --}}
+                            @if (Auth::check())
+                                <li><a href="{{ route('manage-appointment') }}">Manage appointments</a></li>
+                            @endif
                         </ul>
                     </li>
                     <li class="dropdown">
