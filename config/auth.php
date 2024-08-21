@@ -116,6 +116,7 @@ return [
 
     'counter_user_emails' => [
         'tek2991@gmail.com',
+        'techassam@gmail.com'
     ]
 
 ];
