@@ -44,39 +44,39 @@
                     <li class="dropdown">
                         <a href="#"><span>Appointments</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
-                            <li><a href="{{ route('book-appointment') }}">Book new appointment</a></li>
-                            <li><a href="{{ route('search-appointment') }}">Check bookings</a></li>
+                            <li><a href="{{ route('book-appointment') }}" class="text-white">Book new appointment</a></li>
+                            <li><a href="{{ route('search-appointment') }}" class="text-white">Check bookings</a></li>
                             {{-- IF logged in --}}
                             @if (Auth::check())
-                                <li><a href="{{ route('manage-appointment') }}">Manage appointments</a></li>
+                                <li><a href="{{ route('manage-appointment') }}" class="text-white">Manage appointments</a></li>
                             @endif
                         </ul>
                     </li>
-                    <li class="dropdown">
+                    {{-- <li class="dropdown">
                         <a href="#"><span>Virtual Exhibitions</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
-                            <li><a href="{{env('APP_URL')}}/exhibition/guwahati-exhibition/">Virtual Philatelic
+                            <li><a href="{{env('APP_URL')}}/exhibition/guwahati-exhibition/" class="text-white">Virtual Philatelic
                                     Exhibition Guwahati 2021-22</a></li>
-                            <li><a href="{{env('APP_URL')}}/exhibition/sivasagar-exhibition/">Virtual Philatelic
+                            <li><a href="{{env('APP_URL')}}/exhibition/sivasagar-exhibition/" class="text-white">Virtual Philatelic
                                     Exhibition Sivasagar 2021-22</a></li>
                         </ul>
-                    </li>
+                    </li> --}}
                     <li class="dropdown">
                         <a href="#"><span>Services</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
-                            <li><a href="{{ url('/mail-services') }}">Mail Services</a></li>
-                            <li><a href="{{ url('/banking-services') }}">Banking &amp; Insurance</a></li>
-                            <li><a href="{{ url('/business-services') }}">Business Services</a></li>
-                            <li><a href="{{ url('/retail-services') }}">Retail Services</a></li>
-                            <li><a href="{{ url('/philately-services') }}">Philately</a></li>
+                            <li><a href="{{ url('/mail-services') }}" class="text-white">Mail Services</a></li>
+                            <li><a href="{{ url('/banking-services') }}" class="text-white">Banking &amp; Insurance</a></li>
+                            <li><a href="{{ url('/business-services') }}" class="text-white">Business Services</a></li>
+                            <li><a href="{{ url('/retail-services') }}" class="text-white">Retail Services</a></li>
+                            <li><a href="{{ url('/philately-services') }}" class="text-white">Philately</a></li>
                         </ul>
                     </li>
 
                     <li class="dropdown">
                         <a href="#"><span>Offices</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
-                            <li><a href="{{ url('/administrative-office') }}">Administrative</a></li>
-                            <li><a href="{{ url('/other-office') }}">All Offices</a></li>
+                            <li><a href="{{ url('/administrative-office') }}" class="text-white">Administrative</a></li>
+                            <li><a href="{{ url('/other-office') }}" class="text-white">All Offices</a></li>
                         </ul>
                     </li>
                     {{-- <li><a class="nav-link scrollto" href="{{ url('/event') }}">Events</a></li> --}}
@@ -85,15 +85,15 @@
                     <li class="dropdown">
                         <a href="#"><span>Resources</span> <i class="bi bi-chevron-down"></i></a>
                         <ul>
-                            <li><a href="{{ url('/download') }}">Downloads</a></li>
-                            <li><a href="{{ url('/links') }}">Links</a></li>
+                            <li><a href="{{ url('/download') }}" class="text-white">Downloads</a></li>
+                            <li><a href="{{ url('/links') }}" class="text-white">Links</a></li>
                         </ul>
                     </li>
                     <li><a class="nav-link scrollto" href="{{ url('/about') }}">About</a></li>
 					<li class="d-block d-sm-none"><a class="nav-link scrollto" href="https://www.indiapost.gov.in/vas/pages/LocatePostOffices.aspx">Locate Post Office</a></li>
 					<li class="d-block d-sm-none"><a class="nav-link scrollto" href="https://www.indiapost.gov.in/_layouts/15/DOP.Portal.Tracking/TrackConsignment.aspx">Track Consignment</a></li>
                 </ul>
-				<i class="bi bi-list mobile-nav-toggle"></i>
+				<i class="bi bi-list mobile-nav-toggle" style="color: #fff;"></i>
             </nav><!-- .navbar -->
         </div>
     </div>
