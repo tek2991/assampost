@@ -100,7 +100,7 @@
                                                 style="border:1px solid black;"></p>
                                     </div> --}}
 
-                                    <div class="input-group input-group-outline mb-3">
+                                    {{-- <div class="input-group input-group-outline mb-3">
                                         <label class="form-label">Captcha</label>
                                         <input id="captcha" type="text" class="form-control" name="captcha"
                                             autocomplete="off">
@@ -109,7 +109,7 @@
                                                 <strong>{{ $errors->first('captcha') }}</strong>
                                             </span>
                                         @endif
-                                    </div>
+                                    </div> --}}
                                     <div class="form-check form-switch d-flex align-items-center mb-3">
                                         <input class="form-check-input" type="checkbox" name="remember" id="remember"
                                             {{ old('remember') ? 'checked' : '' }}>
