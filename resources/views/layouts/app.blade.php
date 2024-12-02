@@ -48,7 +48,7 @@
     @include('layouts.js')
     @yield('js')
 
-	<script>
+	{{-- <script>
     (function(w,d,s,c,r,a,m){
       w['KiwiObject']=r;
       w[r]=w[r] || function () {
@@ -63,7 +63,7 @@
     window.addEventListener("load",function () {
       kiwi.init('', 'fszjPPCJR1QgJln2cgleLlizG9ILlF6q', {});
     });
-  </script>
+  </script> --}}
   @livewireScripts
 </body>
 
