@@ -79,6 +79,9 @@
 		
                 <div class="col-lg-3 col-md-6 footer-links">
                     <h4>Powered by  Sr. Postmaster Guwahati GPO</h4>
+                    <a href="tel:+917099039161">
+                        <h4>+91-7099039161</h4>
+                    </a>
                 </div>
 
             </div>
