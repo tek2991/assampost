@@ -81,7 +81,7 @@
                     <h4>For Bussiness Queries</h4>
                     <a href="tel:+917099039161">
                         <h4>+91-7099039161</h4>
-                    </a> /
+                    </a>
                     <a href="tel:+919435511233">
                         <h4>+91-9435511233</h4>
                     </a>
@@ -98,6 +98,7 @@
                     <a href="tel:+913613146363">
                         <h4>+91-361 3146363</h4>
                     </a>
+                    <br>
                     <a href="mailto:pg.as@indiapost.gov.in">pg.as@indiapost.gov.in</a>
                     <h4>
                         Assistant Director (PG)
