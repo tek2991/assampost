@@ -86,10 +86,10 @@
                         <h4>+91-9435511233</h4>
                     </a>
                     <a href="mailto:bd.as@indiapost.gov.in">bd.as@indiapost.gov.in</a>
-                    <p>
+                    <h4>
                         APMG (Mails & BD), Office of the Chief Postmaster General, Assam Circle
                         4th Floor Meghdoot Bhawan, Guwahati -781001.
-                    </p>
+                    </h4>
                 </div>
 
 
@@ -99,11 +99,11 @@
                         <h4>+91-361 3146363</h4>
                     </a>
                     <a href="mailto:pg.as@indiapost.gov.in">pg.as@indiapost.gov.in</a>
-                    <p>
+                    <h4>
                         Assistant Director (PG)
                         Office of the Chief Postmaster General, Assam Circle
                         5th Floor Meghdoot Bhawan, Guwahati -781001
-                    </p>
+                    </h4>
                 </div>
 
             </div>
