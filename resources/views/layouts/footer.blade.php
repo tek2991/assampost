@@ -13,8 +13,8 @@
                     <ul>
                         <li><a href="https://www.indiapost.gov.in/MBE/Pages/Content/Letter.aspx"
                                 target="_blank">Letter</a></li>
-                        <li><a href="https://www.indiapost.gov.in/MBE/Pages/Content/Speed-Post.aspx"
-                                target="_blank">Speed Post</a></li>
+                        <li><a href="https://www.indiapost.gov.in/MBE/Pages/Content/Speed-Post.aspx" target="_blank">Speed
+                                Post</a></li>
                         <li><a href="https://www.indiapost.gov.in/MBE/Pages/Content/Logistic-Post-New.aspx"
                                 target="_blank">Logistics</a></li>
                         <li><a href="https://www.indiapost.gov.in/MBE/Pages/Content/Parcel.aspx"
@@ -76,12 +76,34 @@
 
                 </div>
 
-		
+
                 <div class="col-lg-3 col-md-6 footer-links">
-                    <h4>Powered by  Sr. Postmaster Guwahati GPO</h4>
+                    <h4>For Bussiness Queries</h4>
                     <a href="tel:+917099039161">
                         <h4>+91-7099039161</h4>
+                    </a> /
+                    <a href="tel:+919435511233">
+                        <h4>+91-9435511233</h4>
                     </a>
+                    <a href="mailto:bd.as@indiapost.gov.in">bd.as@indiapost.gov.in</a>
+                    <p>
+                        APMG (Mails & BD), Office of the Chief Postmaster General, Assam Circle
+                        4th Floor Meghdoot Bhawan, Guwahati -781001.
+                    </p>
+                </div>
+
+
+                <div class="col-lg-3 col-md-6 footer-links">
+                    <h4>For any Complaints</h4>
+                    <a href="tel:+913613146363">
+                        <h4>+91-361 3146363</h4>
+                    </a>
+                    <a href="mailto:pg.as@indiapost.gov.in">pg.as@indiapost.gov.in</a>
+                    <p>
+                        Assistant Director (PG)
+                        Office of the Chief Postmaster General, Assam Circle
+                        5th Floor Meghdoot Bhawan, Guwahati -781001
+                    </p>
                 </div>
 
             </div>
